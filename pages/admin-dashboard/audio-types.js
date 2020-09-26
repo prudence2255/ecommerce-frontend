@@ -71,14 +71,14 @@ A.useEffect(() => {
         />
        <EditItem
         editModal={editModal} setEditModal={setEditModal} item={selectedItem}
-        schema={schema} inputLabel={'Device type'} inputName={'device type'}
+        schema={schema} inputLabel={'Device type'} inputName={'type'}
           title={'Update audio and mp3 device type'} path={'/api/audio-types/'} defaultValue={selectedItem.type}
         />
     <div className="card">
   <div className="card-header w3-blue">
     <h5 className="text-center ">Audio & mp3</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">Device type</th>

@@ -3,6 +3,8 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit'
 import loadersReducer from './admin/loadersSlice';
 import errorsReducer from './admin/errorsSlice';
 import adminsReducer from './admin/adminSlice'; 
+import customersReducer from './customer/customerSlice'; 
+import formsReducer from './forms/formsSlice'; 
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 
 
@@ -11,6 +13,8 @@ const rootReducer = combineReducers({
                    loaders: loadersReducer,
                    errors: errorsReducer,
                    admins: adminsReducer,
+                   customers: customersReducer,
+                   forms: formsReducer
                   });
 
   const hydrateReducer = (state = {}, action) => {

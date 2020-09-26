@@ -1,11 +1,15 @@
 import * as A from 'components/adminImports';
 import * as yup from "yup";
 import AddItemWithOptions from 'components/admin/addItemWithOptions';  
-import EditItemWithOptions from 'components/admin/editItemWithOptions';  
-//const cook = new A.Cookies()
+import EditItemWithOptions from 'components/admin/editOptions';  
+
 const schema = {
   model: yup.string().required(),
-  mobile_brand_id: yup.mixed().required()
+  mobile_brand_id: yup.mixed().required(),
+}
+
+const editSchema = {
+  model: yup.string().required(),
 }
 export default function MobileModels() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
@@ -69,22 +73,22 @@ A.useEffect(() => {
       
             <AddItemWithOptions 
         addOptionsModal={addOptionsModal} setAddOptionsModal={setAddOptionsModal}
-        schema={schema} optionsLabel={'choose brand'} optionName={'mobile_brand_id'}
-        placeholder={'choose brand...'} path={'/api/mobile-models'} title={'Add new model'}
+        schema={schema} optionsLabel={'Choose brand'} optionName={'mobile_brand_id'}
+        placeholder={'Search...'} path={'/api/mobile-models'} title={'Add new model'}
         instanceId={'model_id'} inputName={'model'} inputLabel={'Model'} options={brandOptions}
       />
       <EditItemWithOptions 
         editOptionsModal={editOptionsModal} setEditOptionsModal={setEditOptionsModal}
-        schema={schema} optionsLabel={'choose brand'} optionName={'mobile_brand_id'}
-        placeholder={'choose brand...'} path={'/api/mobile-models/'} title={'Update model'}
+        schema={editSchema} optionsLabel={'Choose brand'} optionName={'mobile_brand_id'}
+        placeholder={'Search...'} path={'/api/mobile-models/'} title={'Update model'}
         instanceId={'model_id_1'} inputName={'model'} inputLabel={'Model'} options={brandOptions}
         item={selectedItem}
       />
     <div className="card">
   <div className="card-header w3-blue">
-    <h5 className="text-center ">Mobile models</h5>
+    <h5 className="text-center ">Mobile Models</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">Model</th>

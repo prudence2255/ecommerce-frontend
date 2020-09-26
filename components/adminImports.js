@@ -1,8 +1,16 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useRef, forwardRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {adminSelector} from 'store/admin/adminSlice';
+import {customerSelector, setPhotos, removePhoto} from 'store/customer/customerSlice';
 import Layout from 'components/admin/layout'
 import {loadItems, deleteItem, addItem, updateItem, loadOptions} from 'store/admin/adminActions';
+import {setErrors, formSelector} from 'store/forms/formsSlice';
+import {logout, addAd,
+    loadAds, login, loadCustomer,
+    updateAd, deleteAd, categoryLocation,
+    signUp, socialLogin, childOptions, 
+    parentOptions,  
+    } from 'store/customer/customerActions';
 import {wrapper} from 'store/store';
 import Cookies from 'universal-cookie';
 import AuthRoute from 'components/admin/auth';
@@ -10,9 +18,11 @@ import Swal from 'sweetalert2';
 import { unwrapResult } from '@reduxjs/toolkit';
 import {ShowError} from 'components/alerts';
 import {errorsSelector} from 'store/admin/errorsSlice';
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
-import {SelectOption} from './selects'
+import {GridLoader} from './loaders';
+import {useRouter} from 'next/router';
+import {loadersSelector, startLoading, endLoading} from 'store/admin/loadersSlice';
 
 
 
@@ -25,7 +35,13 @@ import {SelectOption} from './selects'
 
 
 export {
+    loadersSelector,
+    startLoading,
+    endLoading,
     adminSelector,
+    customerSelector,
+    setPhotos,
+    removePhoto,
     Layout,
     loadItems,
     deleteItem,
@@ -39,12 +55,30 @@ export {
     React,
     useEffect,
     useState,
+    useRef,
     useDispatch,
     useSelector,
     updateItem,
     addItem,
     useForm,
     yupResolver,
-    SelectOption,
-    loadOptions
+    loadOptions,
+    GridLoader,
+    forwardRef,
+    Controller,
+    logout, 
+    addAd,
+    loadAds, 
+    login, 
+    loadCustomer,
+    updateAd, 
+    deleteAd,
+    categoryLocation,
+    signUp, 
+    socialLogin,
+    useRouter,
+    setErrors,
+    formSelector,
+    childOptions,
+    parentOptions,
 }

@@ -11,7 +11,7 @@ export default function Users() {
   <div className="card-header w3-blue">
     <h5 className="text-center ">Users</h5>
   </div>
-  <table className="table table-responsive-lg table-responsive-md table-responsive-sm table-responsive-xs">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">#</th>

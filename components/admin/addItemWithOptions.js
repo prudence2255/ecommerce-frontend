@@ -1,7 +1,10 @@
 import * as yup from "yup";
 import * as A from '../adminImports';
+import Select from 'react-select';
+
 
 export default function AddItemWithOptions(props) {
+ 
   const {
 schema, optionName, setAddOptionsModal,
 addOptionsModal, path, title, inputLabel,
@@ -22,10 +25,9 @@ placeholder,
       setAddOptionsModal(false);
    
   }
- 
+
       const submit = (data) => {
-        const newData = Object.assign({}, {...data, 
-                    [optionName]: data[optionName] ? data[optionName].value : null})
+        const newData = {...data, [optionName]: data[optionName]?.value}
               dispatch(A.addItem({item: newData, url: path})).then(A.unwrapResult)
               .then(() => {
                   setAddOptionsModal(false);
@@ -42,15 +44,13 @@ placeholder,
     }
     
     return(
-        <>
-        
+        <> 
+        <div>
+        <div className={`w3-modal ${addOptionsModal ? 'openModal' : ''}`}>
         {error && (
             <A.ShowError />
         )}
-        <div>
-        <div className={`w3-modal ${addOptionsModal ? 'openModal' : ''}`}>
         <div className="w3-modal-content w3-animate-zoom">
-        <div className="w3-container">
         <div className="card">
          <div className="card-header w3-blue">
           <h5 className=" text-center"> {title}</h5>
@@ -65,13 +65,16 @@ placeholder,
   </p>
   <div>
   <label>{optionsLabel}</label><br />
-  <A.SelectOption 
-  control={control}
-    options={options}
-    name={optionName}
-    instanceId={instanceId}
-    placeholder={placeholder}
-  />
+  <A.Controller
+      as={<Select />}
+        control={control}
+        name={optionName}
+        options={options}
+        instanceId={instanceId}
+        isSearchable
+        isClearable
+        placeholder={placeholder}
+      />
   <span className="error">{errors[optionName]?.message}</span>
   </div><br />
   <div className="pb-2">
@@ -84,13 +87,15 @@ placeholder,
         </div>
         </div>
         </div>
-        </div>
 
         <style jsx>
             {`
 
                 .openModal{
                     display: block
+                }
+                .w3-modal-content{
+                  max-width: 500px;
                 }
             `}
         </style>

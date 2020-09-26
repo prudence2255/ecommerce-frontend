@@ -5,7 +5,7 @@ import EditItem from 'components/admin/editItem';
 //const cook = new A.Cookies()
 
 const schema = {
-  body: yup.string()
+  body: yup.string().required()
 }
 
 export default function CarBodies() {
@@ -78,7 +78,7 @@ A.useEffect(() => {
   <div className="card-header w3-blue">
     <h5 className="text-center ">Car body types</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">Body type</th>

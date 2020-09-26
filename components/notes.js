@@ -120,3 +120,27 @@
 // ...options,
 // headers,  
 // });
+
+
+
+
+
+
+
+{/* <A.Controller
+        control={control}
+        name="region"
+        render={({onChange, value}) => (
+          <Select
+            onChange={(e) => {
+              onChange(e.value)
+              handleRegions(e.value)
+            }}
+        options={regions}
+        instanceId="regions"
+        isSearchable
+        isClearable
+        placeholder="Search regions..."
+          />
+        )}
+      /> */}

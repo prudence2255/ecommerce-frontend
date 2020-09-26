@@ -14,6 +14,7 @@ export default function AddItem(props) {
      title, inputName, path, inputLabel
     } = props;
     const schemaObject = yup.object().shape(schema);
+    
     const { register, reset, handleSubmit, errors } = A.useForm({
       resolver: A.yupResolver(schemaObject),   
       })
@@ -49,7 +50,6 @@ export default function AddItem(props) {
         <div>
         <div className={`w3-modal ${addModal ? 'openModal' : ''}`}>
         <div className="w3-modal-content w3-animate-zoom">
-        <div className="w3-container">
         <div className="card">
          <div className="card-header w3-blue">
           <h5 className=" text-center">{title} </h5>
@@ -72,12 +72,14 @@ export default function AddItem(props) {
         </div>
         </div>
         </div>
-        </div>
 
         <style jsx>
             {`
                 .openModal{
                     display: block
+                }
+                .w3-modal-content{
+                  max-width: 500px;
                 }
             `}
         </style>

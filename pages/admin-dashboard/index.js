@@ -1,13 +1,19 @@
-
+import {useDispatch} from 'react-redux';
 import Layout from 'components/admin/layout';
 import AuthRoute from 'components/admin/auth';
 import {UserIcon, AdminIcon, AdIcon,
-    CategoryIcon, LocationIcon} from 'components/admin/icons';
+    CategoryIcon, LocationIcon, NavIcon} from 'components/admin/icons';
 import {wrapper} from 'store/store';
-
+import Link from 'next/link';
+import {progressStart} from 'store/admin/loadersSlice';     
 
 
  function Dashboard(){
+    const dispatch = useDispatch();
+
+    const goToPage = () => {
+        dispatch(progressStart());
+    }
     return(
     <>
    <Layout>
@@ -16,13 +22,15 @@ import {wrapper} from 'store/store';
            <div className="card w3-margin-top">
         <h5 className="card-header">Users</h5>
             <div className="card-body">
-            <div className="icon">
+            <div className="icon my-3">
                 <UserIcon />
             </div>
             <div className="tag-no">
             <span className="w3-badge">20</span>
             </div>
-            <a href="#" className="btn btn-primary my-5">View all users</a>
+            <Link href="/admin-dashboard/users">
+        <a className="w3-bar-item w3-button" onClick={goToPage}> view all users <span className="w3-right"> <NavIcon /></span></a>
+        </Link>
         </div>
             </div>
            </div> 
@@ -30,13 +38,15 @@ import {wrapper} from 'store/store';
            <div className="card w3-margin-top">
             <h5 className="card-header">Admins</h5>
             <div className="card-body">
-            <div className="icon">
+            <div className="icon my-3">
                 <AdminIcon />
             </div>
             <div className="tag-no">
             <span className="w3-badge">20</span>
             </div>
-            <a href="#" className="btn btn-primary my-5">View all admins</a>
+            <Link href="/admin-dashboard/admins">
+      <a className="w3-bar-item w3-button" onClick={goToPage}> view all admins <span className="w3-right"> <NavIcon /></span></a>
+      </Link>
              </div>
             </div>
            </div>
@@ -46,13 +56,15 @@ import {wrapper} from 'store/store';
            <div className="card w3-margin-top">
         <h5 className="card-header w3-green">Ads</h5>
             <div className="card-body">
-            <div className="icon">
+            <div className="icon my-3">
                 <AdIcon />
             </div>
             <div className="tag-no">
             <span className="w3-badge">20</span>
             </div>
-            <a href="#" className="btn btn-primary my-5">View all ads</a>
+            <Link href="/admin-dashboard/ads">
+       <a className="w3-bar-item w3-button" onClick={goToPage}> view all ads <span className="w3-right"> <NavIcon /></span></a>
+       </Link>
         </div>
             </div>
            </div> 
@@ -60,13 +72,15 @@ import {wrapper} from 'store/store';
            <div className="card w3-margin-top">
             <h5 className="card-header w3-yellow">Categories</h5>
             <div className="card-body">
-            <div className="icon">
+            <div className="icon my-3">
             <CategoryIcon />
             </div>
             <div className="tag-no">
             <span className="w3-badge">20</span>
             </div>
-            <a href="#" className="btn btn-primary my-5">View all categories</a>
+            <Link href="/admin-dashboard/categories">
+         <a className="w3-bar-item w3-button" onClick={goToPage}> view categories <span className="w3-right"> <NavIcon /></span></a>
+         </Link>
              </div>
             </div>
            </div>
@@ -76,13 +90,16 @@ import {wrapper} from 'store/store';
            <div className="card w3-margin-top" >
         <h5 className="card-header w3-blue">Locations</h5>
             <div className="card-body">
-        <div className="icon">
+        <div className="icon my-3">
         <LocationIcon />
         </div>
         <div className="tag-no">
             <span className="w3-badge">20</span>
         </div>
-            <a href="#" className="btn btn-primary my-5">View all locations</a>
+        <Link href="/admin-dashboard/locations">
+         <a className="w3-bar-item w3-button" onClick={goToPage}>locations <span className="w3-right"> <NavIcon /></span></a>
+         </Link>
+        
         </div>
             </div>
            </div> 

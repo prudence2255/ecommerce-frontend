@@ -15,7 +15,7 @@ export default function ComputerAccessoryTypes() {
 const {error} = A.useSelector(A.errorsSelector);
 const {items} = A.useSelector(A.adminSelector);
 const dispatch = A.useDispatch();
-const types = items && items.slice().sort((a, b) => b.updated_at.localeCompare(a.updated_at))
+const types = items && items.slice().sort((a, b) => b.updated_at?.localeCompare(a.updated_at))
 const openComputerAccessoryTypeModal = () => {
   setAddModal(true);
 }
@@ -78,7 +78,7 @@ A.useEffect(() => {
   <div className="card-header w3-blue">
     <h5 className="text-center ">Computer accessories</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">Accessory type</th>

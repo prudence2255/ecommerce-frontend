@@ -6,7 +6,7 @@ import EditItemWithOptions from 'components/admin/editItemWithOptions';
 //const cook = new A.Cookies()
 
 const schema = {
-  name: yup.string().required()
+  name: yup.string().required(),
 }
 export default function Categories() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
@@ -17,14 +17,16 @@ const {items} = A.useSelector(A.adminSelector);
 const dispatch = A.useDispatch();
 const categories = items && items.slice().sort((a, b) => b.updated_at.localeCompare(a.updated_at))
 const options = items.map(option => ({
+  "label": option.name,
   "value": option.id,
-  "label": option.name
 }));
+
 const openAddOptionsModal = () => {
   setAddOptionsModal(true);
 }
 const editItem = (category) => {
    setSelectedItem(category)
+  
     setEditOptionsModal(true);
 }
 const handleDelete = (slug) => {
@@ -69,22 +71,22 @@ A.useEffect(() => {
             </div>
       <AddItemWithOptions 
         addOptionsModal={addOptionsModal} setAddOptionsModal={setAddOptionsModal}
-        schema={schema} optionsLabel={'choose parent'} optionName={'parent_id'}
-        placeholder={'choose parent category (optional)'} path={'/api/categories'} title={'Add new category'}
+        schema={schema} optionsLabel={'Choose parent category'} optionName={'parent_id'}
+        placeholder={'Search... (optional)'} path={'/api/categories'} title={'Add new category'}
         instanceId={'category_id'} inputName={'name'} inputLabel={'Name'} options={options}
       />
       <EditItemWithOptions 
         editOptionsModal={editOptionsModal} setEditOptionsModal={setEditOptionsModal}
-        schema={schema} optionsLabel={'choose parent'} optionName={'parent_id'}
-        placeholder={'choose parent category (optional)'} path={'/api/categories/'} title={'Update category'}
+        schema={schema} optionsLabel={'Choose parent category'} optionName={'parent_id'}
+        placeholder={'Search... (optional)'} path={'/api/categories/'} title={'Update category'}
         instanceId={'category_id_1'} inputName={'name'} inputLabel={'Name'} options={options}
-        item={selectedItem}
+        item={selectedItem} 
       />
     <div className="card">
   <div className="card-header w3-blue">
     <h5 className="text-center ">Categories</h5>
   </div>
-  <table className="w3-table w3-bordered ">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">name</th>

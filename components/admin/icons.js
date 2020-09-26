@@ -1,9 +1,13 @@
-import {AiFillCaretDown} from "react-icons/ai";
+import {AiFillCaretDown, AiFillCar} from "react-icons/ai";
 import { FaUsers, FaBuysellads,
     FaCalculator, FaBars, FaHome, FaUserCircle } from "react-icons/fa";
 import {GoLocation, GoDashboard} from "react-icons/go";
 import {RiAdminLine} from "react-icons/ri";
-import {MdErrorOutline} from "react-icons/md"
+import {MdErrorOutline, MdChevronRight} from "react-icons/md";
+import {FcElectronics, FcServices} from 'react-icons/fc';
+import {GiHouse, GiLargeDress} from 'react-icons/gi';
+
+
 
 
 export const AlertIcon = () => {
@@ -13,6 +17,47 @@ export const AlertIcon = () => {
             </>
     )
   
+}
+
+export const PropertyIcon = () => {
+    return(
+        <>
+        <GiHouse color="#22B822"/>
+            </>
+    )
+  
+}
+
+export const HomeGardenIcon = () => {
+    return(
+        <>
+        <GiLargeDress color="#22B822"/>
+            </>
+    )
+}
+
+export const ServicesIcon = () => {
+    return(
+        <>
+        <FcServices color="#22B822"/>
+            </>
+    )
+}
+
+export const ElectIcon = () => {
+    return(
+        <>
+        <FcElectronics color="#22B822"/>
+        </>
+    )
+}
+
+export const CarIcon = () => {
+    return(
+        <>
+        <AiFillCar color="#22B822"/>
+        </>
+    )
 }
 export const BarIcon = () => (
     <>
@@ -35,9 +80,16 @@ export const DashboardIcon = () => (
 
 )
 
-export const UserIcon = () => (
+export const UserIcon = () => ( 
     <>
     <FaUserCircle title="user"/>
+    </>
+
+)
+
+export const NavIcon = () => (
+    <>
+    <MdChevronRight />
     </>
 
 )

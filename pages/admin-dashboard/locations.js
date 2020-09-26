@@ -63,14 +63,14 @@ const handleDelete = (slug) => {
             )}
             <AddItemWithOptions 
         addOptionsModal={addOptionsModal} setAddOptionsModal={setAddOptionsModal}
-        schema={schema} optionsLabel={'choose parent'} optionName={'parent_id'}
-        placeholder={'choose parent location (optional)'} path={'/api/locations'} title={'Add new location'}
+        schema={schema} optionsLabel={'Choose parent location'} optionName={'parent_id'}
+        placeholder={'Search... (optional)'} path={'/api/locations'} title={'Add new location'}
         instanceId={'location_id'} inputName={'name'} inputLabel={'Name'} options={options}
       />
       <EditItemWithOptions 
         editOptionsModal={editOptionsModal} setEditOptionsModal={setEditOptionsModal}
-        schema={schema} optionsLabel={'choose parent'} optionName={'parent_id'}
-        placeholder={'choose parent location (optional)'} path={'/api/locations/'} title={'Update location'}
+        schema={schema} optionsLabel={'Choose parent location'} optionName={'parent_id'}
+        placeholder={'Search... (optional)'} path={'/api/locations/'} title={'Update location'}
         instanceId={'location_id_1'} inputName={'name'} inputLabel={'Name'} options={options}
         item={selectedItem}
       />
@@ -81,7 +81,7 @@ const handleDelete = (slug) => {
   <div className="card-header w3-blue">
     <h5 className="text-center ">Locations</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">name</th>

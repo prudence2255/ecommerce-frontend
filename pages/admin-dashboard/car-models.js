@@ -1,11 +1,15 @@
 import * as A from 'components/adminImports';
 import * as yup from "yup";
 import AddItemWithOptions from 'components/admin/addItemWithOptions';  
-import EditItemWithOptions from 'components/admin/editItemWithOptions';  
+import EditItemWithOptions from 'components/admin/editOptions';  
 //const cook = new A.Cookies()
 const schema = {
   model: yup.string().required(),
   car_brand_id: yup.mixed().required()
+}
+
+const editSchema = {
+  model: yup.string().required(),
 }
 export default function CarModels() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
@@ -69,14 +73,14 @@ A.useEffect(() => {
       
             <AddItemWithOptions 
         addOptionsModal={addOptionsModal} setAddOptionsModal={setAddOptionsModal}
-        schema={schema} optionsLabel={'choose brand'} optionName={'car_brand_id'}
-        placeholder={'choose brand...'} path={'/api/car-models'} title={'Add new model'}
+        schema={schema} optionsLabel={'Choose brand'} optionName={'car_brand_id'}
+        placeholder={'Search...'} path={'/api/car-models'} title={'Add new model'}
         instanceId={'model_id'} inputName={'model'} inputLabel={'Model'} options={brandOptions}
       />
       <EditItemWithOptions 
         editOptionsModal={editOptionsModal} setEditOptionsModal={setEditOptionsModal}
-        schema={schema} optionsLabel={'choose brand'} optionName={'car_brand_id'}
-        placeholder={'choose brand...'} path={'/api/car-models/'} title={'Update model'}
+        schema={editSchema} optionsLabel={'Choose brand'} optionName={'car_brand_id'}
+        placeholder={'Search...'} path={'/api/car-models/'} title={'Update model'}
         instanceId={'model_id_1'} inputName={'model'} inputLabel={'Model'} options={brandOptions}
         item={selectedItem}
       />
@@ -84,7 +88,7 @@ A.useEffect(() => {
   <div className="card-header w3-blue">
     <h5 className="text-center ">car models</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">Model</th>

@@ -50,7 +50,6 @@ export default function EditItem(props) {
         <div>
         <div className={`w3-modal ${editModal ? 'openModal' : ''}`}>
         <div className="w3-modal-content w3-animate-zoom">
-        <div className="w3-container">
         <div className="card">
          <div className="card-header w3-blue">
           <h5 className=" text-center">{title} </h5>
@@ -74,12 +73,14 @@ export default function EditItem(props) {
         </div>
         </div>
         </div>
-        </div>
 
         <style jsx>
             {`
                 .openModal{
                     display: block
+                }
+                .w3-modal-content{
+                  max-width: 500px;
                 }
             `}
         </style>

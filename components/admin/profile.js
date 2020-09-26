@@ -44,7 +44,6 @@ export default function Profile({profileModal, setProfileModal}) {
         <div>
         <div className={`w3-modal ${profileModal ? 'openModal' : ''}`}>
         <div className="w3-modal-content w3-animate-zoom">
-        <div className="w3-container">
         <div className="card">
          <div className="card-header w3-blue">
           <h5 className=" text-center"> Profile</h5>
@@ -83,7 +82,6 @@ export default function Profile({profileModal, setProfileModal}) {
   </p>
     </form>
      </div>
-        </div>
         </div>
         </div>
         </div>

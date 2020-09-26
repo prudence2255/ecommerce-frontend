@@ -1,9 +1,12 @@
-import Head from 'next/head'
+import Head from 'next/head';
+import Layout from 'components/home/layout';
 
 export default function Home() {
   return (
-    <div>
-     Home
-    </div>
+   <Layout>
+      <div>
+        Home
+     </div>
+   </Layout>
   )
 }

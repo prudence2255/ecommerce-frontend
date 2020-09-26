@@ -7,7 +7,7 @@ import NewAdmin from 'components/admin/newAdmin';
  function Admins() {
   const [adminModal, setAdminModal] = A.useState(false);
   const {items} = A.useSelector(A.adminSelector)
-  const admins = items && items.slice().sort((a, b) => b.updated_at.localeCompare(a.updated_at))
+  const admins = items && items.slice().sort((a, b) => b.updated_at?.localeCompare(a.updated_at))
   const {error} = A.useSelector(A.errorsSelector)
 const dispatch = A.useDispatch()
 
@@ -63,7 +63,7 @@ const openAdminModal = () =>{
   <div className="card-header w3-blue">
     <h5 className="text-center ">Admins</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered ">
   <thead className="thead-dark">
     <tr>
       <th scope="col">name</th>
@@ -74,7 +74,7 @@ const openAdminModal = () =>{
   <tbody>
   {admins && admins.map(admin => (
     <tr key={admin.id}>
-      <td>{admin.name}</td>
+      <td className="text-capitalize">{admin.name}</td>
       <td>{admin.email}</td>
       <td><button className="w3-btn w3-red" onClick={() => handleDelete(admin.slug)}>delete</button></td>
       </tr>

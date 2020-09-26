@@ -3,7 +3,6 @@ import {useEffect} from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from "yup";
-import {adminSelector} from 'store/admin/adminSlice';
 import {login} from 'store/admin/adminActions';
 import {useRouter} from 'next/router';
 import { unwrapResult } from '@reduxjs/toolkit';
@@ -70,7 +69,7 @@ if(cookies.get('token')) router.push('/admin-dashboard')
     <span className="psw">Forgot <a href="#">password?</a></span>
   </div>  
 </form>
-
+ 
      </div>
         </div>
 </div>

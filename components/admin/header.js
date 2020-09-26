@@ -49,7 +49,7 @@ export default function Header({toggleNav, openNav}){
          <ProgressBar />
         <GridLoader />
         <AdminProfile profileModal={profileModal} setProfileModal={setProfileModal}/>
-        <div className={`header w3-mobile w3-mobile headerBg`}>
+        <div className={`header w3-mobile  headerBg`}>
         <button className="w3-bar-item w3-button w3-hide-large" onClick={setNav}>
             <BarIcon />
         </button>
@@ -57,7 +57,7 @@ export default function Header({toggleNav, openNav}){
              <HomeIcon />
          </a></Link>
         <Link href="/admin-dashboard"><a className="w3-bar-item w3-button">
-       <DashboardIcon />. Dashboard</a></Link>
+       <DashboardIcon /> Dashboard</a></Link>
         <div className="w3-dropdown-hover w3-right">
         <button className="w3-button"><UserIcon /><Caret /></button>
         <div className="w3-dropdown-content w3-bar-block w3-border" style={{right: 0 + 'px', zIndex: '999'}}>

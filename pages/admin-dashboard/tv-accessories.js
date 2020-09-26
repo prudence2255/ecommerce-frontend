@@ -76,9 +76,9 @@ A.useEffect(() => {
         />
     <div className="card">
   <div className="card-header w3-blue">
-    <h5 className="text-center ">Tv accessories</h5>
+    <h5 className="text-center ">Tv Accessories</h5>
   </div>
-  <table className="w3-table w3-bordered">
+  <table className="w3-table w3-bordered text-capitalize">
   <thead className="thead-dark">
     <tr>
       <th scope="col">Device type</th>

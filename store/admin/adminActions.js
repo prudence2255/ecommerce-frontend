@@ -10,7 +10,7 @@ import {setErrors} from './errorsSlice';
 
  
 const cookies = new Cookies();
-const {API_URL} = process.env;
+const apiUrl = process.env.API_URL;
 let headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export const logout = createAsyncThunk(
       thunk.dispatch(startLoading()) 
       headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-        const response = await Axios(`${API_URL}/api/logout`,{
+        const response = await Axios(`${apiUrl}/api/logout`,{
           method: 'GET',
           headers: {
           ...headers
@@ -59,7 +59,7 @@ export const logout = createAsyncThunk(
     async (admin, thunk) => {  
       thunk.dispatch(startLoading())
       try {
-        const response = await Axios(`${API_URL}/api/login`,{
+        const response = await Axios(`${apiUrl}/api/login`,{
           method: 'POST',
           data: JSON.stringify(admin), 
           headers: {
@@ -82,7 +82,7 @@ export const logout = createAsyncThunk(
       thunk.dispatch(startLoading())
       headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-        const response = await Axios(`${API_URL}/api/user-details`,{
+        const response = await Axios(`${apiUrl}/api/user-details`,{
           method: 'GET',
           headers: {
             ...headers
@@ -104,7 +104,7 @@ export const logout = createAsyncThunk(
       thunk.dispatch(startLoading()) 
       headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-        const response = await Axios(`${API_URL}${url}`,{
+        const response = await Axios(`${apiUrl}${url}`,{
           method: 'POST',
           data: JSON.stringify(item), 
           headers: {
@@ -130,7 +130,7 @@ export const logout = createAsyncThunk(
       headers['Authorization'] = `Bearer ${cookie}`;
      // headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-        const response = await Axios(`${API_URL}${url}`,{
+        const response = await Axios(`${apiUrl}${url}`,{
           method: 'GET',
           headers: {
             ...headers
@@ -151,12 +151,11 @@ export const logout = createAsyncThunk(
   export const updateItem = createAsyncThunk(
     'item/updateItem',
     async (data, thunk) => { 
-  console.log(data)
       thunk.dispatch(startLoading())
       const {item, url, slug} = data 
       headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-        const response = await Axios(`${API_URL}${url}${slug}`,{
+        const response = await Axios(`${apiUrl}${url}${slug}`,{
           method: 'PUT',
           data: JSON.stringify(item),
           headers: {
@@ -180,7 +179,7 @@ export const logout = createAsyncThunk(
       thunk.dispatch(startLoading())
       headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-          await Axios(`${API_URL}${url}${slug}`,{
+          await Axios(`${apiUrl}${url}${slug}`,{
           method: 'DELETE', 
           headers: {
             ...headers
@@ -203,7 +202,7 @@ export const logout = createAsyncThunk(
       headers['Authorization'] = `Bearer ${cookie}`;
      // headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
-        const response = await Axios(`${API_URL}${url}`,{
+        const response = await Axios(`${apiUrl}${url}`,{
           method: 'GET',
           headers: {
             ...headers
@@ -217,3 +216,5 @@ export const logout = createAsyncThunk(
       }
     }
   )
+
+  
