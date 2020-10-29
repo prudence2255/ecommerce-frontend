@@ -144,3 +144,51 @@
           />
         )}
       /> */}
+
+
+      {/* {parentLocations && parentLocations.map((location, i) => (
+          <div className="col-md-12 " key={i}>
+          <div>
+              <div className="row">
+             <div className="col-md-12 link" onClick={() => handleChildren(location.id)}>
+             <div className=" w3-left" >
+            {location.name} 
+            </div>
+             <div className="w3-right">
+            <RightIcon />
+             </div>
+             </div>
+              </div>
+          </div>
+          <hr />
+          </div>
+          ))}
+          
+       </div>
+        </div>
+        <div className="col-md-6">
+        <div>
+                <div className="row">
+                    <div className="col-md-12 link">
+                    <div className=" w3-left" onClick={() => handleLocation(parentLocation.slug)}>
+                    {Object.keys(parentLocation).length > 0 && `All ${parentLocation.name}`}
+                    </div>
+                    </div>
+                </div>
+                <hr />
+        </div>
+            <div className="row">
+            {children.map((location, i) => (
+                <div className="col-md-12 "  key={i}>
+               <div>
+                <div className="row">
+                    <div className="col-md-12 link">
+                    <div className=" w3-left" onClick={() => handleLocation(location.slug)}>
+                    {location.name}
+                    </div>
+                    </div>
+                </div>
+                <hr />
+               </div>
+                </div>
+                ))} */}

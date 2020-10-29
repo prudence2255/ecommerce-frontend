@@ -5,6 +5,7 @@ import errorsReducer from './admin/errorsSlice';
 import adminsReducer from './admin/adminSlice'; 
 import customersReducer from './customer/customerSlice'; 
 import formsReducer from './forms/formsSlice'; 
+import adsReducer from './ad/adsSlice'; 
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 
 
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
                    errors: errorsReducer,
                    admins: adminsReducer,
                    customers: customersReducer,
-                   forms: formsReducer
+                   forms: formsReducer,
+                   ads: adsReducer
                   });
 
   const hydrateReducer = (state = {}, action) => {

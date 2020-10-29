@@ -3,17 +3,15 @@ import * as yup from "yup";
 import * as Field from 'components/forms/formComp';
 
 
-const Hospitality = A.forwardRef(({control, errors}, ref) => {
+const Hospitality = A.forwardRef(({control, errors, ad}, ref) => {
         const dispatch = A.useDispatch();
-
-
 
     A.useEffect(() => {
         setTimeout(() => {
             dispatch(A.setErrors({
                 service_type: yup.string().required(),
               }))
-        }, 5000)
+        }, 2000)
        
         return () => {
         }
@@ -24,6 +22,7 @@ const Hospitality = A.forwardRef(({control, errors}, ref) => {
             <div className="sub-form my-3">
             <Field.Radio 
             name="service_type"
+            defaultChecked={ad.service_type ?? ''}
             title="Service Type"
             errors={errors}
             options={['Event & Party Management', 'Wedding Planners', 'Entertainment', 'Food & Catering']}

@@ -1,14 +1,53 @@
-import {AiFillCaretDown, AiFillCar} from "react-icons/ai";
+import {AiFillCaretDown, AiFillCar, AiOutlineLeft, AiOutlineRight} from "react-icons/ai";
 import { FaUsers, FaBuysellads,
-    FaCalculator, FaBars, FaHome, FaUserCircle } from "react-icons/fa";
+    FaCalculator, FaBars, FaHome, FaUserCircle, FaFilter } from "react-icons/fa";
 import {GoLocation, GoDashboard} from "react-icons/go";
-import {RiAdminLine} from "react-icons/ri";
-import {MdErrorOutline, MdChevronRight} from "react-icons/md";
+import {RiAdminLine, RiComputerLine} from "react-icons/ri";
+import {MdErrorOutline, MdChevronRight, MdClose} from "react-icons/md";
 import {FcElectronics, FcServices} from 'react-icons/fc';
-import {GiHouse, GiLargeDress} from 'react-icons/gi';
+import {GiHouse, GiLargeDress, GiBed} from 'react-icons/gi';
+import {FiPhoneCall} from 'react-icons/fi';
+import {IoMdRemoveCircle} from 'react-icons/io';
 
 
 
+export const RemoveIcon = () => {
+    return (
+        <>
+        <IoMdRemoveCircle  color="red" size="25"/>
+        </>
+    )
+}
+export const PhoneIcon = () => {
+        return (
+            <>
+            <FiPhoneCall color="#22B822" size="20"/>
+            </>
+        )
+}
+
+export const FilterIcon = () => {
+    return (
+        <>
+        <FaFilter color="#22B822"/>
+        </>
+    )
+}
+export const CloseIcon = () => {
+    return(
+        <>
+        <MdClose size="30"/>
+        </>
+    )
+}
+
+export const RightIcon = () => {
+    return(
+        <>
+        <AiOutlineRight />
+        </>
+    )
+}
 
 export const AlertIcon = () => {
     return(
@@ -19,43 +58,52 @@ export const AlertIcon = () => {
   
 }
 
-export const PropertyIcon = () => {
+export const LeftIcon = () => {
     return(
         <>
-        <GiHouse color="#22B822"/>
+        <AiOutlineLeft color="#22B822"/>
             </>
     )
   
 }
 
-export const HomeGardenIcon = () => {
+export const PropertyIcon = ({size}) => {
     return(
         <>
-        <GiLargeDress color="#22B822"/>
+        <GiHouse color="#22B822" size={size}/>
+            </>
+    )
+  
+}
+
+export const ClothIcon = ({size}) => {
+    return(
+        <>
+        <GiLargeDress color="#22B822" size={size}/>
             </>
     )
 }
 
-export const ServicesIcon = () => {
+export const ServicesIcon = ({size}) => {
     return(
         <>
-        <FcServices color="#22B822"/>
+        <FcServices color="#22B822" size={size}/>
             </>
     )
 }
 
-export const ElectIcon = () => {
+export const ElectIcon = ({size}) => {
     return(
         <>
-        <FcElectronics color="#22B822"/>
+        <FcElectronics color="#22B822" size={size}/>
         </>
     )
 }
 
-export const CarIcon = () => {
+export const CarIcon = ({size}) => {
     return(
         <>
-        <AiFillCar color="#22B822"/>
+        <AiFillCar color="#22B822" size={size}/>
         </>
     )
 }
@@ -131,3 +179,15 @@ export const CategoryIcon = () => (
     </>
 )
 
+export const ElectronicsIcon = ({size}) => (
+    <>
+    <RiComputerLine  color="#22B822" size={size}/>
+    </>
+)
+
+
+export const HomeGardenIcon = ({size}) => (
+    <>
+    <GiBed color="#22B822" size={size}/>
+    </>
+)

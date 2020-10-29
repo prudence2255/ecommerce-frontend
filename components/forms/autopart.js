@@ -2,22 +2,18 @@ import * as A from 'components/adminImports';
 import * as yup from "yup";
 import Select from 'react-select';
 
-
-const AutoPart = A.forwardRef(({control, errors}, ref) => {
-          
+const AutoPart = A.forwardRef(({control, errors, ad}, ref) => {        
         const dispatch = A.useDispatch();
-
+        const upper = new A.TransForm();
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Auto Parts & Accessories";
 const {parentItems} = A.useSelector(A.customerSelector);
 
-
-  
- 
-    A.useEffect(() => {
+     A.useEffect(() => {
       setTimeout(() => {
         dispatch(A.setErrors({
-          type_id: yup.string().required(),
+          item_type_id: yup.mixed().required(),
         }))
-      }, 5000)
+      }, 2000)
         
         dispatch(A.parentOptions({url: '/api/auto-parts'}))
         return () => {
@@ -27,11 +23,11 @@ const {parentItems} = A.useSelector(A.customerSelector);
         <>
         <div>
             <div className="sub-form my-3">
-            <label htmlFor="type_id" className="label">Item Type</label>
+            <label htmlFor="item_type_id" className="label">Item Type</label>
             <A.Controller
             control={control}
-            defaultValue=""
-            name="type_id"
+            defaultValue={isAd ? ad.auto_part?.id : null}
+            name="item_type_id"
             render={({onChange}) => (
             <Select
             onChange={(e) => {
@@ -41,16 +37,16 @@ const {parentItems} = A.useSelector(A.customerSelector);
               label: item.type,
               value: item.id,
             }))}
-            name="type_id"
-            instanceId="type_id"
+            name="item_type_id"
+            instanceId="item_type_id"
             isSearchable
             placeholder="Search item types..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.auto_part.type), value: ad.auto_part.id} : null}
           />
           
             )}
         />
-        <span className="error">{errors.type_id?.message}</span>
+        <span className="error">{errors.item_type_id?.message}</span>
             </div>
         </div> 
         </>

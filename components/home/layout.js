@@ -6,8 +6,6 @@ import Footer from './footer';
 
 
 export default function Layout({children}){
-    const [openNav, setOpenNav] = useState(undefined);
-
     return(
         <>
       

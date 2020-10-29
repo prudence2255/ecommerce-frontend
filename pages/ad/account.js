@@ -2,106 +2,110 @@ import Layout from 'components/home/layout';
 import UserNav from 'components/home/userNav';
 import AuthRoute from 'components/home/auth';
 import { useRef, useEffect } from 'react';
-import Link from 'next/link';
+import * as A from 'components/adminImports';
+import {TransForm} from 'components/classes';
+import Paginator from 'components/ad/paginator';
+
 
 function Account(){
-    const myRef = useRef(null)
-
+  const {ads, loginCustomer} = A.useSelector(A.customerSelector);
+  const {error} = A.useSelector(A.errorsSelector)
+  const {status} = A.useSelector(A.loadersSelector);
+    const myRef = useRef(null);
+    const title = new TransForm();
+    const dispatch = A.useDispatch();
+  const router = A.useRouter();
+    const handleDelete = (slug) => {
+      A.Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.value) {
+         dispatch(A.deleteAd({url: '/api/ads/', slug: slug}))
+          .then(A.unwrapResult).then(() => {
+            A.Swal.fire(
+              'Deleted!',
+              'Ad has been deleted.',
+              'success'
+            )
+          }).catch((e) => e)
+          
+        }
+      })
+    }
     useEffect(() => {
+      //dispatch(A.loadAds({url: '/api/customer-ads'}))
+
         window.scrollTo(0, myRef.current.offsetTop) 
         return () => {          
         }
     }, [])
     return(
         <>
+         {error && (
+            <A.ShowError />
+        )}
            <Layout>
            <div className="row">
             <div className="col-md-2 w3-card-2 p-2">
                 <UserNav />
             </div>
             <div className="col-md-8 ml-md-5 w3-card-2 p-2 m-top " ref={myRef}>
-                <h5 className="text-center w-100">Alidu Latif</h5>
-                <hr />
- <div className="card">
-  <div className="card-header w3-blue">
+                <h5 className="text-center w-100">{loginCustomer?.name}</h5>
+            <hr />
+    <div className="card pb-4">
+    <div className="card-header w3-blue">
     <h5 className="text-center ">Ads</h5>
-  </div>
-  <div className="ad">
-  <div className="row">
+    </div>
+    {status === 'succeeded' && ads.length === 0 && (
+      <div className="text-center mt-4">
+        <h6>You don't have ads</h6>
+       <div className="col">
+       <button className="btn w3-yellow my-4" onClick={() => router.push('/ad/post-ad')}>
+        Post ad now
+        </button>
+       </div>
+      </div>
+    )}
+      {ads.map(ad => (
+        <div className="ad" key={ad.id}>
+        <div className="row" >
         <div className="col-md-12 m-2">
         <div className="media">
-  <img className="align-self-start mr-3" src="/32.jpg" alt="img" 
+  <img className="align-self-start mr-3" src={ad?.images[0].xsmall} alt="img" 
   style={{width: '100px', height: '80px'}}/>
   <div className="media-body">
-    <h5 className="mt-0">Top-aligned media (New)</h5>
-   <p>Kumasi, Computers</p>
-   <p><b>GHC 1000</b></p>
+    <h6 className="mt-0">{title.shortenLength(ad.title, 20)} {ad.condition ? `(${ad.condition})` : null}</h6>
+   <p>{ad.location ?? 'Kumasi'}, {ad.category}</p>
+   <p><b>GHC {ad.price}</b></p>
   </div>
 </div>
 </div>
   </div>
   <div className="row">
 <div className="col-md-12 m-2">
-<Link href="#">
-    <a className="btn w3-green">Edit</a>
-</Link>
-<button className="btn w3-red ml-3">Delete</button>
+    <a className=" edit btn w3-green" href={`/ad/post-ad/details?category=${ad.child_category_id}&location=${ad.child_location_id}&edit=${ad.slug}`}>Edit</a>
+<button className=" del btn w3-red ml-3" onClick={()=>handleDelete(ad.slug)}>Delete</button>
 </div>
 </div>
+ <hr />
   </div>
-  <hr />
-  <div className="ad">
-  <div className="row">
-        <div className="col-md-12 m-2">
-        <div className="media">
-  <img className="align-self-start mr-3" src="/32.jpg" alt="img" 
-  style={{width: '100px', height: '80px'}}/>
-  <div className="media-body">
-    <h5 className="mt-0">Top-aligned media (New)</h5>
-   <p>Kumasi, Computers</p>
-   <p><b>GHC 1000</b></p>
+      ))}
+      <div className="row">
+    <div className="col ml-2">
+    <Paginator />
+    </div>
   </div>
-</div>
-</div>
   </div>
-  <div className="row">
-<div className="col-md-12 m-2">
-<Link href="#">
-    <a className="btn w3-green">Edit</a>
-</Link>
-<button className="btn w3-red ml-3">Delete</button>
-</div>
-</div>
-  </div>
-  <hr />
-  <div className="ad">
-  <div className="row">
-        <div className="col-md-12 m-2">
-        <div className="media">
-  <img className="align-self-start mr-3" src="/32.jpg" alt="img" 
-  style={{width: '100px', height: '80px'}}/>
-  <div className="media-body">
-    <h5 className="mt-0">Top-aligned media (New)</h5>
-   <p>Kumasi, Computers</p>
-   <p><b>GHC 1000</b></p>
-  </div>
-</div>
-</div>
-  </div>
-  <div className="row">
-<div className="col-md-12 m-2">
-<Link href="#">
-    <a className="btn w3-green">Edit</a>
-</Link>
-<button className="btn w3-red ml-3">Delete</button>
-</div>
-</div>
-  </div>
-  <hr />
-  </div>
-            </div>
-            </div>
-           </Layout>
+ 
+       </div>
+        </div>
+        </Layout>
            <style jsx>
             {`
                 @media(max-width: 768px){
@@ -111,7 +115,7 @@ function Account(){
 
                 }
 
-                .btn{
+                .del, .edit{
                   width: 80px;
                 }
             `}
@@ -122,3 +126,11 @@ function Account(){
 
 
 export default AuthRoute(Account);
+
+export const getServerSideProps = A.wrapper.getServerSideProps(
+  async ({store, req, query}) => {
+  const cookie = new A.Cookies(req.headers.cookie);
+  await store.dispatch(A.loadAds({url: `/api/customer-ads?page=${query.page}`, cookie: cookie.get('customer_token')}))
+  await store.dispatch(A.loadCustomer(cookie.get('customer_token')))
+  }
+)

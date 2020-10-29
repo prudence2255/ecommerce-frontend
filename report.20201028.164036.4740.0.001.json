@@ -1,0 +1,417 @@
+
+{
+  "header": {
+    "reportVersion": 1,
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20201028.164036.4740.0.001.json",
+    "dumpEventTime": "2020-10-28T16:40:36Z",
+    "dumpEventTimeStamp": "1603903236341",
+    "processId": 4740,
+    "cwd": "C:\\Users\\alidu\\OneDrive\\Desktop\\ecommerce",
+    "commandLine": [
+      "C:\\Program Files\\nodejs\\node.exe",
+      "C:\\Users\\alidu\\OneDrive\\Desktop\\ecommerce\\node_modules\\.bin\\\\..\\next\\dist\\bin\\next",
+      "dev"
+    ],
+    "nodejsVersion": "v12.8.1",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "12.8.1",
+      "v8": "7.5.288.22-node.16",
+      "uv": "1.30.1",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "72",
+      "nghttp2": "1.39.2",
+      "napi": "4",
+      "llhttp": "1.1.4",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1c",
+      "cldr": "35.1",
+      "icu": "64.2",
+      "tz": "2019a",
+      "unicode": "12.1"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v12.8.1/node-v12.8.1-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v12.8.1/node-v12.8.1.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v12.8.1/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.17763",
+    "osVersion": "Windows 10 Pro",
+    "osMachine": "x86_64",
+    "cpus": [
+      {
+        "model": "Intel(R) Celeron(R) CPU B815 @ 1.60GHz",
+        "speed": 1596,
+        "user": 30094281,
+        "nice": 0,
+        "sys": 12833171,
+        "idle": 37745890,
+        "irq": 359421
+      },
+      {
+        "model": "Intel(R) Celeron(R) CPU B815 @ 1.60GHz",
+        "speed": 1596,
+        "user": 31697359,
+        "nice": 0,
+        "sys": 12016906,
+        "idle": 36958687,
+        "irq": 76515
+      }
+    ],
+    "networkInterfaces": [
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "::1",
+        "netmask": "ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff",
+        "family": "IPv6",
+        "scopeid": 0
+      },
+      {
+        "name": "Loopback Pseudo-Interface 1",
+        "internal": true,
+        "mac": "00:00:00:00:00:00",
+        "address": "127.0.0.1",
+        "netmask": "255.0.0.0",
+        "family": "IPv4"
+      }
+    ],
+    "host": "DESKTOP-FKR6RIH"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff71a296de9",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+10873"
+    },
+    {
+      "pc": "0x00007ff71a29b3dc",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+28780"
+    },
+    {
+      "pc": "0x00007ff71a29a388",
+      "symbol": "std::basic_ostream<char,std::char_traits<char> >::operator<<+24600"
+    },
+    {
+      "pc": "0x00007ff71a385a9b",
+      "symbol": "v8::base::CPU::has_sse+37691"
+    },
+    {
+      "pc": "0x00007ff71ab6c90e",
+      "symbol": "v8::Isolate::ReportExternalAllocationLimitReached+94"
+    },
+    {
+      "pc": "0x00007ff71ab54c5a",
+      "symbol": "v8::SharedArrayBuffer::Externalize+842"
+    },
+    {
+      "pc": "0x00007ff71a9e636c",
+      "symbol": "v8::internal::Heap::EphemeronKeyWriteBarrierFromCode+1436"
+    },
+    {
+      "pc": "0x00007ff71a9ee28f",
+      "symbol": "v8::internal::Heap::OldGenerationSizeOfObjects+4879"
+    },
+    {
+      "pc": "0x00007ff71a9e4533",
+      "symbol": "v8::internal::Heap::CollectGarbage+1235"
+    },
+    {
+      "pc": "0x00007ff71a9e2dc4",
+      "symbol": "v8::internal::Heap::AddRetainedMap+2292"
+    },
+    {
+      "pc": "0x00007ff71aa018a5",
+      "symbol": "v8::internal::Factory::NewFillerObject+53"
+    },
+    {
+      "pc": "0x00007ff71a7b7ad3",
+      "symbol": "v8::internal::interpreter::JumpTableTargetOffsets::iterator::operator=+3427"
+    },
+    {
+      "pc": "0x00007ff71af8bd9d",
+      "symbol": "v8::internal::SetupIsolateDelegate::SetupHeap+614605"
+    },
+    {
+      "pc": "0x0000005e50eec062",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 2184929280,
+    "totalCommittedMemory": 2184929280,
+    "usedMemory": 2122429112,
+    "availableMemory": 58812272,
+    "memoryLimit": 2197815296,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 262144,
+        "committedMemory": 262144,
+        "capacity": 261832,
+        "used": 31960,
+        "available": 229872
+      },
+      "new_space": {
+        "memorySize": 33554432,
+        "committedMemory": 33554432,
+        "capacity": 16757248,
+        "used": 266824,
+        "available": 16490424
+      },
+      "old_space": {
+        "memorySize": 751710208,
+        "committedMemory": 751710208,
+        "capacity": 750523048,
+        "used": 738074336,
+        "available": 12448712
+      },
+      "code_space": {
+        "memorySize": 3571712,
+        "committedMemory": 3571712,
+        "capacity": 3059456,
+        "used": 3059456,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 19927040,
+        "committedMemory": 19927040,
+        "capacity": 7118800,
+        "used": 7118800,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 1375281152,
+        "committedMemory": 1375281152,
+        "capacity": 1373327336,
+        "used": 1373327336,
+        "available": 0
+      },
+      "code_large_object_space": {
+        "memorySize": 622592,
+        "committedMemory": 622592,
+        "capacity": 550400,
+        "used": 550400,
+        "available": 0
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 16757248,
+        "used": 0,
+        "available": 16757248
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 11593.9,
+    "kernelCpuSeconds": 1031.72,
+    "cpuConsumptionPercent": 10.7409,
+    "maxRss": 1831841792,
+    "pageFaults": {
+      "IORequired": 133993263,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 275216,
+      "writes": 21786
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\Users\\alidu\\OneDrive\\Desktop\\ecommerce",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "ANDROID_HOME": "C:\\Users\\alidu\\AppData\\Local\\Android\\Sdk",
+    "API_URL": "http://localhost:8000",
+    "APPDATA": "C:\\Users\\alidu\\AppData\\Roaming",
+    "APP_ID": "614109506161618",
+    "asl.log=Destination": "file",
+    "ChocolateyInstall": "C:\\ProgramData\\chocolatey",
+    "ChocolateyLastPathUpdate": "132104739864590763",
+    "CLASSPATH": ".;",
+    "CLIENT_ID": "515282459574-q49pt0cr2kmkcf5p3rjupjhebhm46r0g.apps.googleusercontent.com",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-FKR6RIH",
+    "ComSpec": "C:\\Windows\\system32\\cmd.exe",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "FPS_BROWSER_APP_PROFILE_STRING": "Internet Explorer",
+    "FPS_BROWSER_USER_PROFILE_STRING": "Default",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\alidu",
+    "INIT_CWD": "C:\\Users\\alidu\\OneDrive\\Desktop\\ecommerce",
+    "JAVA_HOME": "C:\\Program Files\\Java\\jdk1.8.0_221",
+    "LOCALAPPDATA": "C:\\Users\\alidu\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-FKR6RIH",
+    "NODE": "C:\\Program Files\\nodejs\\node.exe",
+    "NODE_ENV": "development",
+    "npm_config_argv": "{\"remain\":[],\"cooked\":[\"run\",\"dev\"],\"original\":[\"dev\"]}",
+    "npm_config_bin_links": "true",
+    "npm_config_ignore_optional": "",
+    "npm_config_ignore_scripts": "",
+    "npm_config_init_license": "MIT",
+    "npm_config_init_version": "1.0.0",
+    "npm_config_registry": "https://registry.yarnpkg.com",
+    "npm_config_save_prefix": "^",
+    "npm_config_strict_ssl": "true",
+    "npm_config_user_agent": "yarn/1.22.4 npm/? node/v12.8.1 win32 x64",
+    "npm_config_version_commit_hooks": "true",
+    "npm_config_version_git_message": "v%s",
+    "npm_config_version_git_sign": "",
+    "npm_config_version_git_tag": "true",
+    "npm_config_version_tag_prefix": "v",
+    "npm_execpath": "C:\\Program Files (x86)\\Yarn\\bin\\yarn.js",
+    "npm_lifecycle_event": "dev",
+    "npm_lifecycle_script": "next dev",
+    "npm_node_execpath": "C:\\Program Files\\nodejs\\node.exe",
+    "npm_package_dependencies_axios": "^0.19.2",
+    "npm_package_dependencies_bootstrap": "^4.5.0",
+    "npm_package_dependencies_bootstrap_select": "^1.13.18",
+    "npm_package_dependencies_dotenv": "^8.2.0",
+    "npm_package_dependencies_jquery": "^3.5.1",
+    "npm_package_dependencies_mdbreact": "^4.27.0",
+    "npm_package_dependencies_moment": "^2.29.1",
+    "npm_package_dependencies_next": "9.4.4",
+    "npm_package_dependencies_next_compose_plugins": "^2.2.0",
+    "npm_package_dependencies_next_cookies": "^2.0.3",
+    "npm_package_dependencies_next_fonts": "^1.4.0",
+    "npm_package_dependencies_next_images": "^1.4.1",
+    "npm_package_dependencies_next_redux_wrapper": "^6.0.2",
+    "npm_package_dependencies_next_seo": "^4.7.3",
+    "npm_package_dependencies_popper_js": "^1.16.1",
+    "npm_package_dependencies_react": "16.13.1",
+    "npm_package_dependencies_react_dom": "16.13.1",
+    "npm_package_dependencies_react_facebook_login": "^4.1.1",
+    "npm_package_dependencies_react_google_login": "^5.1.21",
+    "npm_package_dependencies_react_hook_form": "^6.0.7",
+    "npm_package_dependencies_react_icons": "^3.10.0",
+    "npm_package_dependencies_react_image_gallery": "^1.0.8",
+    "npm_package_dependencies_react_loading_skeleton": "^2.1.1",
+    "npm_package_dependencies_react_merge_refs": "^1.1.0",
+    "npm_package_dependencies_react_moment": "^1.0.0",
+    "npm_package_dependencies_react_paginate": "^6.5.0",
+    "npm_package_dependencies_react_pure_loaders": "^3.0.1",
+    "npm_package_dependencies_react_redux": "^7.2.0",
+    "npm_package_dependencies_react_redux_progress": "^2.1.1",
+    "npm_package_dependencies_react_responsive_carousel": "^3.2.10",
+    "npm_package_dependencies_react_select": "^3.1.0",
+    "npm_package_dependencies_react_select_search": "^2.0.6",
+    "npm_package_dependencies_react_slick": "^0.27.11",
+    "npm_package_dependencies_react_social_login": "^3.4.9",
+    "npm_package_dependencies_react_social_login_buttons": "^3.1.0",
+    "npm_package_dependencies_react_topbar_progress_indicator": "^4.1.0",
+    "npm_package_dependencies_redux": "^4.0.5",
+    "npm_package_dependencies_redux_persist": "^6.0.0",
+    "npm_package_dependencies_redux_persist_transform_filter": "^0.0.20",
+    "npm_package_dependencies_redux_thunk": "^2.3.0",
+    "npm_package_dependencies_sweetalert2": "^9.17.1",
+    "npm_package_dependencies_sweetalert2_react_content": "^3.0.3",
+    "npm_package_dependencies_universal_cookie": "^4.0.3",
+    "npm_package_dependencies_yup": "^0.29.1",
+    "npm_package_dependencies__actra_development_oss_redux_persist_transform_filter_immutable": "^1.0.0",
+    "npm_package_dependencies__emotion_core": "^10.0.28",
+    "npm_package_dependencies__hookform_resolvers": "^0.0.6",
+    "npm_package_dependencies__reduxjs_toolkit": "^1.4.0",
+    "npm_package_dependencies__zeit_next_css": "^1.0.1",
+    "npm_package_description": "First, run the development server:",
+    "npm_package_name": "ecommerce",
+    "npm_package_private": "true",
+    "npm_package_readmeFilename": "README.md",
+    "npm_package_scripts_build": "next build",
+    "npm_package_scripts_dev": "next dev",
+    "npm_package_scripts_start": "next start",
+    "npm_package_version": "0.1.0",
+    "NUMBER_OF_PROCESSORS": "2",
+    "OneDrive": "C:\\Users\\alidu\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "C:\\Users\\alidu\\AppData\\Local\\Temp\\yarn--1603785722420-0.6342109084454017;C:\\Users\\alidu\\OneDrive\\Desktop\\ecommerce\\node_modules\\.bin;C:\\Users\\alidu\\AppData\\Local\\Yarn\\Data\\link\\node_modules\\.bin;C:\\Program Files\\libexec\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\lib\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\node-gyp-bin;C:\\Windows\\system32;C:\\Windows;C:\\Windows\\System32\\Wbem;C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\;C:\\Windows\\System32\\OpenSSH\\;C:\\xampp\\php;C:\\Program Files\\Git\\cmd;C:\\ProgramData\\chocolatey\\bin;C:\\Program Files\\nodejs\\;C:\\Program Files\\Java\\jdk1.8.0_221\\bin;C:\\composer;C:\\Program Files\\PuTTY\\;C:\\Program Files (x86)\\Yarn\\bin\\;c:\\Users\\alidu\\AppData\\Local\\Android\\Sdk\\platform-tools;C:\\Users\\alidu\\AppData\\Local\\Programs\\Microsoft VS Code\\bin;C:\\Users\\alidu\\AppData\\Roaming\\npm;C:\\Program Files\\heroku\\bin;C:\\Users\\alidu\\AppData\\Roaming\\Composer\\vendor\\bin;C:\\Users\\alidu\\AppData\\Local\\Yarn\\bin",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JSE;.WSF;.WSH;.MSC",
+    "php": "C:\\xampp\\php",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 42 Stepping 7, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "2a07",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PROMPT": "$P$G",
+    "PSModulePath": "C:\\Program Files\\WindowsPowerShell\\Modules;C:\\Windows\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\Windows",
+    "TEMP": "C:\\Users\\alidu\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\alidu\\AppData\\Local\\Temp",
+    "USERDOMAIN": "DESKTOP-FKR6RIH",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-FKR6RIH",
+    "USERNAME": "alidu",
+    "USERPROFILE": "C:\\Users\\alidu",
+    "windir": "C:\\Windows",
+    "YARN_WRAP_OUTPUT": "false",
+    "__NEXT_PROCESSED_ENV": "true"
+  },
+  "sharedObjects": [
+    "C:\\Program Files\\nodejs\\node.exe",
+    "C:\\Windows\\SYSTEM32\\ntdll.dll",
+    "C:\\Windows\\System32\\KERNEL32.DLL",
+    "C:\\Windows\\System32\\KERNELBASE.dll",
+    "C:\\Windows\\System32\\WS2_32.dll",
+    "C:\\Windows\\System32\\RPCRT4.dll",
+    "C:\\Windows\\System32\\ADVAPI32.dll",
+    "C:\\Windows\\System32\\msvcrt.dll",
+    "C:\\Windows\\System32\\sechost.dll",
+    "C:\\Windows\\System32\\USER32.dll",
+    "C:\\Windows\\System32\\win32u.dll",
+    "C:\\Windows\\System32\\GDI32.dll",
+    "C:\\Windows\\System32\\gdi32full.dll",
+    "C:\\Windows\\System32\\msvcp_win.dll",
+    "C:\\Windows\\System32\\ucrtbase.dll",
+    "C:\\Windows\\System32\\PSAPI.DLL",
+    "C:\\Windows\\System32\\CRYPT32.dll",
+    "C:\\Windows\\System32\\MSASN1.dll",
+    "C:\\Windows\\System32\\bcrypt.dll",
+    "C:\\Windows\\SYSTEM32\\dbghelp.dll",
+    "C:\\Windows\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Windows\\SYSTEM32\\USERENV.dll",
+    "C:\\Windows\\System32\\profapi.dll",
+    "C:\\Windows\\SYSTEM32\\WINMM.dll",
+    "C:\\Windows\\SYSTEM32\\winmmbase.dll",
+    "C:\\Windows\\System32\\cfgmgr32.dll",
+    "C:\\Windows\\System32\\IMM32.DLL",
+    "C:\\Windows\\System32\\powrprof.dll",
+    "C:\\Windows\\system32\\uxtheme.dll",
+    "C:\\Windows\\System32\\combase.dll",
+    "C:\\Windows\\System32\\bcryptPrimitives.dll",
+    "C:\\Windows\\system32\\mswsock.dll",
+    "C:\\Windows\\System32\\kernel.appcore.dll",
+    "C:\\Windows\\SYSTEM32\\CRYPTBASE.DLL",
+    "C:\\Windows\\System32\\NSI.dll",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc6.DLL",
+    "C:\\Windows\\SYSTEM32\\dhcpcsvc.DLL",
+    "C:\\Windows\\SYSTEM32\\DNSAPI.dll",
+    "C:\\Program Files\\Bonjour\\mdnsNSP.dll",
+    "C:\\Windows\\System32\\rasadhlp.dll",
+    "C:\\Windows\\System32\\fwpuclnt.dll",
+    "C:\\Windows\\system32\\napinsp.dll",
+    "C:\\Windows\\system32\\pnrpnsp.dll",
+    "C:\\Windows\\System32\\winrnr.dll",
+    "C:\\Windows\\system32\\NLAapi.dll",
+    "C:\\Windows\\system32\\wshbth.dll"
+  ]
+}

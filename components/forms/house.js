@@ -2,7 +2,7 @@ import * as A from 'components/adminImports';
 import * as yup from "yup";
 import * as Field from 'components/forms/formComp';
 
-const House = A.forwardRef(({control, errors}, ref) => {  
+const House = A.forwardRef(({control, errors, ad}, ref) => {  
         const dispatch = A.useDispatch();
 
   
@@ -13,7 +13,7 @@ const House = A.forwardRef(({control, errors}, ref) => {
                 size: yup.string().required(),
                 baths: yup.string().required()
               }))
-        }, 5000)
+        }, 2000)
         
         return () => {
         }
@@ -25,7 +25,7 @@ const House = A.forwardRef(({control, errors}, ref) => {
             
             <Field.Input 
                 name="beds"
-                defaultValue=""
+                defaultValue={ad.beds ?? ''}
                 ref={ref}
                 title="Beds"
                 type="number"
@@ -35,7 +35,7 @@ const House = A.forwardRef(({control, errors}, ref) => {
             <br />
             <Field.Input 
                 name="baths"
-                defaultValue=""
+                defaultValue={ad.baths ?? ''}
                 ref={ref}
                 title="Baths"
                 type="number"
@@ -45,7 +45,7 @@ const House = A.forwardRef(({control, errors}, ref) => {
             <br />
             <Field.Input 
                 name="size"
-                defaultValue=""
+                defaultValue={ad.size ?? ''}
                 ref={ref}
                 title="Size"
                 type="text"
@@ -55,7 +55,7 @@ const House = A.forwardRef(({control, errors}, ref) => {
             <br />
             <Field.Input 
                 name="landmark"
-                defaultValue=""
+                defaultValue={ad.landmark ?? ''}
                 ref={ref}
                 title="Street / Landmark (optional)"
                 type="text"

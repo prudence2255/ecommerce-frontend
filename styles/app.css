@@ -13,7 +13,7 @@ body {
   box-sizing: border-box;
 }
 
- Link, a {
+Link, a {
   color: #0070f3;
 }
 
@@ -35,6 +35,9 @@ a:hover {
   font-size: 14px;
 }
 
-input:focus, textarea:focus{
+.features span{
+  font-weight: lighter;
+}
+input:focus, select:focus, textarea:focus{
   outline-color: rgb(49, 159, 233);
 }

@@ -3,7 +3,7 @@ import * as yup from "yup";
 import * as Field from 'components/forms/formComp';
 
 
-const Land = A.forwardRef(({control, errors}, ref) => {  
+const Land = A.forwardRef(({control, errors, ad}, ref) => {  
         const dispatch = A.useDispatch();
   
     A.useEffect(() => {
@@ -12,7 +12,7 @@ const Land = A.forwardRef(({control, errors}, ref) => {
                 land_type: yup.string().required(),
                 size: yup.string().required()
               }))
-        })
+        }, 200)
         
         return () => {
         }
@@ -24,6 +24,7 @@ const Land = A.forwardRef(({control, errors}, ref) => {
             <Field.Radio 
                 name="land_type"
                 title="Land Type"
+                defaultChecked={ad.land_type ?? ''}
                 options={['Agricultural', 'Commercial', 'Residential', 'Other']}
                 ref={ref}
                 errors={errors}
@@ -31,7 +32,7 @@ const Land = A.forwardRef(({control, errors}, ref) => {
 
             <Field.Input 
                 name="size"
-                defaultValue=""
+                defaultValue={ad.size ?? ''}
                 ref={ref}
                 title="Size"
                 type="text"
@@ -41,7 +42,7 @@ const Land = A.forwardRef(({control, errors}, ref) => {
             <br />
             <Field.Input 
                 name="landmark"
-                defaultValue=""
+                defaultValue={ad.landmark ?? ''}
                 ref={ref}
                 title="Street / Landmark (optional)"
                 type="text"

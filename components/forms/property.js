@@ -4,9 +4,10 @@ import * as Field from 'components/forms/formComp';
 import Select from 'react-select';
 
 
-const Property = A.forwardRef(({control, errors}, ref) => {  
+const Property = A.forwardRef(({control, errors, ad}, ref) => {  
         const dispatch = A.useDispatch();
-
+        const upper = new A.TransForm();
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Commercial Property";
 const {parentItems} = A.useSelector(A.customerSelector);
 
   
@@ -16,7 +17,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
           property_id: yup.string().required(),
           size: yup.string().required()
         }))
-      }, 5000)
+      }, 2000)
         
         dispatch(A.parentOptions({url: '/api/property'}))
         return () => {
@@ -29,7 +30,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             <label htmlFor="property_id" className="label">Commercial Property Type</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.property.id : null}
             name="property_id"
             render={({onChange}) => (
             <Select
@@ -44,7 +45,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             instanceId="property_id"
             isSearchable
             placeholder="Search property types..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.property.type), value: ad.property.id} : null}
           />
           
             )}
@@ -53,7 +54,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             <br />
             <Field.Input 
                 name="size"
-                defaultValue=""
+                defaultValue={ad.size ?? ''}
                 ref={ref}
                 title="Size"
                 type="text"
@@ -63,7 +64,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             <br />
             <Field.Input 
                 name="landmark"
-                defaultValue=""
+                defaultValue={ad.landmark ?? ''}
                 ref={ref}
                 title="Street / Landmark (optional)"
                 type="text"

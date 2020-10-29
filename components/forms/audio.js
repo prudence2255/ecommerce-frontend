@@ -3,9 +3,10 @@ import * as yup from "yup";
 import Select from 'react-select';
 
 
-const Audio = A.forwardRef(({control, errors}, ref) => {
+const Audio = A.forwardRef(({control, errors, ad}, ref) => {
         const dispatch = A.useDispatch();
-
+        const upper = new A.TransForm();
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Audio & Mp3";
 const {parentItems} = A.useSelector(A.customerSelector);
 
 
@@ -17,7 +18,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
         dispatch(A.setErrors({
           audio_type_id: yup.string().required()
         }))
-      }, 5000)
+      }, 2000)
         
         dispatch(A.parentOptions({url: '/api/audio-types'}))
         return () => {
@@ -30,7 +31,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             <label htmlFor="type_id" className="label">Item Type</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.audio_type?.id : null}
             name="audio_type_id"
             render={({onChange}) => (
             <Select
@@ -45,7 +46,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             instanceId="audio_type_id"
             isSearchable
             placeholder="Search item types..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.audio_type?.type), value: ad.audio_type?.id} : null}
           />
           
             )}

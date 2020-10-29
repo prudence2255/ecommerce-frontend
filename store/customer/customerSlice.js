@@ -1,27 +1,27 @@
 
 import { createSlice, createSelector} from '@reduxjs/toolkit'
-import {logout, addAd,
+import {logout, addAd, loadAd,
       loadAds, login, loadCustomer,
       updateAd, deleteAd, categoryLocation,
       signUp, socialLogin, parentOptions, childOptions,
       } from './customerActions';
 import Cookies from 'universal-cookie';
- 
+
 const cookies = new Cookies();
 
 
-  
  const customersSlice = createSlice({
   name: 'customers',
   initialState: {
     loginCustomer: {},
     ads: [],
+    ad: {},
     categoryLocations: {},
     customers: [],
     parentItems: [],
     childItems: [],
     photos: [],
-   
+     contacts: [],
   },
   reducers: {
     setPhotos: (state, action) => {
@@ -32,6 +32,16 @@ const cookies = new Cookies();
      let photos = [...state.photos]
      photos.splice(action.payload, 1);
      state.photos = photos;
+    },
+
+    setContacts: (state, action) => {
+      state.contacts = [...state.contacts, action.payload]
+    },
+
+    removeContact: (state, action) => {
+     let contacts = [...state.contacts]
+     contacts.splice(action.payload, 1);
+     state.contacts = contacts;
     }
   },
   extraReducers: {
@@ -60,8 +70,24 @@ const cookies = new Cookies();
     },
 
      [loadAds.fulfilled] : (state, action) => {
-      state.ads =  action.payload.data.data.data || action.payload.data.data
+      state.ads =  action.payload.data.data
     },
+
+    [loadAd.fulfilled] : (state, action) => {
+  
+      if(action.payload.data.item){
+        state.ad =  {
+          ...state.ad, ...action.payload.data.ad,
+           ...action.payload.data.item[0]  
+          }
+      }else{
+        state.ad =  {
+          ...state.ad, ...action.payload.data, 
+          }
+      }
+     
+    },
+
      [loadCustomer.fulfilled] : (state, action) => {
       state.loginCustomer =  action.payload.data.data  
     },
@@ -69,8 +95,7 @@ const cookies = new Cookies();
       const adIndex = state.ads.findIndex((ad) => ad.id === action.payload.data.data.id)
        const newAds = [...state.ads]   
       newAds[adIndex] = Object.assign({}, newAds[adIndex], action.payload.data.data)
-      state.ads = newAds
-      
+      state.ads = newAds 
     },
   
       [deleteAd.fulfilled] : (state, action) => {
@@ -95,6 +120,8 @@ const cookies = new Cookies();
 export const {
  setPhotos,
  removePhoto,
+ setContacts,
+ removeContact,
 } = customersSlice.actions
 
 
@@ -102,11 +129,13 @@ export const customerSelector = createSelector(
    (state) => ({
         loginCustomer: state.customers.loginCustomer,
         ads: state.customers.ads,
+        ad: state.customers.ad,
         categoryLocations: state.customers.categoryLocations,
         customers: state.customers.customers,
        parentItems: state.customers.parentItems,
        childItems: state.customers.childItems,
        photos: state.customers.photos,
+       contacts: state.customers.contacts,
     }),
 
     (state) => state

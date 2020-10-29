@@ -6,11 +6,11 @@ import * as Field from 'components/forms/formComp';
 import Select from 'react-select';
 
 
-const Computer = A.forwardRef(({control, errors}, ref) => {  
+const Computer = A.forwardRef(({control, errors, ad}, ref) => {  
         const dispatch = A.useDispatch();
-
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Computers & Tablets";
 const {parentItems} = A.useSelector(A.customerSelector);
-
+const upper = new A.TransForm();
  
     A.useEffect(() => {
       setTimeout(() => {
@@ -19,7 +19,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
           model: yup.string().required(),
           device: yup.string().required()
         }))
-      })
+      }, 2000)
         dispatch(A.parentOptions({url: '/api/computer-brands'}))
         return () => {
         }
@@ -33,6 +33,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             name="device"
             title="Device Type"
             errors={errors}
+            defaultChecked={ad.device ?? ''}
             options={['Desktop Computer', 'Laptop / Netbook', 'Tablet']}
             ref={ref}
             />
@@ -41,7 +42,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             <label htmlFor="computer_brand_id" className="label">Brand</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.computer_brand.id : null}
             name="computer_brand_id"
             render={({onChange}) => (
             <Select
@@ -56,7 +57,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             instanceId="computer_brand_id"
             isSearchable
             placeholder="Search brands..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.computer_brand.brand), value: ad.computer_brand.id} : null}
           />
           
             )}
@@ -65,7 +66,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
            <br />
             <Field.Input 
                 name="model"
-                defaultValue=""
+                defaultValue={ad.model ?? ''}
                 ref={ref}
                 title="Model"
                 type="text"

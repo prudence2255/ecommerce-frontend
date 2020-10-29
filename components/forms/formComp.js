@@ -1,5 +1,7 @@
 import {forwardRef} from 'react';
 import Select from 'react-select';
+import * as A from 'components/adminImports';
+
 
 
 const Input = forwardRef(({title, name , type, placeholder, errors, defaultValue, required}, ref) => {
@@ -22,7 +24,7 @@ const Input = forwardRef(({title, name , type, placeholder, errors, defaultValue
     )
 })
 
-const Radio = forwardRef(({title,  errors, name, options, required}, ref) => {
+const Radio = forwardRef(({title,  errors, name, options, required, defaultChecked}, ref) => {
     return(
         <>
          <div>
@@ -36,7 +38,9 @@ const Radio = forwardRef(({title,  errors, name, options, required}, ref) => {
             id={option}
             value={option} 
             required={required}
+            defaultChecked={defaultChecked === option ? true : false}
             ref={ref}/>{option}
+            
              </label>
             </div>
            ))}
@@ -52,11 +56,11 @@ const TextArea = forwardRef(({name, title, defaultValue, placeholder, errors, re
          <div>
             <label htmlFor={name} className="label">{title}</label>
            <textarea className="w3-input w3-border w3-round"
-            name={name} type="text" minLength="30"
-            maxLength="1000" placeholder={placeholder}
+            name={name} type="text"
+            placeholder={placeholder}
             required={required}
             rows="5" ref={ref} defaultValue={defaultValue}>
-           
+         
            </textarea>
             <span className="error">{errors[name]?.message}</span>
             </div>
@@ -64,7 +68,9 @@ const TextArea = forwardRef(({name, title, defaultValue, placeholder, errors, re
     )
 })
 
-const CheckBox = forwardRef(({name, title, errors, options, required}, ref) => {
+const CheckBox = forwardRef(({name, title, errors, options, required, defaultChecked}, ref) => {
+
+    const checker = new A.TransForm();
     return(
         <>
          <div>
@@ -78,7 +84,9 @@ const CheckBox = forwardRef(({name, title, errors, options, required}, ref) => {
             name={name} 
             id={`${option}-1`}
             value={option} 
+            defaultChecked={checker.check(defaultChecked, option)}
             ref={ref}/>{option}
+            
              </label>
             </div>
            ))}

@@ -4,9 +4,10 @@ import * as Field from 'components/forms/formComp';
 import Select from 'react-select';
 
 
-const Tv = A.forwardRef(({control, errors}, ref) => {  
+const Tv = A.forwardRef(({control, errors, ad}, ref) => {  
         const dispatch = A.useDispatch();
-
+        const upper = new A.TransForm();
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Tvs";
 const {parentItems} = A.useSelector(A.customerSelector);
 
  
@@ -16,7 +17,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
           tv_brand_id: yup.string().required(),
           model: yup.string().required(),
         }))
-      }, 5000)
+      }, 2000)
         
         dispatch(A.parentOptions({url: '/api/tv-brands'}))
         return () => {
@@ -29,7 +30,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             <label htmlFor="tv_brand_id" className="label">Brand</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.tv_brand.id : null}
             name="tv_brand_id"
             render={({onChange}) => (
             <Select
@@ -44,7 +45,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
             instanceId="tv_brand_id"
             isSearchable
             placeholder="Search brands..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.tv_brand.brand), value: ad.tv_brand.id} : null}
           />
           
             )}
@@ -53,7 +54,7 @@ const {parentItems} = A.useSelector(A.customerSelector);
            <br />
             <Field.Input 
                 name="model"
-                defaultValue=""
+                defaultValue={ad.model ?? ''}
                 ref={ref}
                 title="Model"
                 type="text"

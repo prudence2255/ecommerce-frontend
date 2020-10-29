@@ -23,6 +23,7 @@ export default function Signup({signupModal, setSignupModal}) {
         setSignupModal(false);
     }
    
+    const router = A.useRouter();
 
     const submit = (data) => {
         dispatch(signUp({customer: data, url: '/api/customer-register'})).then(A.unwrapResult)
@@ -36,6 +37,7 @@ export default function Signup({signupModal, setSignupModal}) {
                 timer: 1800
               })
               reset({}) 
+              router.push('/ad/account');
         }).catch(e  => e.message)       
     }
     return(

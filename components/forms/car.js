@@ -4,10 +4,11 @@ import * as Field from 'components/forms/formComp';
 import Select from 'react-select';
 
 
-const Car = A.forwardRef(({control, errors}, ref) => {
+const Car = A.forwardRef(({control, errors, ad}, ref) => {
         const [models, setModels] = A.useState();   
         const dispatch = A.useDispatch();
-
+        const upper = new A.TransForm();
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Cars";
 const {childItems, parentItems} = A.useSelector(A.customerSelector);
 
 
@@ -21,6 +22,12 @@ const transFormArray = (array, id, name, check) => {
   const handleModels = (e) => {
     setModels(transFormArray(childItems, 'car_brand_id', 'model', e))
   }
+   A.useEffect(() => {
+  if(isAd){
+    setModels(transFormArray(childItems, 'car_brand_id', 'model', ad.car_brand.id))
+  }
+   return () => {}
+ }, [isAd, childItems])
  
     A.useEffect(() => {
       setTimeout(() => {
@@ -33,7 +40,7 @@ const transFormArray = (array, id, name, check) => {
           fuel_type: yup.string().required(),
           engine_capacity: yup.string().required()  
         }))
-      }, 5000)
+      }, 2000)
         
         dispatch(A.parentOptions({url: '/api/car-brands'}))
         dispatch(A.childOptions({url: '/api/car-models'}))
@@ -47,7 +54,7 @@ const transFormArray = (array, id, name, check) => {
             <label htmlFor="car_brand_id" className="label">Brand</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.car_brand.id : null}
             name="car_brand_id"
             render={({onChange}) => (
             <Select
@@ -63,7 +70,7 @@ const transFormArray = (array, id, name, check) => {
             instanceId="car_brand_id"
             isSearchable
             placeholder="Search brands..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.car_brand.brand), value: ad.car_brand.id} : null}
           />
           
             )}
@@ -73,7 +80,7 @@ const transFormArray = (array, id, name, check) => {
            <label htmlFor="car_model_id" className="label">Model</label>
            <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.car_model.id : null}
             name="car_model_id"
             render={({onChange}) => (
             <Select
@@ -85,7 +92,7 @@ const transFormArray = (array, id, name, check) => {
             instanceId="car_model_id"
             isSearchable
             placeholder="Search models..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.car_model.model), value: ad.car_model.id} : null}
             isDisabled={models ? false : true}
           />
           
@@ -95,7 +102,7 @@ const transFormArray = (array, id, name, check) => {
             <br />
             <Field.Input 
                 name="edition"
-                defaultValue=""
+                defaultValue={ad.edition ?? ''}
                 ref={ref}
                 type="text"
                 title="Trim / Edition (optional)"
@@ -105,7 +112,7 @@ const transFormArray = (array, id, name, check) => {
             <br />
             <Field.Input 
                 name="model_year"
-                defaultValue=""
+                defaultValue={ad.model_year ?? ''}
                 ref={ref}
                 type="number"
                 title="Model Year"
@@ -115,7 +122,7 @@ const transFormArray = (array, id, name, check) => {
             <br />
             <Field.Input 
                 name="mileage"
-                defaultValue=""
+                defaultValue={ad.mileage ?? ''}
                 ref={ref}
                 type="number"
                 title="Mileage (Km)"
@@ -129,10 +136,12 @@ const transFormArray = (array, id, name, check) => {
             errors={errors}
             options={['Manual', 'Automatic','Other']}
             ref={ref}
+            defaultChecked={ad.transmission ?? ''}
             />
             <br />
             <Field.CheckBox 
             name="fuel_type"
+            defaultChecked={ad.fuel_type ?? ''}
             title="Fuel Type"
             errors={errors}
             options={['Diesel', 'Petrol','CNG', 'Hybrid', 'Electric', 'Other']}
@@ -141,7 +150,7 @@ const transFormArray = (array, id, name, check) => {
             <br />
             <Field.Input 
                 name="engine_capacity"
-                defaultValue=""
+                defaultValue={ad.engine_capacity ?? ''}
                 ref={ref}
                 type="number"
                 title="Engine Capacity (Liter)"

@@ -6,7 +6,9 @@ import {UserIcon, AdminIcon, AdIcon,
 import {wrapper} from 'store/store';
 import Link from 'next/link';
 import {progressStart} from 'store/admin/loadersSlice';     
+import Cookies from 'universal-cookie';
 
+const cookies = new Cookies();
 
  function Dashboard(){
     const dispatch = useDispatch();

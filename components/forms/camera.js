@@ -3,9 +3,10 @@ import * as yup from "yup";
 import Select from 'react-select';
 
 
-const Camera = A.forwardRef(({control, errors}, ref) => {
+const Camera = A.forwardRef(({control, errors, ad}, ref) => {
         const dispatch = A.useDispatch();
-
+        const upper = new A.TransForm();
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Cameras & Camcorders";
 const {childItems, parentItems} = A.useSelector(A.customerSelector);
 
 
@@ -18,7 +19,7 @@ const {childItems, parentItems} = A.useSelector(A.customerSelector);
           camera_brand_id: yup.string().required(),
           camera_type_id: yup.string().required()
         }))
-      }, 5000)
+      }, 2000)
         
         dispatch(A.parentOptions({url: '/api/camera-types'}))
         dispatch(A.childOptions({url: '/api/camera-brands'}))
@@ -32,7 +33,7 @@ const {childItems, parentItems} = A.useSelector(A.customerSelector);
             <label htmlFor="type_id" className="label">Item Type</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.camera_type.id : null}
             name="camera_type_id"
             render={({onChange}) => (
             <Select
@@ -43,11 +44,11 @@ const {childItems, parentItems} = A.useSelector(A.customerSelector);
               label: item.type,
               value: item.id,
             }))}
-            name="type_id"
+            name="camera_type_id"
             instanceId="camera_type_id"
             isSearchable
             placeholder="Search item types..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.camera_type.type), value: ad.camera_type.id} : null}
           />
           
             )}
@@ -57,7 +58,7 @@ const {childItems, parentItems} = A.useSelector(A.customerSelector);
            <label htmlFor="camera_brand_id" className="label">Brand</label>
            <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.camera_brand.id : null}
             name="camera_brand_id"
             render={({onChange}) => (
             <Select
@@ -72,7 +73,7 @@ const {childItems, parentItems} = A.useSelector(A.customerSelector);
             instanceId="camera_brand_id"
             isSearchable
             placeholder="Search brands..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.camera_brand.brand), value: ad.camera_brand.id} : null}
             
           />
           

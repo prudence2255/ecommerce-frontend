@@ -53,7 +53,7 @@ const handleDelete = (slug) => {
   })
 }
 A.useEffect(() => {
-  //dispatch(A.loadItems({url: '/api/categories', cookie: cook.get("token")}))
+  //dispatch(A.loadItems({url: '/api/all-categories', cookie: cook.get("token")}))
   return () => {
   }
 }, [categories]);

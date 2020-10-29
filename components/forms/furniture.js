@@ -3,7 +3,7 @@ import * as yup from "yup";
 import * as Field from 'components/forms/formComp';
 
 
-const Furniture = A.forwardRef(({control, errors}, ref) => {
+const Furniture = A.forwardRef(({control, errors, ad}, ref) => {
         const dispatch = A.useDispatch();
 
 
@@ -13,7 +13,7 @@ const Furniture = A.forwardRef(({control, errors}, ref) => {
             dispatch(A.setErrors({
                 furniture_type: yup.string().required(),
               }))
-     }, 5000)
+     }, 2000)
         return () => {
         }
     }, [])
@@ -23,6 +23,7 @@ const Furniture = A.forwardRef(({control, errors}, ref) => {
             <div className="sub-form my-3">
             <Field.Radio 
             name="furniture_type"
+            defaultChecked={ad.furniture_type ?? ''}
             title="Furniture Type"
             errors={errors}
             options={['Bed / Bedding', 'Shelf / Storage','Chair / Table', 'Textile / Decoration', 'Other']}

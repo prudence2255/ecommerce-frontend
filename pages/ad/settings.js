@@ -15,21 +15,18 @@ const cookies = new A.Cookies();
     const {loginCustomer, categoryLocations} = A.useSelector(A.customerSelector);
     const {locations} = categoryLocations;
 
-  const transFormArray = (array, id, name, check) => {
-   const newArray = array?.filter(region => region[id] === check).map(region => ({
-      label: region[name].split(" ").map((i) => { 
-            return i[0].toUpperCase() + i.substr(1)
-      }).join(" "), 
-      value: region.id
-    }));
-return newArray.sort((a, b) => {
-  let x = a.label.toLowerCase();
-  let y = b.label.toLowerCase();
-  if (x < y) {return -1;}
-  if (x > y) {return 1;}
-  return 0;
-});
-  
+    const transFormArray = (array, id, name, check) => {
+      const newArray = array?.filter(region => region[id] === check).map(region => ({
+         label: region[name],
+         value: region.id
+       }));
+   return newArray?.sort((a, b) => {
+     let x = a.label.toLowerCase();
+     let y = b.label.toLowerCase();
+     if (x < y) {return -1;}
+     if (x > y) {return 1;}
+     return 0;
+   });
   }
   const regions = transFormArray(locations, 'parent_id', 'name', null);
  
@@ -174,7 +171,6 @@ return newArray.sort((a, b) => {
   </p>
     </form>
     <div className="m-3">
-      
         <button className="btn w3-card w3-yellow"
         onClick={onLogout}
         >

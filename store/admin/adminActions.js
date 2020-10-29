@@ -114,6 +114,7 @@ export const logout = createAsyncThunk(
         thunk.dispatch(endLoading())
         return response
       } catch (error) {
+        console.log(error.response)
         thunk.dispatch(endLoading())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)
@@ -139,6 +140,7 @@ export const logout = createAsyncThunk(
         thunk.dispatch(progressEnd())
         return response
       } catch (error) {
+        console.log(error.response)
         thunk.dispatch(progressEnd())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)

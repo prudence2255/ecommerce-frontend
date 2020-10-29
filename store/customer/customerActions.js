@@ -4,9 +4,11 @@ import Cookies from 'universal-cookie';
 import  {
   startLoading, endLoading,
  progressStart,
-  progressEnd
+  progressEnd, statusSucceeded,
 } from '../admin/loadersSlice';
 import {setErrors} from '../admin/errorsSlice';
+import * as A from 'components/adminImports';
+ 
 
  
 const cookies = new Cookies();
@@ -111,7 +113,6 @@ export const logout = createAsyncThunk(
           }
         })
         thunk.dispatch(endLoading())
-        console.log(response)
         return response
       } catch (error) {
         console.log(error.response)
@@ -128,6 +129,7 @@ export const logout = createAsyncThunk(
     async (data, thunk) => {
       const {url, cookie} = data 
       thunk.dispatch(progressStart()) 
+      //headers['Authorization'] = `Bearer ${cookies.get("customer_token")}`
       headers['Authorization'] = `Bearer ${cookie}`;
       try {
         const response = await Axios(`${apiUrl}${url}`,{
@@ -136,9 +138,11 @@ export const logout = createAsyncThunk(
             ...headers
           }
         })
+        thunk.dispatch(statusSucceeded())
         thunk.dispatch(progressEnd())
         return response
       } catch (error) {
+        console.log(error.response)
         thunk.dispatch(progressEnd())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)
@@ -146,7 +150,33 @@ export const logout = createAsyncThunk(
     }
   )
 
-  
+  export const loadAd = createAsyncThunk(
+    'ad/loadAd',
+    async (data, thunk) => {
+      const {url, cookie} = data 
+      thunk.dispatch(progressStart()) 
+      headers['Authorization'] = `Bearer ${cookie}`;
+      ///headers['Authorization'] = `Bearer ${cookies.get("customer_token")}`
+      try {
+        const response = await Axios(`${apiUrl}${url}`,{
+          method: 'GET',
+          headers: {
+            ...headers
+          }
+        })
+        thunk.dispatch(progressEnd())
+        thunk.dispatch(A.statusSucceeded())
+        console.log(response)
+        return response
+      } catch (error) {
+        console.log(error.response)
+        thunk.dispatch(progressEnd())
+        thunk.dispatch(A.statusRejected())
+        thunk.dispatch(setErrors(getError(error, thunk))) 
+        return getError(error, thunk)
+      }
+    }
+  )
 
   export const updateAd = createAsyncThunk(
     'ad/updateAd',
@@ -163,8 +193,10 @@ export const logout = createAsyncThunk(
           }
         })
         thunk.dispatch(endLoading())
+        console.log(response)
         return response
       } catch (error) {
+        console.log(error.response)
         thunk.dispatch(endLoading())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)
@@ -295,6 +327,7 @@ export const logout = createAsyncThunk(
         thunk.dispatch(endLoading())
         return response
       } catch (error) {
+        console.log(error.response)
         thunk.dispatch(endLoading())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)

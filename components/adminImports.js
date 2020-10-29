@@ -1,11 +1,14 @@
 import React, {useState, useEffect, useRef, forwardRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {adminSelector} from 'store/admin/adminSlice';
-import {customerSelector, setPhotos, removePhoto} from 'store/customer/customerSlice';
+import {customerSelector, setPhotos, 
+    removePhoto, removeContact, setContacts,
+} from 'store/customer/customerSlice';
 import Layout from 'components/admin/layout'
 import {loadItems, deleteItem, addItem, updateItem, loadOptions} from 'store/admin/adminActions';
 import {setErrors, formSelector} from 'store/forms/formsSlice';
-import {logout, addAd,
+import {adsSelector, addFilters} from 'store/ad/adsSlice';
+import {logout, addAd, loadAd,
     loadAds, login, loadCustomer,
     updateAd, deleteAd, categoryLocation,
     signUp, socialLogin, childOptions, 
@@ -22,9 +25,18 @@ import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
 import {GridLoader} from './loaders';
 import {useRouter} from 'next/router';
-import {loadersSelector, startLoading, endLoading} from 'store/admin/loadersSlice';
-
-
+import {loadersSelector, 
+    startLoading, endLoading,
+    statusIdle, statusSucceeded,
+    statusRejected, progressStart,
+    progressEnd
+} from 'store/admin/loadersSlice';
+import {TransForm} from './classes';
+import {
+    
+    fetchAd, fetchItems, fetchCategoryLocation,
+    fetchAds, fetchRecentAds, fetchChildOptions,
+} from 'store/ad/adsActions';
 
 
 
@@ -35,6 +47,17 @@ import {loadersSelector, startLoading, endLoading} from 'store/admin/loadersSlic
 
 
 export {
+    removeContact,
+    setContacts,
+    adsSelector,
+    addFilters,
+    fetchAd, fetchItems, fetchCategoryLocation,
+    fetchAds, fetchRecentAds, fetchChildOptions,
+    TransForm,
+    statusIdle, statusSucceeded,
+    statusRejected, progressStart,
+    progressEnd,
+    loadAd,
     loadersSelector,
     startLoading,
     endLoading,

@@ -4,12 +4,12 @@ import * as Field from 'components/forms/formComp';
 import Select from 'react-select';
 
 
-const MobilePhone = A.forwardRef(({control, errors, required}, ref) => {
+const MobilePhone = A.forwardRef(({control, errors, required, ad}, ref) => {
         const [models, setModels] = A.useState();   
         const dispatch = A.useDispatch();
-
-const {childItems, parentItems} = A.useSelector(A.customerSelector);
-
+        const isAd = Object.keys(ad).length > 0 && ad.category === "Mobile Phones";
+ const {childItems, parentItems} = A.useSelector(A.customerSelector);
+const upper = new A.TransForm();
 const transFormArray = (array, id, name, check) => {
   const newArray = array?.filter(item => item[id] === check).map(item => ({
      label: item[name],
@@ -20,14 +20,20 @@ const transFormArray = (array, id, name, check) => {
   const handleModels = (e) => {
     setModels(transFormArray(childItems, 'mobile_brand_id', 'model', e))
   }
- 
+ A.useEffect(() => {
+  if(isAd){
+    setModels(transFormArray(childItems, 'mobile_brand_id', 'model', ad.mobile_brand.id))
+  }
+   return () => {}
+ }, [isAd, childItems])
+
     A.useEffect(() => {
       setTimeout(() => {
         dispatch(A.setErrors({
           mobile_brand_id: yup.string().required(),
           mobile_model_id: yup.string().required()
         }))
-       }, 5000)
+       }, 2000)
         dispatch(A.parentOptions({url: '/api/mobile-brands'}))
         dispatch(A.childOptions({url: '/api/mobile-models'}))
         return () => {
@@ -40,7 +46,7 @@ const transFormArray = (array, id, name, check) => {
             <label htmlFor="mobile_brand_id" className="label">Brand</label>
             <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.mobile_brand.id : null}
             name="mobile_brand_id"
             render={({onChange}) => (
             <Select
@@ -56,7 +62,7 @@ const transFormArray = (array, id, name, check) => {
             instanceId="mobile_brand_id"
             isSearchable
             placeholder="Search brands..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.mobile_brand.brand), value: ad.mobile_brand.id} : null}
           />
           
             )}
@@ -66,7 +72,7 @@ const transFormArray = (array, id, name, check) => {
            <label htmlFor="mobile_model_id" className="label">Model</label>
            <A.Controller
             control={control}
-            defaultValue=""
+            defaultValue={isAd ? ad.mobile_model.id : null}
             name="mobile_model_id"
             render={({onChange}) => (
             <Select
@@ -78,7 +84,7 @@ const transFormArray = (array, id, name, check) => {
             instanceId="mobile_model_id"
             isSearchable
             placeholder="Search models..."
-            defaultValue=""
+            defaultValue={isAd ? {label:  upper.toUpper(ad.mobile_model.model), value: ad.mobile_model.id} : null}
             isDisabled={models ? false : true}
           />
           
@@ -88,7 +94,7 @@ const transFormArray = (array, id, name, check) => {
             <br />
             <Field.Input 
                 name="edition"
-                defaultValue=""
+                defaultValue={ad.edition ?? ''}
                 ref={ref}
                 title="Edition (optional)"
                 type="text"
@@ -106,6 +112,7 @@ const transFormArray = (array, id, name, check) => {
               'GPS', 'Physical Keyboard', 'Motion Sensors', '3G', '4G',
               'GSM', 'Touch Screen'
               ]}
+              defaultChecked={ad.features ?? ''}
             ref={ref}
             />
             </div>

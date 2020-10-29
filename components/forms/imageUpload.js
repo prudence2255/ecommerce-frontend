@@ -1,7 +1,7 @@
 import * as A from 'components/adminImports';
+import {RemoveIcon} from 'components/admin/icons';
 
-
-const ImageUpload = ({error}) => {
+const ImageUpload = ({error, ad}) => {
     const [urls, setUrls] = A.useState([]);
     const [photoErr, setPhotoErr] = A.useState(null);
     const photo = A.useRef(null);
@@ -32,18 +32,33 @@ if(e.target.files[0]){
      setUrls(urlObj)
      dispatch(A.removePhoto(index))
  }
+ 
     return(
         <>
+        {Object.keys(ad).length > 0 && (
+            <div className="row">
+            <div className="alert alert-warning">
+            Please re-upload images!
+            </div>
+            </div>
+        )}
         <div className="row">
-            
+        {Object.keys(ad).length > 0 && ad.images.map((img, i) => (
+                <div className="col-md-4" key={i}>
+                <img src={img.xsmall} alt="ad" className="ad-image-2"/>
+                </div>
+            ))}
+        </div>
+        <div className="row">
+           
            {urls?.map((url, index) => (
             <div className="col-md-12" key={index}> 
                 <div className="my-2" >
                    <div className="w3-left">
-                   <img src={url} alt="ad" className="ad"/>
+                   <img src={url} alt="ad" className="ad-image"/>
                    </div>
                    <div className="w3-right mt-5">
-                       <a className="btn btn-danger" onClick={() => handleRemove(index)}>Remove</a>
+                       <a className="btn " onClick={() => handleRemove(index)}><RemoveIcon /></a>
                    </div>
                 </div>
                 </div>  
@@ -72,9 +87,13 @@ if(e.target.files[0]){
              font-size: 20px;
            }  
 
-           .ad{
+           .ad-image{
                width: 170px;
                height: 100px;
+           }
+           .ad-image-2{
+               width: 120px;
+               height: 70px;
            }
                 `}
             </style>

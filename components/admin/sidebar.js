@@ -78,18 +78,12 @@ export default function SideBar({nav}){
          <a className="w3-bar-item w3-button" onClick={goToPage}>Mobile Phone Models <span className="w3-right"> <NavIcon /></span></a>
          </Link>
          <hr />
-         <Link href="/admin-dashboard/mobile-features">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>Mobile Phone Features <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-         <hr />
+        
          <Link href="/admin-dashboard/computer-brands">
          <a className="w3-bar-item w3-button" onClick={goToPage}>Computer Brands <span className="w3-right"> <NavIcon /></span></a>
          </Link>
          <hr />
-         <Link href="/admin-dashboard/computer-types">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>Computer types <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-         <hr />
+        
          <Link href="/admin-dashboard/computer-accessories">
          <a className="w3-bar-item w3-button" onClick={goToPage}>Computer Accessories <span className="w3-right"> <NavIcon /></span></a>
          </Link>
@@ -127,18 +121,9 @@ export default function SideBar({nav}){
          <a className="w3-bar-item w3-button" onClick={goToPage}>Car Models <span className="w3-right"> <NavIcon /></span></a>
          </Link>
          <hr />
-         <Link href="/admin-dashboard/car-bodies">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>Car body types <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
+         
          <hr />
-         <Link href="/admin-dashboard/car-transmissions">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>Car transmissions <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-         <hr />
-         <Link href="/admin-dashboard/car-fuels">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>Car fuel types <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-         <hr />
+        
          <Link href="/admin-dashboard/motor-brands">
          <a className="w3-bar-item w3-button" onClick={goToPage}>Motor brands <span className="w3-right"> <NavIcon /></span></a>
          </Link>
@@ -158,28 +143,6 @@ export default function SideBar({nav}){
          <a className="w3-bar-item w3-button" onClick={goToPage}>property <span className="w3-right"> <NavIcon /></span></a>
          </Link>
         
-        </div>
-        </div>
-        <div className="w3-dropdown-hover">
-            <button className="w3-button"> <HomeGardenIcon /> Home & garden <Caret /></button>
-            <div className="w3-dropdown-content w3-bar-block w3-card-2 dropDown">
-         <Link href="/admin-dashboard/parent-homes">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>home & garden <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-         <Link href="/admin-dashboard/home-types">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>item type <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-        </div>
-        </div>
-        <div className="w3-dropdown-hover">
-            <button className="w3-button"> <ServicesIcon /> Services <Caret /></button>
-            <div className="w3-dropdown-content w3-bar-block w3-card-2 dropDown">
-         <Link href="/admin-dashboard/parent-services">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>services <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
-         <Link href="/admin-dashboard/service-types">
-         <a className="w3-bar-item w3-button" onClick={goToPage}>item type <span className="w3-right"> <NavIcon /></span></a>
-         </Link>
         </div>
         </div>
         
