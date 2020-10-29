@@ -37,7 +37,7 @@ const transform = new A.TransForm()
         infiniteLoop={true}
         autoPlay={true}
         >
-                {recentAds.map((ad, i) => (
+                {Array.isArray(recentAds) && recentAds.map((ad, i) => (
                   <div key={i}>
                    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
                    <a>
@@ -63,10 +63,10 @@ const transform = new A.TransForm()
             </div>
       </div>
      <div className="row d-none d-lg-block">
-     <Desktop items={items}/>
+     {Array.isArray(items) && <Desktop items={items}/>}
      </div>
      <div className="row d-block d-lg-none">
-     <Mobile items={items}/>
+    {Array.isArray(items) &&  <Mobile items={items}/>}
      </div>
      </div>
    </Layout>
