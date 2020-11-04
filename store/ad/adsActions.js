@@ -139,6 +139,7 @@ const getError = (error, thunk) => {
             ...headers
           }
         })
+        console.log(response)
         return response
       } catch (error) {
         thunk.dispatch(setErrors(getError(error, thunk))) 
