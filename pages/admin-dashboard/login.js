@@ -1,5 +1,6 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {useEffect} from 'react';
+import Head from 'next/head';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers';
 import * as yup from "yup";
@@ -44,6 +45,9 @@ if(cookies.get('token')) router.push('/admin-dashboard')
   };
     return (
         <>
+          <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> 
+        </Head>
         {error && (
           <ShowError />
         )}

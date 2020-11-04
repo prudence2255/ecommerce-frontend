@@ -16,7 +16,6 @@ const transform = new A.TransForm()
   <Head>
   <meta name="description" lang="en" content="Digishop is a multi-vendor e-commerce website" /> 
   <meta name="keywords" content="e-commerce,Ghana, shop online, sell online, buy online " />
-  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> 
   </Head>
   <MobileSticky />
    <Layout>

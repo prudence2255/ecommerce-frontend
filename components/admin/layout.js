@@ -1,4 +1,4 @@
-
+import Head from 'next/head';
 import React, {useState} from 'react';
 import Header from './header';
 import SideBar from './sidebar';
@@ -9,7 +9,9 @@ export default function Layout({children}){
 
     return(
         <>
-      
+       <Head>
+        <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" /> 
+        </Head>
            <div>
            <Header toggleNav={setOpenNav} openNav={openNav}/>
        <div className="row">
