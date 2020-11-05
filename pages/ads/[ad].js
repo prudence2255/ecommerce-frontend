@@ -59,7 +59,7 @@ export default function Ad(){
                     <div className="col-md-8 py-2 px-lg-5 px-md-2 mx-auto">
                     <div className="row">
                     <div className="col">
-                    <h5>{ad.title}</h5>
+                    <h5><b>{ad.title}</b></h5>
                     </div>
                     </div>
                     <div className="row">

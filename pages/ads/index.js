@@ -57,14 +57,14 @@ export default function Home() {
         <Search />
       </div>
       <div className="row">
-        <div className="d-flex col">
-          <button className="btn" onClick={openLocationModal}>
+        <div className="d-flex col my-3 select-btns">
+          <button className="btn category" onClick={openLocationModal}>
            <LocationIcon /> {transform.shortenLength(isLocation, 10) } <Caret />
            </button>
-          <button className="btn ml-4" onClick={openCategoryModal}>
+          <button className="btn ml-4 location" onClick={openCategoryModal}>
           <CategoryIcon /> {transform.shortenLength(isCategory, 12) } <Caret />
           </button>
-          <button className="btn d-block d-lg-none ml-4 ml-auto" onClick={openFilterModal}>
+          <button className="btn d-block d-lg-none ml-4 ml-2" onClick={openFilterModal}>
          <FilterIcon />
           </button>
         </div>
@@ -134,6 +134,9 @@ export default function Home() {
       .search-box{
         border-bottom: 1px solid lightgrey;
         padding-bottom: 20px;
+      }
+      .category, .location{
+        width: 200px;
       }
       `}
      </style>

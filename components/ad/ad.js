@@ -14,14 +14,13 @@ const Ad = ({ad}) => {
      <div className="media">
     <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
         <a>
-        <img className="align-self-start mr-3" src={ad?.images[0].xsmall } alt="img" 
-     style={{width: '150px', height: '100px'}}/>
+        <img className="align-self-start mr-3 img" src={ad?.images[0].xsmall } alt="img" />
         </a>
     </Link>
     <div className="media-body">
     <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
     <a>
-    <h6 className="mt-0">{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</h6>
+    <h6 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</b></h6>
    <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
    <div>
    <p className="price w3-left"><b>GHC {transform.formatNum(ad.price) }</b></p>
@@ -38,6 +37,16 @@ const Ad = ({ad}) => {
         {`
         .price{
             color: #22B822;
+        }
+        .img{
+            height: 100px;
+            width: 150px;
+        }
+        @media(max-width: 768px){
+            .img{
+                height: 70px;
+                width: 100px;
+            }
         }
        Link, a{
           color: #000000!important
