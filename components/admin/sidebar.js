@@ -10,7 +10,6 @@ import {progressStart} from 'store/admin/loadersSlice';
 
 
 export default function SideBar({nav}){
-   const [dropdown, setDropdown] = useState(false);
     const dispatch = useDispatch();
 
     const goToPage = () => {

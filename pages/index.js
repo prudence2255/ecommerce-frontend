@@ -19,7 +19,7 @@ const transform = new A.TransForm()
   </Head>
   <MobileSticky />
    <Layout>
-      <div className="home-page px-2">
+      <div className="container">
       <div className="row">
         <Search />
       </div>
@@ -76,7 +76,7 @@ const transform = new A.TransForm()
      .welcome{
        margin-top: 20px;
      }
-     .home-page{
+     .container{
        background: white;
        padding-top: 25px;
        padding-bottom: 100px;

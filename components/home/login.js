@@ -63,7 +63,7 @@ export default function Login({loginModal, setLoginModal}){
     <LoginGoogle setLoginModal={setLoginModal}/> 
     </div>
         <p className="my-3 text-center w-100">OR</p>
-    <form className="w3-container w3-card pt-1" onSubmit={handleSubmit(submit)}>
+    <form className="w3-container pt-1" onSubmit={handleSubmit(submit)}>
   <p>
   <input className="w3-input w3-border w3-round" type="email" name="email" placeholder="Email address"
       ref={register}

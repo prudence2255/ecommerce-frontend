@@ -29,7 +29,7 @@ const getError = (error, thunk) => {
     return thunk.rejectWithValue({error: error.response.data})
   }
   if(error.request){
-    return thunk.rejectWithValue({ error: {errors : {error: ['Network error']}}})
+    return thunk.rejectWithValue({ error: {errors : {error: ['Connection error']}}})
   }
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
@@ -81,7 +81,6 @@ export const logout = createAsyncThunk(
   export const loadCustomer = createAsyncThunk(
     'customer/loadCustomer',
     async (cookie, thunk) => {  
-      thunk.dispatch(startLoading())
       headers['Authorization'] = `Bearer ${cookie}`
       try {
         const response = await Axios(`${apiUrl}/api/login-customer`,{
@@ -90,10 +89,10 @@ export const logout = createAsyncThunk(
             ...headers
           }
         })
-        thunk.dispatch(endLoading())
+        thunk.dispatch(progressEnd())
         return response
       } catch (error) {
-        thunk.dispatch(endLoading())
+        thunk.dispatch(progressEnd())
         thunk.dispatch(setErrors(getError(error, thunk)))
         return getError(error, thunk) 
       }
@@ -128,7 +127,6 @@ export const logout = createAsyncThunk(
     'ad/loadAds',
     async (data, thunk) => {
       const {url, cookie} = data 
-      thunk.dispatch(progressStart()) 
       //headers['Authorization'] = `Bearer ${cookies.get("customer_token")}`
       headers['Authorization'] = `Bearer ${cookie}`;
       try {
@@ -154,7 +152,6 @@ export const logout = createAsyncThunk(
     'ad/loadAd',
     async (data, thunk) => {
       const {url, cookie} = data 
-      thunk.dispatch(progressStart()) 
       headers['Authorization'] = `Bearer ${cookie}`;
       ///headers['Authorization'] = `Bearer ${cookies.get("customer_token")}`
       try {
@@ -166,10 +163,8 @@ export const logout = createAsyncThunk(
         })
         thunk.dispatch(progressEnd())
         thunk.dispatch(A.statusSucceeded())
-        console.log(response)
         return response
       } catch (error) {
-        console.log(error.response)
         thunk.dispatch(progressEnd())
         thunk.dispatch(A.statusRejected())
         thunk.dispatch(setErrors(getError(error, thunk))) 
@@ -193,10 +188,8 @@ export const logout = createAsyncThunk(
           }
         })
         thunk.dispatch(endLoading())
-        console.log(response)
         return response
       } catch (error) {
-        console.log(error.response)
         thunk.dispatch(endLoading())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)

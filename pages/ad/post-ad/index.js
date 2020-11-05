@@ -63,6 +63,7 @@ const handleForm = (e) => {
     return(
         <>
        <Layout>
+           <div className="container">
            <div className="row">
             <div className="col-md-10 w3-card-2 p-2 mx-auto">
             <div className="card">
@@ -183,6 +184,7 @@ const handleForm = (e) => {
           </div>
         </div>
             </div>
+           </div>
            </div>
        </Layout>
        <style jsx>

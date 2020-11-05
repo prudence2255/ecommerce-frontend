@@ -3,17 +3,21 @@ import {useState} from 'react';
 import Login from './login';
 import {UserIcon } from 'components/admin/icons';
 import * as A from 'components/adminImports';
+import {ProgressBar} from 'components/loaders'
 
 const cookies = new A.Cookies();
+
 
 export const MobileSticky = () => {
   const [loginModal, setLoginModal] = useState(false);
 const [user, setUser] = A.useState();
-const router = A.useRouter()
+const router = A.useRouter();
+const dispatch = A.useDispatch();
 
 const onLogin = (e) => {
   e.preventDefault()
   if(cookies.get('customer_token')){
+    dispatch(A.progressStart());
     router.push('/ad/account')
   }else{
     setLoginModal(true);
@@ -23,6 +27,7 @@ const onLogin = (e) => {
 const sellNow = (e) => {
   e.preventDefault()
   if(cookies.get('customer_token')){
+     dispatch(A.progressStart());
     router.push('/ad/post-ad')
   }else{
     setLoginModal(true);
@@ -40,6 +45,7 @@ A.useEffect(() => {
 }, [user])
   return (
     <>
+    <ProgressBar />
      <Login loginModal={loginModal} setLoginModal={setLoginModal}/>
     <div className="mobile d-block d-lg-none">
     <div className="d-flex justify-content-center">
@@ -98,9 +104,15 @@ const [loginModal, setLoginModal] = useState(false);
 const [user, setUser] = A.useState();
 const router = A.useRouter()
 
+const dispatch = A.useDispatch()
+
+const goToPage = () => {
+  dispatch(A.progressStart());
+}
 const onLogin = (e) => {
   e.preventDefault()
   if(cookies.get('customer_token')){
+    dispatch(A.progressStart());
     router.push('/ad/account')
   }else{
     setLoginModal(true);
@@ -110,6 +122,7 @@ const onLogin = (e) => {
 const sellNow = (e) => {
   e.preventDefault()
   if(cookies.get('customer_token')){
+    dispatch(A.progressStart());
     router.push('/ad/post-ad')
   }else{
     setLoginModal(true);
@@ -128,15 +141,16 @@ A.useEffect(() => {
 
     return (
         <>
+        <ProgressBar />
         <Login loginModal={loginModal} setLoginModal={setLoginModal}/>
         
             <div className="headerBg w3-card-2">
             <div className="w3-bar header container d-flex justify-content-between">
            <Link href="/">
-              <a className="w3-bar-item btn">Logo</a>
+              <a className="w3-bar-item btn" onClick={goToPage}>Logo</a>
             </Link>
             <Link href="/ads">
-              <a className="w3-bar-item btn ">All ads</a>
+              <a className="w3-bar-item btn " onClick={goToPage}>All ads</a>
             </Link>
              <div className="d-none d-lg-block">
              <a className="w3-bar-item btn ad-btn " 

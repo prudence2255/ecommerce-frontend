@@ -27,7 +27,7 @@ const getError = (error, thunk) => {
     return thunk.rejectWithValue({error: error.response.data})
   }
   if(error.request){
-    return thunk.rejectWithValue({ error: {errors : {error: ['Network error!']}}})
+    return thunk.rejectWithValue({ error: {errors : {error: ['Connection error!']}}})
   }
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
@@ -127,7 +127,6 @@ export const logout = createAsyncThunk(
     'item/loadItems',
     async (data, thunk) => {
       const {url, cookie} = data 
-      thunk.dispatch(progressStart()) 
       headers['Authorization'] = `Bearer ${cookie}`;
      // headers['Authorization'] = `Bearer ${cookies.get("token")}`
       try {
@@ -140,7 +139,6 @@ export const logout = createAsyncThunk(
         thunk.dispatch(progressEnd())
         return response
       } catch (error) {
-        console.log(error.response)
         thunk.dispatch(progressEnd())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)
@@ -210,7 +208,6 @@ export const logout = createAsyncThunk(
             ...headers
           }
         })
-        console.log(response)
         return response
       } catch (error) {
         thunk.dispatch(setErrors(getError(error, thunk))) 

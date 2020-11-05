@@ -51,6 +51,7 @@ function Account(){
             <A.ShowError />
         )}
            <Layout>
+           <div className="container">
            <div className="row">
             <div className="col-md-2 w3-card-2 p-2">
                 <UserNav />
@@ -105,6 +106,7 @@ function Account(){
  
        </div>
         </div>
+           </div>
         </Layout>
            <style jsx>
             {`

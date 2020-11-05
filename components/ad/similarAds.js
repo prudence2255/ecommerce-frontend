@@ -7,7 +7,10 @@ const transform = new A.TransForm();
 
 const SimilarAds = () => {
     const {similarAds} = A.useSelector(A.adsSelector);
-
+    const dispatch = A.useDispatch();
+    const goToPage = () => {
+      dispatch(A.progressStart());
+    }
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
         return (
@@ -36,7 +39,7 @@ const SimilarAds = () => {
         slidesToShow: 2,
         slidesToScroll: 2,
         initialSlide: 0,
-        rows: 2,
+        rows: 3,
         nextArrow: <SampleNextArrow />,
       prevArrow: <SamplePrevArrow />,
         responsive: [
@@ -79,16 +82,15 @@ const SimilarAds = () => {
          {similarAds.length > 0 && similarAds.map((ad, i) => (
             <div  key={i}>
             <div className="media">
-            <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
+            <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} onClick={goToPage}>
         <a>
-        <img className="align-self-start mr-3 w3-card ad-img-small" src={ad?.images[0].xsmall } alt="img" 
-         style={{width: '150px', height: '100px'}}/>
+        <img className="align-self-start mr-3 ad-img-small img" src={ad?.images[0].xsmall } alt="img" />
          </a>
         </Link>
         <div className="media-body">
-        <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
+        <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} onClick={goToPage}>
         <a>
-        <h6 className="mt-0">{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</h6>
+        <h6 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</b></h6>
         <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
          <div>
          <p className="price w3-left"><b>GHC {transform.formatNum(ad.price) }</b></p>
@@ -111,6 +113,16 @@ const SimilarAds = () => {
             .similar_ads{
                 background: white;
             }
+            .img{
+            height: 100px;
+            width: 150px;
+        }
+            @media(max-width: 768px){
+            .img{
+                height: 70px;
+                width: 100px;
+            }
+        }
             .price, .similar_ads h5{
             color: #22B822;
             }

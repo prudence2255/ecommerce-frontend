@@ -14,7 +14,7 @@ export default function Layout({children}){
         <div>
      <Header />
       <div>
-      <div className="mt-5 container">
+      <div className="mt-5">
        {children}
       </div>
       </div>

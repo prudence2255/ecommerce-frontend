@@ -32,7 +32,7 @@ const loadersSlice = createSlice({
         state.progress = true
        },
        progressEnd: (state) => {
-           state.progress = false
+        state.progress = false
        }
     }
 })

@@ -53,7 +53,7 @@ export default function Ad(){
          </Head>}
         <Layout>
         <MobileSticky />
-            <div className="ad-page px-2">
+            <div className="container">
                {Object.keys(ad).length > 0 && (
                 <div className="row">
                     <div className="col-md-8 py-2 px-lg-5 px-md-2 mx-auto">
@@ -161,7 +161,7 @@ export default function Ad(){
             </div>
             <style jsx>
                 {`
-                .ad-page{
+                .container{
              padding-top: 25px;
             padding-bottom: 100px;
       }

@@ -156,6 +156,7 @@ A.useEffect(() => {
         {error && (
             <A.ShowError />
         )}
+           <div className="container">
            <div className="row">
             <div className="col-md-10 w3-card-2 p-2 mx-auto">
             <div className="row">
@@ -392,6 +393,7 @@ A.useEffect(() => {
             </div>
            
             </div>
+           </div>
            </div>
        </Layout>
 

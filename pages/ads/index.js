@@ -1,4 +1,4 @@
-import Head from 'next/head';
+
 import Layout from 'components/home/layout';
 import * as A from 'components/adminImports';
 import Ad, {Loader} from 'components/ad/ad';
@@ -51,7 +51,7 @@ export default function Home() {
   <Category categoryModal={categoryModal} setCategoryModal={setCategoryModal}
   />
   <MobileFilters filterModal={filterModal} setFilterModal={setFilterModal}/>
-      <div className="ads-page px-2">
+      <div className="container">
       <div className="search-box">
       <div className="row">
         <Search />
@@ -59,10 +59,10 @@ export default function Home() {
       <div className="row">
         <div className="d-flex col my-3 select-btns">
           <button className="btn category" onClick={openLocationModal}>
-           <LocationIcon /> {transform.shortenLength(isLocation, 10) } <Caret />
+           <LocationIcon /> {transform.shortenLength(isLocation, 11) } <Caret />
            </button>
           <button className="btn ml-4 location" onClick={openCategoryModal}>
-          <CategoryIcon /> {transform.shortenLength(isCategory, 12) } <Caret />
+          <CategoryIcon /> {transform.shortenLength(isCategory, 11) } <Caret />
           </button>
           <button className="btn d-block d-lg-none ml-4 ml-2" onClick={openFilterModal}>
          <FilterIcon />
@@ -115,17 +115,16 @@ export default function Home() {
      </div>
      <style jsx>
       {`
-      .ads-page{
+      .container{
         background: white;
         padding-top: 25px;
        padding-bottom: 100px;
-       width: 100%;
       }
 
       .btn{
         border: 1px solid green;
         font-weight: bold;
-        font-size: 15px;
+        font-size: 14px;
       }
       .filters{
         border-right: 1px solid lightgrey;
@@ -137,7 +136,7 @@ export default function Home() {
         padding-bottom: 20px;
       }
       .category, .location{
-        width: 200px;
+        width: 220px;
       }
       `}
      </style>

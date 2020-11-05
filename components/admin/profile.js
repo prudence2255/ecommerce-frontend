@@ -92,6 +92,9 @@ export default function Profile({profileModal, setProfileModal}) {
                 .openModal{
                     display: block
                 }
+                .w3-modal-content{
+                  max-width: 500px;
+                }
             `}
         </style>
         </>

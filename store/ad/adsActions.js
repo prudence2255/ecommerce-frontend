@@ -4,8 +4,7 @@ import { createAsyncThunk} from '@reduxjs/toolkit';
 import Axios from 'axios';
 import Cookies from 'universal-cookie';
 import  {
- progressStart, startLoading,
-  progressEnd, endLoading, statusSucceeded,
+   progressEnd, statusSucceeded,
 } from '../admin/loadersSlice';
 import {adsLoading, adsLoaded} from './adsSlice';
 import {setErrors} from '../admin/errorsSlice';
@@ -30,7 +29,7 @@ const getError = (error, thunk) => {
     return thunk.rejectWithValue({error: error.response.data})
   }
   if(error.request){
-    return thunk.rejectWithValue({ error: {errors : {error: ['Network error!']}}})
+    return thunk.rejectWithValue({ error: {errors : {error: ['Connection error!']}}})
   }
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
@@ -51,6 +50,7 @@ const getError = (error, thunk) => {
         })
         thunk.dispatch(adsLoaded())
         thunk.dispatch(statusSucceeded())
+        thunk.dispatch(progressEnd())
         return response
       } catch (error) {
         thunk.dispatch(progressEnd())
@@ -63,7 +63,7 @@ const getError = (error, thunk) => {
   export const fetchItems = createAsyncThunk(
     'ads/fetchItems',
     async (data, thunk) => {
-      const {url} = data 
+      const {url} = data;
       try {
         const response = await Axios(`${apiUrl}${url}`,{
           method: 'GET',
@@ -71,9 +71,10 @@ const getError = (error, thunk) => {
             ...headers
           }
         })
+        thunk.dispatch(progressEnd())
         return response
       } catch (error) {
-        console.log(error.response)
+        thunk.dispatch(progressEnd())
         thunk.dispatch(setErrors(getError(error, thunk))) 
         return getError(error, thunk)
       }
@@ -84,7 +85,6 @@ const getError = (error, thunk) => {
     'ads/fetchAd',
     async (data, thunk) => {
       const {url} = data 
-      thunk.dispatch(progressStart()) 
       try {
         const response = await Axios(`${apiUrl}${url}`,{
           method: 'GET',
@@ -139,7 +139,6 @@ const getError = (error, thunk) => {
             ...headers
           }
         })
-        console.log(response)
         return response
       } catch (error) {
         thunk.dispatch(setErrors(getError(error, thunk))) 

@@ -2,6 +2,7 @@ import ReactPaginate from 'react-paginate';
 import * as A from 'components/adminImports';
 
 
+
 const Paginator = () => {
     const {meta} = A.useSelector(A.adsSelector);
 
