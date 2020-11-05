@@ -51,7 +51,7 @@ export default function Home() {
   <Category categoryModal={categoryModal} setCategoryModal={setCategoryModal}
   />
   <MobileFilters filterModal={filterModal} setFilterModal={setFilterModal}/>
-      <div className="ads-page">
+      <div className="ads-page px-2">
       <div className="search-box">
       <div className="row">
         <Search />
@@ -119,6 +119,7 @@ export default function Home() {
         background: white;
         padding-top: 25px;
        padding-bottom: 100px;
+       width: 100%;
       }
 
       .btn{

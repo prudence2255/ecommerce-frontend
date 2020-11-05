@@ -19,7 +19,7 @@ const transform = new A.TransForm()
   </Head>
   <MobileSticky />
    <Layout>
-      <div className="home-page">
+      <div className="home-page px-2">
       <div className="row">
         <Search />
       </div>
