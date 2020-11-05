@@ -14,7 +14,7 @@ const Ad = ({ad}) => {
      <div className="media">
     <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
         <a>
-        <img className="align-self-start mr-3 w3-card" src={ad?.images[0].xsmall } alt="img" 
+        <img className="align-self-start mr-3" src={ad?.images[0].xsmall } alt="img" 
      style={{width: '150px', height: '100px'}}/>
         </a>
     </Link>
