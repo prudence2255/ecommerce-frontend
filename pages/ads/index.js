@@ -44,7 +44,7 @@ export default function Home() {
  }, [ads])
   return (
    <Layout>
-   <MobileSticky />
+   {/* <MobileSticky /> */}
    <Location locationModal={locationModal} setLocationModal={setLocationModal}
 
    />

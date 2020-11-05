@@ -163,7 +163,7 @@ A.useEffect(() => {
             .headerBg{
     background-color: #228B22!important;
     color: #f6f6fd;
-    padding: 8px 0px;
+    padding: 10px 0px;
     z-index: 999;
     width: 100%;
     }
