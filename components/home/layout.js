@@ -14,7 +14,7 @@ export default function Layout({children}){
         <div>
      <Header />
       <div className="col-md-12">
-      <div className="container mt-5">
+      <div className="mt-5">
        {children}
       </div>
       </div>

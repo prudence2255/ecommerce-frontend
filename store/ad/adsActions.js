@@ -25,12 +25,12 @@ const getError = (error, thunk) => {
       return thunk.rejectWithValue({ error: {errors : {error: [error.response.data.message]}}})
    }
    if(error.response.status === 404){
-    return thunk.rejectWithValue({ error: {errors : {error: ['not found']}}})
+    return thunk.rejectWithValue({ error: {errors : {error: ['Not found']}}})
    }
     return thunk.rejectWithValue({error: error.response.data})
   }
   if(error.request){
-    return thunk.rejectWithValue({ error: {errors : {error: [error.request]}}})
+    return thunk.rejectWithValue({ error: {errors : {error: ['Network error!']}}})
   }
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
