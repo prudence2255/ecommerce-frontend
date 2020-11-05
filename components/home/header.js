@@ -41,16 +41,16 @@ A.useEffect(() => {
   return (
     <>
      <Login loginModal={loginModal} setLoginModal={setLoginModal}/>
-    <div className="mobile col">
-    <div className="d-flex mx-auto">
-    <div className="d-block flex-item d-lg-none">
+    <div className="mobile d-block d-lg-none">
+    <div className="d-flex justify-content-center">
+    <div className="">
     <a className="w3-btn ad-btn w3-yellow" 
               onClick={sellNow}
               >Sell now
       </a>
     </div>
    
-    <div className="d-block flex-item d-lg-none ml-3">
+    <div className="ml-3">
     <a className="w3-btn w3-green" onClick={onLogin}> 
             <span className="">
             <span className="icon">
@@ -80,6 +80,10 @@ A.useEffect(() => {
     .mobile{
       position: fixed;
       bottom: 0px;
+      left: 0px;
+      right: 0px;
+      display: flex;
+      justify-content-center;
       z-index: 999;
     }
        `}
