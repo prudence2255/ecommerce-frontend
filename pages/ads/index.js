@@ -51,7 +51,7 @@ export default function Home() {
   <Category categoryModal={categoryModal} setCategoryModal={setCategoryModal}
   />
   <MobileFilters filterModal={filterModal} setFilterModal={setFilterModal}/>
-      <div className="container">
+      <div className="ads-page">
       <div className="search-box">
       <div className="row">
         <Search />
@@ -115,7 +115,7 @@ export default function Home() {
      </div>
      <style jsx>
       {`
-      .container{
+      .ads-page{
         background: white;
         padding-top: 25px;
        padding-bottom: 100px;

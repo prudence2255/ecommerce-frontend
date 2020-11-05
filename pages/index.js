@@ -19,7 +19,7 @@ const transform = new A.TransForm()
   </Head>
   <MobileSticky />
    <Layout>
-      <div className="container">
+      <div className="home-page">
       <div className="row">
         <Search />
       </div>
@@ -29,7 +29,7 @@ const transform = new A.TransForm()
         </div>
 
       </div>
-      {/* <div className="row">
+      <div className="row">
         <div className="col-md-8 mx-auto image-slider">
         <Carousel 
         showIndicators={false}
@@ -55,7 +55,7 @@ const transform = new A.TransForm()
                 ))}
             </Carousel>
         </div>
-      </div> */}
+      </div>
       <hr />
       <div className="row cat-title">
             <div className="col-md-6 mx-auto">
@@ -76,7 +76,7 @@ const transform = new A.TransForm()
      .welcome{
        margin-top: 20px;
      }
-     .container{
+     .home-page{
        background: white;
        padding-top: 25px;
        padding-bottom: 100px;
