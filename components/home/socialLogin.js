@@ -34,7 +34,6 @@ const appId = process.env.APP_ID;
           clientId={`${clientId}`}
         onSuccess={responseGoogle}
         onFailure={responseGoogle}
-        autoLoad={false}
         render={renderProps => (
           <GoogleLoginButton onClick={renderProps.onClick} disabled={renderProps.disabled}/>
         )}
