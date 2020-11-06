@@ -71,7 +71,7 @@ const SimilarAds = () => {
       };
     return (
         <>
-    <div className="similar_ads row p-2 pb-5 mt-2">
+    <div className="similar_ads row pb-5 mt-2">
     <div className="col-md-12">
         <div className="row text-center">
         <h5 className="mx-auto"> Similar ads</h5>

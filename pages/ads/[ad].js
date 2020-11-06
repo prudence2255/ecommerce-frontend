@@ -56,7 +56,7 @@ export default function Ad(){
             <div className="container">
                {Object.keys(ad).length > 0 && (
                 <div className="row">
-                    <div className="col-md-8 py-2 px-lg-5 px-md-2 mx-auto">
+                    <div className="col-md-8 py-2 px-lg-5 mx-auto">
                     <div className="row">
                     <div className="col">
                     <h5><b>{ad.title}</b></h5>
@@ -83,7 +83,26 @@ export default function Ad(){
                            <small className="mt-2">{ad.negotiable === '0' ? '' : ad.negotiable}</small>
                         </div>
                     </div>
-                    <div className="col d-block d-lg-none border">
+                    
+                   {isCondition && (
+                   <div className="row ">
+                   <div className="col features mt-md-2">
+                    <p><span>Condition: </span> {ad.condition}</p>
+                    </div>
+                   </div>
+                   )}
+                    <div className="row">
+                        <div className="col">
+                           <Features />
+                        </div>
+                    </div>
+                    <div className="row">
+                        <div className="col mt-3">
+                           <p><b>Description</b></p>
+                           {ad.description} 
+                        </div>
+                    </div>
+                    <div className="col d-block d-lg-none border mt-3">
                         <div className="row">
                             <div className="col">
                                 <p>For sale by <b>{ad.customer.name}</b></p>
@@ -105,24 +124,6 @@ export default function Ad(){
                                 </p>
                             ))}
                             </div>
-                        </div>
-                    </div>
-                   {isCondition && (
-                   <div className="row ">
-                   <div className="col features mt-md-2">
-                    <p><span>Condition: </span> {ad.condition}</p>
-                    </div>
-                   </div>
-                   )}
-                    <div className="row">
-                        <div className="col">
-                           <Features />
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col mt-3">
-                           <p><b>Description</b></p>
-                           {ad.description} 
                         </div>
                     </div>
                     </div>
