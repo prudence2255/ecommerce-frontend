@@ -156,7 +156,7 @@ export default function Ad(){
                )}
              <div className="row">
                 <div className="col-md-12 mx-auto">
-                <SimilarAds />
+                {/* <SimilarAds /> */}
                 </div>
              </div>
             </div>
