@@ -102,7 +102,7 @@ const cookies = new A.Cookies();
             </div>
                <div className="settings">
                <p className="ml-2"> Email: <span className="text-primary">{loginCustomer.email}</span></p>
-               <form className="w3-container pt-1 w3-card-2" onSubmit={handleSubmit(submit)}>
+               <form className="w3-container pt-1 " onSubmit={handleSubmit(submit)}>
             <p>
          <label>Name:</label>
          <input className="w3-input w3-border w3-round" type="tex" name="name"
@@ -151,7 +151,7 @@ const cookies = new A.Cookies();
         </form>
         <h5 className="my-3 ml-2">Change password</h5>
         <hr />
-    <form className="w3-container w3-card-2">
+    <form className="w3-container ">
   <p className="my-3">
   <input className="w3-input w3-border w3-round " name="cur_password" type="password" 
       placeholder="Current password"

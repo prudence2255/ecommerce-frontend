@@ -78,7 +78,7 @@ export default function Ad(){
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col my-3 d-flex">
+                        <div className="col my-3">
                            <h4 className="price mr-2">GHC {transform.formatNum(ad.price)}</h4>
                            <small className="mt-2">{ad.negotiable === '0' ? '' : ad.negotiable}</small>
                         </div>
