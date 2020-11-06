@@ -40,8 +40,8 @@ const SimilarAds = () => {
         slidesToScroll: 2,
         initialSlide: 0,
         rows: 3,
-      //   nextArrow: <SampleNextArrow />,
-      // prevArrow: <SamplePrevArrow />,
+        nextArrow: <SampleNextArrow />,
+        prevArrow: <SamplePrevArrow />,
         responsive: [
           {
             breakpoint: 1024,
@@ -77,7 +77,7 @@ const SimilarAds = () => {
         <h5 className="mx-auto"> Similar ads</h5>
         </div>
        <hr />
-        <div>
+        <div className="px-3">
         <Slider {...settings}>
          {similarAds.length > 0 && similarAds.map((ad, i) => (
             <div  key={i}>
