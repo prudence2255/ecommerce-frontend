@@ -155,11 +155,11 @@ export const Desktop = ({items}) => {
 export const Mobile = ({items}) => {
     return (
         <>
-<div className="categories d-flex">
+<div className="categories">
        {items.map(item => {
         if(item.name === 'Electronics'){
           return(
-           <div className="flex-item text-center" key={item.id}>
+           <div className="item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -178,7 +178,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Property'){
           return(
-           <div className="flex-item text-center" key={item.id}>
+           <div className="item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -199,7 +199,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Vehicles'){
           return(
-           <div className="flex-item text-center" key={item.id}>
+           <div className="item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`}  >
            <a>
          <div>
@@ -220,7 +220,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Services'){
           return(
-           <div className="flex-item text-center" key={item.id}>
+           <div className="item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -239,7 +239,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Clothing & Beauty'){
           return(
-           <div className="flex-item text-center" key={item.id}>
+           <div className="item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -260,7 +260,7 @@ export const Mobile = ({items}) => {
        {Array.isArray(items) && items.map(item => {
         if(item.name === 'Home & Garden'){
           return(
-           <div className="flex-item text-center" key={item.id}>
+           <div className="item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
            
@@ -282,16 +282,19 @@ export const Mobile = ({items}) => {
       </div>
       <style jsx>
      {`
-     
+    .categories{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 0px 10px;
 
-     .categories{ 
-       justify-content: center;
-     }
-     .categories .flex-item{
+    }
+     .categories .item{
        margin-top: 50px;
        border-radius: 10px;
        border: 2px solid green;
-       width: 180px;
+       width: 48%;
+      
      }
      Link, a{
        color: black!important;
