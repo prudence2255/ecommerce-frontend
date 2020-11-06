@@ -53,11 +53,11 @@ function Account(){
            <Layout>
            <div className="container">
            <div className="row">
-            <div className="col-md-2 w3-card-2 p-2">
+            <div className="col-md-2 w3-card">
                 <UserNav />
             </div>
-            <div className="col-md-8 ml-md-5 w3-card-2 p-2 m-top " ref={myRef}>
-                <h5 className="text-center w-100">{loginCustomer?.name}</h5>
+            <div className="col-md-8 ml-md-5 w3-card m-top " ref={myRef}>
+                <h5 className="text-center ">{loginCustomer?.name}</h5>
             <hr />
     <div className="card pb-4">
     <div className="card-header w3-blue">
@@ -76,13 +76,13 @@ function Account(){
       {ads.map(ad => (
         <div className="ad" key={ad.id}>
         <div className="row" >
-        <div className="col-md-12 m-2">
+        <div className="col-md-12">
         <div className="media">
   <img className="align-self-start mr-3" src={ad?.images[0].xsmall} alt="img" 
   style={{width: '100px', height: '80px'}}/>
   <div className="media-body">
-    <h6 className="mt-0">{title.shortenLength(ad.title, 20)} {ad.condition ? `(${ad.condition})` : null}</h6>
-   <p>{ad.location ?? 'Kumasi'}, {ad.category}</p>
+    <h6 className="mt-0"><b>{title.shortenLength(ad.title, 20)} {ad.condition ? `(${ad.condition})` : null}</b></h6>
+   <p>{ad.location ?? 'Ghana'}, {ad.category}</p>
    <p><b>GHC {ad.price}</b></p>
   </div>
 </div>
@@ -119,6 +119,9 @@ function Account(){
 
                 .del, .edit{
                   width: 80px;
+                }
+                .col-md-2, .col-md-8{
+                  background: white;
                 }
             `}
            </style>
