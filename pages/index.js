@@ -66,7 +66,7 @@ const transform = new A.TransForm()
      {Array.isArray(items) && <Desktop items={items}/>}
      </div>
      <div className="row d-block d-lg-none">
-    {/* {Array.isArray(items) &&  <Mobile items={items}/>} */}
+    {Array.isArray(items) &&  <Mobile items={items}/>}
      </div>
      </div>
    </Layout>

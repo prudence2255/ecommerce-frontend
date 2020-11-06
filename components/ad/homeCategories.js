@@ -159,7 +159,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Electronics'){
           return(
-           <div className="flex-item mx-2 text-center" key={item.id}>
+           <div className="flex-item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -178,7 +178,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Property'){
           return(
-           <div className="flex-item mx-2 text-center" key={item.id}>
+           <div className="flex-item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -199,7 +199,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Vehicles'){
           return(
-           <div className="flex-item mx-2 text-center" key={item.id}>
+           <div className="flex-item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`}  >
            <a>
          <div>
@@ -220,7 +220,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Services'){
           return(
-           <div className="flex-item mx-2 text-center" key={item.id}>
+           <div className="flex-item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -239,7 +239,7 @@ export const Mobile = ({items}) => {
        {items.map(item => {
         if(item.name === 'Clothing & Beauty'){
           return(
-           <div className="flex-item mx-2 text-center" key={item.id}>
+           <div className="flex-item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
          <div>
@@ -260,7 +260,7 @@ export const Mobile = ({items}) => {
        {Array.isArray(items) && items.map(item => {
         if(item.name === 'Home & Garden'){
           return(
-           <div className="flex-item mx-2 text-center" key={item.id}>
+           <div className="flex-item text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
            <a>
            
