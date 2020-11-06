@@ -64,7 +64,7 @@ function Account(){
             <div className="col-md-8 ml-md-5 w3-card m-top " ref={myRef}>
                 <h5 className="text-center ">{loginCustomer?.name}</h5>
             <hr />
-    <div className="card pb-4">
+    <div className="card p-2">
     <div className="card-header w3-blue">
     <h5 className="text-center ">Ads</h5>
     </div>
@@ -104,7 +104,7 @@ function Account(){
       ))}
       <div className="row">
     <div className="col ml-2">
-    <Paginator />
+   {ads.length > 15 &&  <Paginator />}
     </div>
   </div>
   </div>

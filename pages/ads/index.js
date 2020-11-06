@@ -109,7 +109,7 @@ export default function Home() {
       </div>
       <div className="row mt-4">
       <div className="col-md-6 mx-auto">
-      <Paginator />
+     {ads.length > 20 &&  <Paginator />}
      </div>
       </div>
      </div>

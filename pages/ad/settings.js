@@ -149,7 +149,9 @@ const cookies = new A.Cookies();
         <button className="w3-btn w3-blue" >Update details</button>
         </div>
         </form>
-        <h5 className="my-3 ml-2">Change password</h5>
+       {loginCustomer.provider === 'null' && (
+         <div>
+         <h5 className="my-3 ml-2">Change password</h5>
         <hr />
     <form className="w3-container ">
   <p className="my-3">
@@ -171,6 +173,8 @@ const cookies = new A.Cookies();
   <button className="w3-btn w3-blue">Update password</button>
   </p>
     </form>
+         </div>
+       )}
     <div className="m-3">
         <button className="btn w3-card w3-yellow"
         onClick={onLogout}
