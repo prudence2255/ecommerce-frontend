@@ -56,7 +56,7 @@ export default function Ad(){
             <div className="container">
                {Object.keys(ad).length > 0 && (
                 <div className="row">
-                    <div className="col-md-8 py-2 px-lg-5 mx-auto">
+                    <div className="col-md-8 py-2 px-lg-5 mx-auto pb-5">
                     <div className="row">
                     <div className="col">
                     <h5><b>{ad.title}</b></h5>
