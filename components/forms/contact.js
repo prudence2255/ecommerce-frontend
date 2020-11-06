@@ -2,7 +2,7 @@ import * as A from 'components/adminImports';
 import {RemoveIcon} from 'components/admin/icons';
 
 
-const Contact = ({error, ad, customer}) => {
+const Contact = ({error, customer}) => {
     const [contacts, setContacts] = A.useState([]);
     const dispatch = A.useDispatch();
 
@@ -41,7 +41,7 @@ if(customer.contact){
        }
 }
      return () => {}
- }, [])
+ }, [customer])
     return(
         <>
         <div className="border p-3">

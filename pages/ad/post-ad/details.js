@@ -81,11 +81,9 @@ const {register, reset, handleSubmit, errors, control } = A.useForm({
     return res.data.data     
    } catch (error) {
        if(error.response){
-           console.log(error.response)
            setPhotoErr('The photo must be a file of type: jpeg, jpg, png.')
            dispatch(A.endLoading())
        }else{
-           console.log(error.message)
            dispatch(A.endLoading())
        }
    }
@@ -147,7 +145,7 @@ const sendData = async(data) => {
 
 A.useEffect(() => {
     return () => {}
-}, [ad])
+}, [ad, loginCustomer])
     
 
     return(
