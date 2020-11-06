@@ -6,9 +6,11 @@ import * as A from 'components/adminImports';
 import {TransForm} from 'components/classes';
 import * as yup from "yup";
 
+const cookies = new A.Cookies();
 
 function PostAd(){
 const {ad} = A.useSelector(A.customerSelector);
+const {error} = A.useSelector(A.errorsSelector)
 const isAd = Object.keys(ad).length > 0;
 const upper = new TransForm();
 const [subLocations, setSubLocations] = useState(null);
@@ -59,6 +61,15 @@ const {control, errors, handleSubmit} = A.useForm({resolver: A.yupResolver(schem
 const handleForm = (e) => { 
   router.push(`/ad/post-ad/details?category=${e.subcategory.value}&location=${e.town.value}`)
 }
+
+A.useEffect(() => {
+  if(error){
+    if(error.includes('Unauthenticated')){
+      cookies.remove('customer_token', {path: '/'}); 
+    }
+  }
+  return () => {}
+},[])
 
     return(
         <>
