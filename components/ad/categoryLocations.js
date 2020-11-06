@@ -1,5 +1,4 @@
 import * as A from 'components/adminImports';
-import Link from 'next/link';
 
 import { PropertyIcon, ClothIcon,
     ServicesIcon, CarIcon, HomeGardenIcon,
@@ -8,7 +7,7 @@ import { PropertyIcon, ClothIcon,
 const CategoryLocation = () => {
     const {categoryLocations} = A.useSelector(A.adsSelector);
     const {locations, categories} = categoryLocations;
-
+  const router = A.useRouter();
     const transFormArray = (array, id, check) => {
         const newArray = array?.filter(item => item[id] === check)
          return newArray;
@@ -17,6 +16,15 @@ const CategoryLocation = () => {
 const parentCategories = transFormArray(categories, 'parent_id', null);
 const parentLocations = transFormArray(locations, 'parent_id', null);
 
+const handleCategory = (category) => {
+  router.push({
+      pathname: '/ads',
+      query: {
+          ...router.query,
+          category: category
+      }
+  })
+}
     return(
         <>
         <div className="col mt-4">
@@ -30,13 +38,9 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
         if(item.name === 'Electronics'){
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
-           <Link href={`/ads?category=${item.slug}`} >
-           <a>
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
          <ElectronicsIcon size="20"/>  {item.name} {`(${item.ads_count})`}
          </div>
-         </a>
-         </Link>
         </div>
           )
         }
@@ -46,14 +50,9 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
         if(item.name === 'Property'){
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
-           <Link href={`/ads?category=${item.slug}`} >
-           <a>
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
          <PropertyIcon size="20"/> {item.name} {`(${item.ads_count})`}
          </div>
-        
-         </a>
-         </Link>
         </div>
           )
         }
@@ -63,14 +62,9 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
         if(item.name === 'Vehicles'){
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
-           <Link href={`/ads?category=${item.slug}`}  >
-           <a>
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
          <CarIcon size="20"/>  {item.name} {`(${item.ads_count})`}
          </div>
-         
-         </a>
-         </Link>
         </div>
           )
         }
@@ -80,13 +74,9 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
         if(item.name === 'Services'){
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
-           <Link href={`/ads?category=${item.slug}`} >
-           <a>
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
          <ServicesIcon size="20"/> {item.name} {`(${item.ads_count})`}
          </div>
-         </a>
-         </Link>
         </div>
           )
         }
@@ -96,14 +86,9 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
         if(item.name === 'Clothing & Beauty'){
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
-           <Link href={`/ads?category=${item.slug}`} >
-           <a>
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
          <ClothIcon size="20"/> {item.name} {`(${item.ads_count})`}
          </div>
-         
-         </a>
-         </Link>
         </div>
           )
         }
@@ -113,15 +98,10 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
         if(item.name === 'Home & Garden'){
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
-           <Link href={`/ads?category=${item.slug}`} >
-           <a>
            
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
          <HomeGardenIcon size="20"/>  {item.name} {`(${item.ads_count})`}
          </div>
-        
-         </a>
-         </Link>
         </div>
           )
         }
@@ -134,19 +114,21 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
       <div className="row">
        {parentLocations?.map(location => (
         <div className="col-md-12 mx-2 py-1" key={location.id}>
-           <Link href={`/ads?location=${location.slug}`} >
-           <a>
-           
-         <div>
+         <div className="link" onClick={() => handleCategory(item.slug)}>
              {location.name} {`(${location.ads_count})`}
          </div>
-        
-         </a>
-         </Link>
         </div>
        ))}
       </div>
         </div>
+        <style jsx>
+        {`
+        .link{
+                    cursor: pointer;
+                    color: blue;
+                }
+        `}
+        </style>
         </>
     )
 }
