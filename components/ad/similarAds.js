@@ -40,8 +40,8 @@ const SimilarAds = () => {
         slidesToScroll: 2,
         initialSlide: 0,
         rows: 3,
-        nextArrow: <SampleNextArrow />,
-      prevArrow: <SamplePrevArrow />,
+      //   nextArrow: <SampleNextArrow />,
+      // prevArrow: <SamplePrevArrow />,
         responsive: [
           {
             breakpoint: 1024,

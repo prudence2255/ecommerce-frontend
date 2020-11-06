@@ -154,7 +154,7 @@ export default function Ad(){
                     </div>
                 </div>
                )}
-             <div className="row">
+             <div className="row mt-5">
                 <div className="col mx-auto">
                 <SimilarAds />
                 </div>
