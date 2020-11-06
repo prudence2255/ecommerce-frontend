@@ -64,8 +64,8 @@ function Account(){
             <div className="col-md-8 ml-md-5 w3-card m-top " ref={myRef}>
                 <h5 className="text-center ">{loginCustomer?.name}</h5>
             <hr />
-    <div className="card p-2">
-    <div className="card-header w3-blue">
+    <div className="card pb-4">
+    <div className="card-header w3-blue mb-2">
     <h5 className="text-center ">Ads</h5>
     </div>
     {status === 'succeeded' && ads.length === 0 && (

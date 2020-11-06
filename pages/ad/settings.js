@@ -149,7 +149,7 @@ const cookies = new A.Cookies();
         <button className="w3-btn w3-blue" >Update details</button>
         </div>
         </form>
-       {loginCustomer.provider === 'null' && (
+       {loginCustomer.provider === null && (
          <div>
          <h5 className="my-3 ml-2">Change password</h5>
         <hr />
