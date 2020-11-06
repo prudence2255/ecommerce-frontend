@@ -65,7 +65,7 @@ const handleForm = (e) => {
        <Layout>
            <div className="container">
            <div className="row">
-            <div className="col-md-10 w3-card-2 p-2 mx-auto">
+            <div className="col-md-10 p-2 mx-auto">
             <div className="card">
             <div className="card-header w3-blue">
                 <h5 className="text-center">{isAd ? 'Update ad' : 'Post ad'}</h5>
@@ -197,7 +197,9 @@ const handleForm = (e) => {
                 background: green;
                 color: white;
             }
-            
+            .container{
+              background: white;
+            }
             @media(max-width: 768px){
                     .w3-half{
                         margin-bottom: 20px;

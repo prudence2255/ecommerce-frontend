@@ -144,6 +144,7 @@ const sendData = async(data) => {
 }
 
 A.useEffect(() => {
+  
     return () => {}
 }, [ad, loginCustomer])
     
@@ -156,7 +157,7 @@ A.useEffect(() => {
         )}
            <div className="container">
            <div className="row">
-            <div className="col-md-10 w3-card-2 p-2 mx-auto">
+            <div className="col-md-10 mx-auto">
             <div className="row">
             <div className=" back">
             <a className="btn " onClick={() => router.back()}> <LeftIcon /> Back to previous step</a>
@@ -169,10 +170,10 @@ A.useEffect(() => {
                 <h5 className="text-center">{isAd ? 'Update ad' : 'Post ad'}</h5>
             </div>
           
-          <div className="w3-container pt-1">
+          <div className="w3-container">
           <h5 className="ml-2 mt-1">Ad Details</h5>
           <hr />
-          <form className="w3-container pt-1 " onSubmit={handleSubmit(sendData)} encType="multipart/form-data">
+          <form className="w3-container" onSubmit={handleSubmit(sendData)} encType="multipart/form-data">
             <div className="col-md-8 mx-auto">
             <Field.Input 
                 name="title"
@@ -373,7 +374,7 @@ A.useEffect(() => {
             <hr />
             <ImageUpload error={photoErr} ad={ad}/>
             </div>
-            <div className="photos mt-5" >
+            <div className=" mt-5" >
             <h5 className="ml-2 mt-1">Contact details</h5> 
             <hr />
             <Contact error={contactErr} ad={ad} customer={loginCustomer}/> 
@@ -407,6 +408,9 @@ A.useEffect(() => {
                 background: green;
                 color: white;
           } 
+          .container{
+              background: white;
+          }
         `}
        </style>
         </>

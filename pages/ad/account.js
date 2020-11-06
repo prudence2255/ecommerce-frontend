@@ -5,7 +5,7 @@ import { useRef, useEffect } from 'react';
 import * as A from 'components/adminImports';
 import {TransForm} from 'components/classes';
 import Paginator from 'components/ad/paginator';
-
+const cookies = new A.Cookies();
 
 function Account(){
   const {ads, loginCustomer} = A.useSelector(A.customerSelector);
@@ -39,8 +39,7 @@ function Account(){
       })
     }
     useEffect(() => {
-      //dispatch(A.loadAds({url: '/api/customer-ads'}))
-
+      //dispatch(A.loadAds({url: '/api/customer-ads'})) 
         window.scrollTo(0, myRef.current.offsetTop) 
         return () => {          
         }
