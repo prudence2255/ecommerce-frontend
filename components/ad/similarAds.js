@@ -71,8 +71,8 @@ const SimilarAds = () => {
       };
     return (
         <>
-    <div className="similar_ads row pb-5 mt-2">
-    <div className="col-md-12">
+    <div className="similar_ads pb-5 mt-2 row">
+    <div className="col">
         <div className="row text-center">
         <h5 className="mx-auto"> Similar ads</h5>
         </div>
@@ -106,8 +106,8 @@ const SimilarAds = () => {
           ))}
         </Slider>
         </div>
+        </div>
     </div>
-      </div>
       <style jsx>
                 {`
             .similar_ads{
