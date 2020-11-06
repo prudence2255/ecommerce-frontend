@@ -155,7 +155,7 @@ export const Desktop = ({items}) => {
 export const Mobile = ({items}) => {
     return (
         <>
-<div className="row categories d-flex">
+<div className="categories d-flex">
        {items.map(item => {
         if(item.name === 'Electronics'){
           return(
