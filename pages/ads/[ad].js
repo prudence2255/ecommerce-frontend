@@ -10,7 +10,7 @@ import Share from 'components/ad/share';
 const transform = new A.TransForm();
 const APP_URL = process.env.APP_URL;
 
-export default function Ad({href}){
+export default function Ad(){
   const {ad} = A.useSelector(A.adsSelector);
     const [showContact, setShowContact] = A.useState();
     const cats = [
@@ -40,7 +40,7 @@ export default function Ad({href}){
                 </title>
                 <meta property="og:title" content={ad.title} />
                  <meta name="twitter:image" content={ad.images[0].large} />
-                  <meta property="og:image" content={ad.images[0].large} />                             
+                <meta property="og:image" content={ad.images[0].large} />                             
                  <meta property="og:image:width" content="1200" />
                  <meta property="og:image:height" content="630" />                                 
                  <meta name="description" lang="en" content={ad.description} />

@@ -124,7 +124,7 @@ const handleLocation = (location) => {
       <div className="row">
        {parentLocations?.map(location => (
         <div className="col-md-12 mx-2 py-1" key={location.id}>
-         <div className="link" onClick={() => handleLocation(item.slug)}>
+         <div className="link" onClick={() => handleLocation(location.slug)}>
              {location.name} {`(${location.ads_count})`}
          </div>
         </div>
