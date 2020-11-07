@@ -25,6 +25,16 @@ const handleCategory = (category) => {
       }
   })
 }
+
+const handleLocation = (location) => {
+  router.push({
+      pathname: '/ads',
+      query: {
+          ...router.query,
+          location: location
+      }
+  })
+}
     return(
         <>
         <div className="col mt-4">
@@ -114,7 +124,7 @@ const handleCategory = (category) => {
       <div className="row">
        {parentLocations?.map(location => (
         <div className="col-md-12 mx-2 py-1" key={location.id}>
-         <div className="link" onClick={() => handleCategory(item.slug)}>
+         <div className="link" onClick={() => handleLocation(item.slug)}>
              {location.name} {`(${location.ads_count})`}
          </div>
         </div>

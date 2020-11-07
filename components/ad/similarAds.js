@@ -82,14 +82,14 @@ const SimilarAds = () => {
          {similarAds.length > 0 && similarAds.map((ad, i) => (
             <div  key={i}>
             <div className="media">
-            <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} onClick={goToPage}>
-        <a>
+            <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
+        <a onClick={goToPage}>
         <img className="align-self-start mr-3 ad-img-small img" src={ad?.images[0].xsmall } alt="img" />
          </a>
         </Link>
         <div className="media-body">
-        <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} onClick={goToPage}>
-        <a>
+        <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
+        <a onClick={goToPage}>
         <h6 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</b></h6>
         <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
          <div>

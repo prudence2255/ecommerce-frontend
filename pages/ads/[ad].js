@@ -6,9 +6,11 @@ import { PhoneIcon}  from 'components/admin/icons';
 import Features  from 'components/ad/features';
 import SimilarAds from 'components/ad/similarAds';
 import {MobileSticky} from 'components/home/header';
+import Share from 'components/ad/share';
 const transform = new A.TransForm();
+const APP_URL = process.env.APP_URL;
 
-export default function Ad(){
+export default function Ad({href}){
   const {ad} = A.useSelector(A.adsSelector);
     const [showContact, setShowContact] = A.useState();
     const cats = [
@@ -25,7 +27,6 @@ export default function Ad(){
     }
 
     A.useEffect(() => {
-        console.log(router.pathname)
         return () => {}
     }, [ad])
     return (
@@ -44,11 +45,11 @@ export default function Ad(){
                  <meta property="og:image:height" content="630" />                                 
                  <meta name="description" lang="en" content={ad.description} />
                  <meta name="twitter:title" content={ad.title} />
-                 <meta name="twitter:url" content={router.pathname} />
+                 <meta name="twitter:url" content={`${APP_URL}/${router.asPath}`} />
                  <meta name="twitter:description" content={ad.description}/>
-                 <meta property="og:url" content={router.pathname} />
+                 <meta property="og:url" content={`${APP_URL}/${router.asPath}`}/>
                  <meta property="og:description" content={ad.description}/>
-                <link rel="canonical" href={router.pathname} />
+                <link rel="canonical" href={`${APP_URL}/${router.asPath}`} />
                 <meta name="theme-color" content="#008000" />
          </Head>}
         <Layout>
@@ -125,6 +126,12 @@ export default function Ad(){
                             ))}
                             </div>
                         </div>
+                       
+                    </div>
+                    <div className="row mt-4">
+                             <div className="col">
+                                <Share />
+                             </div>       
                     </div>
                     </div>
                     <div className="col-md-3 offset-md-1 p-2 d-none d-lg-block">

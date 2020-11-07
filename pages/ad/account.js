@@ -104,7 +104,7 @@ function Account(){
       ))}
       <div className="row">
     <div className="col ml-2">
-   {ads.length > 15 &&  <Paginator />}
+   <Paginator />
     </div>
   </div>
   </div>
