@@ -1,5 +1,5 @@
 import * as A from 'components/adminImports';
-import { useGoogleLogin } from 'react-google-login'
+import GoogleLogin, {GoogleLogout} from 'react-google-login';
 import {socialLogin} from 'store/customer/customerActions';
 import { GoogleLoginButton } from "react-social-login-buttons";
 
@@ -30,15 +30,17 @@ const clientId = process.env.CLIENT_ID;
             console.log('Error logging in')
         }
 
-      const { signIn } = useGoogleLogin({
-        onSuccess,
-        clientId,
-        onFailure,
-      })
 
       return(
           <> 
-          <GoogleLoginButton onClick={signIn}/>
+          <GoogleLogin
+           clientId={clientId}
+          render={renderProps => (
+         <GoogleLoginButton onClick={renderProps.onClick} disabled={renderProps.disabled} />
+       )}
+        onSuccess={onSuccess}
+        onFailure={onFailure}
+        />
           </>
       )
   }
@@ -54,19 +56,15 @@ export const LogoutGoogle = () => {
           }).catch(e => e.message)
   }
   
-  const onFailure = (res) => {
-    alert('Logout failed')
-  }
-    const { signOut } = useGoogleLogout({
-    onFailure,
-    clientId,
-    onLogoutSuccess
-  })
+    
   return(
     <>
-    <button onClick={signOut} className="w3-card btn w3-yellow">
-      Logout
-    </button>
+   <GoogleLogout
+      clientId={clientId}
+      buttonText="Logout"
+      onLogoutSuccess={onLogoutSuccess}
+    >
+    </GoogleLogout>
     </>
   )
 }
