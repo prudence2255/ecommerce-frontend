@@ -32,9 +32,7 @@ const clientId = process.env.CLIENT_ID;
 
       const { signIn } = useGoogleLogin({
         onSuccess,
-        clientId: clientId,
-        autoLoad: false,
-        isSignedIn: false,
+        clientId,
         onFailure,
       })
 
@@ -49,7 +47,7 @@ const clientId = process.env.CLIENT_ID;
 export const LogoutGoogle = () => {
   const dispatch = A.useDispatch();
   const router = A.useRouter()
-  const onLogoutSuccess = async(response) => {
+  const onLogoutSuccess = (response) => {
       dispatch(A.logout()).then(A.unwrapResult)
           .then(() => {
              if(!cookies.get('customer_token')) router.push('/')
@@ -61,7 +59,7 @@ export const LogoutGoogle = () => {
   }
     const { signOut } = useGoogleLogout({
     onFailure,
-    clientId: clientId,
+    clientId,
     onLogoutSuccess
   })
   return(
