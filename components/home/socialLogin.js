@@ -1,24 +1,22 @@
 import * as A from 'components/adminImports';
-import GoogleLogin, {GoogleLogout} from 'react-google-login';
-import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import { useGoogleLogin } from 'react-google-login'
 import {socialLogin} from 'store/customer/customerActions';
-import { FacebookLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import { GoogleLoginButton } from "react-social-login-buttons";
 
 const cookies = new A.Cookies();
 
 const clientId = process.env.CLIENT_ID;
-const appId = process.env.APP_ID;
 
 
   export const LoginGoogle = ({setLoginModal}) => {
     const dispatch = A.useDispatch();
     const router = A.useRouter();
-    const responseGoogle = async(response) => {
+    const onSuccess = (response) => {
         const res = {
             provider: 'google',
             token: response.accessToken
         };
-    await dispatch(socialLogin({customer: res, url: '/api/login/google/callback'}))
+     dispatch(socialLogin({customer: res, url: '/api/login/google/callback'}))
     .then(A.unwrapResult)
         .then(() => {
           if(cookies.get('customer_token')){
@@ -27,73 +25,50 @@ const appId = process.env.APP_ID;
           }
         }).catch(e  => e.message)       
       }
-    
+
+      const onFailure = (response) => {
+            console.log('Error logging in')
+        }
+
+      const { signIn } = useGoogleLogin({
+        onSuccess,
+        clientId: clientId,
+        autoLoad: false,
+        isSignedIn: false,
+        onFailure,
+      })
+
       return(
-          <>
-          <GoogleLogin
-          clientId={`${clientId}`}
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        render={renderProps => (
-          <GoogleLoginButton onClick={renderProps.onClick} disabled={renderProps.disabled}/>
-        )}
-        
-        />
+          <> 
+          <GoogleLoginButton onClick={signIn}/>
           </>
       )
   }
-
-export const LoginFacebook = ({setLoginModal}) => {
-    const dispatch = A.useDispatch();
-    const router = A.useRouter();
-    const responseFacebook = async(response) => {
-        const res = {
-            provider: 'facebook',
-            token: response.accessToken
-        };
-        await dispatch(socialLogin({customer: res, url: '/api/login/facebook/callback'}))
-        .then(A.unwrapResult)
-        .then(() => {
-          if(cookies.get('customer_token')){
-            router.push('/ad/account')
-          }
-          setLoginModal(false); 
-        }).catch(e  => e.message)  
-      }
-    return(
-        <>
-       <FacebookLogin
-            appId={`${appId}`}
-      callback={responseFacebook}
-       render={renderProps => (
-        <FacebookLoginButton onClick={renderProps.onClick}/>
-  )} 
-            />
-        
-        </>
-    )
-}
 
 
 export const LogoutGoogle = () => {
   const dispatch = A.useDispatch();
   const router = A.useRouter()
-  const logout = async(response) => {
+  const onLogoutSuccess = async(response) => {
       dispatch(A.logout()).then(A.unwrapResult)
           .then(() => {
              if(!cookies.get('customer_token')) router.push('/')
           }).catch(e => e.message)
   }
-
+  
+  const onFailure = (res) => {
+    alert('Logout failed')
+  }
+    const { signOut } = useGoogleLogout({
+    onFailure,
+    clientId: clientId,
+    onLogoutSuccess
+  })
   return(
     <>
-    <GoogleLogout
-     clientId={`${clientId}`}
-      buttonText="Logout"
-      onLogoutSuccess={logout}
-      onFailure={logout}
-    >
-    </GoogleLogout>
+    <button onClick={signOut} className="w3-card btn w3-yellow">
+      Logout
+    </button>
     </>
   )
 }

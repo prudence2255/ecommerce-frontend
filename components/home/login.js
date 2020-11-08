@@ -1,5 +1,5 @@
 import * as yup from "yup";
-import {LoginGoogle, LoginFacebook} from './socialLogin';
+import {LoginGoogle} from './socialLogin';
 import Link from 'next/link';
 import * as A from 'components/adminImports';
 import Signup from './signup';
@@ -56,9 +56,6 @@ export default function Login({loginModal, setLoginModal}){
           <h5 className=" text-center"> Login</h5>
         </div>
     <div className="card-body">
-    <div className="social-btn">
-    <LoginFacebook setLoginModal={setLoginModal}/>
-    </div>
     <div className="social-btn my-2">
     <LoginGoogle setLoginModal={setLoginModal}/> 
     </div>

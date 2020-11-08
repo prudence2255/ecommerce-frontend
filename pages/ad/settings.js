@@ -4,69 +4,24 @@ import { useRef, useEffect, useState } from 'react';
 import * as yup from "yup";
 import * as A from 'components/adminImports';
 import AuthRoute from 'components/home/auth';
-import Select from 'react-select';
+import {LogoutGoogle} from 'components/home/socialLogin'
 
 const cookies = new A.Cookies();
 
  function Settings(){
-     const [region, setRegion] = useState();
-     const [town, setTown] = useState();
-     const [towns, setTowns] = useState()
-    const {loginCustomer, categoryLocations} = A.useSelector(A.customerSelector);
+    const {loginCustomer} = A.useSelector(A.customerSelector);
     const {error} = A.useSelector(A.errorsSelector);
-    const {locations} = categoryLocations;
-
-    const transFormArray = (array, id, name, check) => {
-      const newArray = array?.filter(region => region[id] === check).map(region => ({
-         label: region[name],
-         value: region.id
-       }));
-   return newArray?.sort((a, b) => {
-     let x = a.label.toLowerCase();
-     let y = b.label.toLowerCase();
-     if (x < y) {return -1;}
-     if (x > y) {return 1;}
-     return 0;
-   });
-  }
-  const regions = transFormArray(locations, 'parent_id', 'name', null);
- 
-                  
-  
+    
     const router = A.useRouter()
   
     const dispatch = A.useDispatch()
 
-    const handleRegion = (value) => {
-      setRegion(value)
-     setTowns(transFormArray(locations, 'parent_id', 'name', value?.value));
-    }
 
-    const handleTown = (value) => {
-      setTown(value)
-    }
     const onLogout = () => {
-        if(loginCustomer.provider === 'facebook'){
-          dispatch(A.logout()).then(A.unwrapResult)
-          .then(() => {
-             if(!cookies.get('customer_token')){
-                window.FB.getLoginStatus(function(response) {
-                    if (response.status === 'connected') {
-
-                      let accessToken = response.authResponse.accessToken;
-                      window.FB.logout(accessToken);
-                    } 
-                  } );
-               
-                router.push('/');
-             } 
-          }).catch(e => e.message)
-        }else{
             dispatch(A.logout()).then(A.unwrapResult)
             .then(() => {
                if(!cookies.get('customer_token')) router.push('/')
             }).catch(e => e.message)
-        }
     }
 
 const schema = yup.object().shape({
@@ -123,41 +78,7 @@ const schema = yup.object().shape({
          />
          <span className="error">{errors.name?.message}</span>
         </p>
-        {/* <div className="w3-row">
-        <div className="w3-half">
-        <div className="select">
-        <label>Region:</label><br />
-        <Select
-        name="region"
-        value={region}
-        onChange={handleRegion}
-        options={regions}
-        instanceId="regions"
-        isSearchable
-        isClearable
-        placeholder="Search regions..."
-         />
-        <span className="error">{errors.region?.message}</span>
-        </div>
-        </div>
-        <div className="w3-half">
-        <div className="select">
-        <label>City/District/Town:</label><br />
-        <Select
-        name="town"
-        value={town}
-        onChange={handleTown}
-        options={towns}
-        instanceId="towns"
-        isSearchable
-        isClearable
-        placeholder="Search sublocations..."
-        isDisabled={region ? false : true}
-      />
-        <span className="error">{errors.town?.message}</span>
-        </div>
-        </div>
-        </div> */}
+        
         <div className="pb-2 my-3">
         <button className="w3-btn w3-blue" onClick={handleSubmit(submit)}>Update details</button>
         </div>
@@ -189,11 +110,13 @@ const schema = yup.object().shape({
          </div>
        )}
     <div className="m-3">
-        <button className="btn w3-card w3-yellow"
-        onClick={onLogout}
-        >
+        {loginCustomer.provider === 'google' ? <LogoutGoogle /> : (
+          <button className="btn w3-card w3-yellow"
+          onClick={onLogout}
+          >
         Logout
         </button>
+        )}
     </div>
                </div>
             </div>
