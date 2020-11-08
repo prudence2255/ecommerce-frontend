@@ -67,12 +67,6 @@ const goToPage = () => {
 }
 
 A.useEffect(() => {
-  if(error){
-    if(error.includes('Unauthenticated.')){
-      cookies.remove('customer_token', {path: '/'}); 
-      router.push('/');
-    }
-  }
   return () => {}
 },[error])
 

@@ -40,12 +40,6 @@ function Account(){
     }
     useEffect(() => {
       //dispatch(A.loadAds({url: '/api/customer-ads'})) 
-      if(error){
-        if(error.includes('Unauthenticated.')){
-          cookies.remove('customer_token', {path: '/'}); 
-          router.push('/');
-        }
-      }
         window.scrollTo(0, myRef.current.offsetTop) 
         return () => {          
         }
