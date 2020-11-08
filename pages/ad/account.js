@@ -8,7 +8,7 @@ import Paginator from 'components/ad/paginator';
 const cookies = new A.Cookies();
 
 function Account(){
-  const {ads, loginCustomer} = A.useSelector(A.customerSelector);
+  const {ads, loginCustomer, meta} = A.useSelector(A.customerSelector);
   const {error} = A.useSelector(A.errorsSelector)
   const {status} = A.useSelector(A.loadersSelector);
     const myRef = useRef(null);
@@ -104,7 +104,7 @@ function Account(){
       ))}
       <div className="row">
     <div className="col ml-2">
-   <Paginator />
+   <Paginator pages={meta}/>
     </div>
   </div>
   </div>

@@ -17,7 +17,7 @@ export default function Home() {
   const [categoryModal, setCategoryModal] = A.useState(false);
   const [locationModal, setLocationModal] = A.useState(false);
   const [filterModal, setFilterModal] = A.useState(false);
-  const {ads, adsLoading} = A.useSelector(A.adsSelector);
+  const {ads, adsLoading, meta} = A.useSelector(A.adsSelector);
   const {status} = A.useSelector(A.loadersSelector);
  
   const [isCategory, setCategory] = A .useState('Category')
@@ -121,7 +121,7 @@ export default function Home() {
       </div>
       <div className="row mt-4">
       <div className="col-md-6 mx-auto">
-    <Paginator />
+    <Paginator pages={meta}/>
      </div>
       </div>
      </div>

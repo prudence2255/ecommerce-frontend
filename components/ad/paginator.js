@@ -3,10 +3,8 @@ import * as A from 'components/adminImports';
 
 
 
-const Paginator = () => {
-    const {meta} = A.useSelector(A.adsSelector);
-
-    const router = A.useRouter();
+const Paginator = ({pages}) => { 
+ const router = A.useRouter();
 const handlePagination = (page) => {
     const currentPath = router.pathname;
     const currentQuery = router.query;
@@ -17,6 +15,9 @@ const handlePagination = (page) => {
     });
     window.scrollTo(0, 50) 
 }
+A.useEffect(() => {
+    return () => {}
+},[pages])
     return (
         <>
         <ReactPaginate
@@ -33,8 +34,8 @@ const handlePagination = (page) => {
                     previousLinkClassName="page-link"
                     nextLinkClassName="page-link"
                     subContainerClassName={'pages pagination'}
-                    initialPage={meta.current_page - 1}
-                    pageCount={meta.last_Page}
+                    initialPage={pages.current_page - 1}
+                    pageCount={pages.last_page}
                     marginPagesDisplayed={1}
                     pageRangeDisplayed={1}
                     onPageChange={handlePagination}

@@ -21,6 +21,7 @@ const cookies = new Cookies();
     parentItems: [],
     childItems: [],
     photos: [],
+    meta: {},
      contacts: [],
   },
   reducers: {
@@ -70,7 +71,8 @@ const cookies = new Cookies();
     },
 
      [loadAds.fulfilled] : (state, action) => {
-      state.ads =  action.payload.data.data
+      state.ads =  action.payload.data.data;
+      state.meta = action.payload.data;
     },
 
     [loadAd.fulfilled] : (state, action) => {
@@ -140,6 +142,7 @@ export const customerSelector = createSelector(
        childItems: state.customers.childItems,
        photos: state.customers.photos,
        contacts: state.customers.contacts,
+       meta: state.customers.meta,
     }),
 
     (state) => state
