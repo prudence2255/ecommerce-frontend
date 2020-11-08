@@ -15,6 +15,7 @@ const handlePagination = (page) => {
         pathname: currentPath,
         query: currentQuery,
     });
+    window.scrollTo(0, 50) 
 }
     return (
         <>
@@ -34,8 +35,8 @@ const handlePagination = (page) => {
                     subContainerClassName={'pages pagination'}
                     initialPage={meta.current_page - 1}
                     pageCount={meta.last_Page}
-                    marginPagesDisplayed={2}
-                    pageRangeDisplayed={3}
+                    marginPagesDisplayed={1}
+                    pageRangeDisplayed={1}
                     onPageChange={handlePagination}
                 />
         </>

@@ -1,6 +1,6 @@
 
 import { createSlice, createSelector} from '@reduxjs/toolkit'
-import {logout, addAd, loadAd,
+import {logout, addAd, loadAd, updateCustomer,
       loadAds, login, loadCustomer,
       updateAd, deleteAd, categoryLocation,
       signUp, socialLogin, parentOptions, childOptions,
@@ -96,6 +96,10 @@ const cookies = new Cookies();
        const newAds = [...state.ads]   
       newAds[adIndex] = Object.assign({}, newAds[adIndex], action.payload.data.data)
       state.ads = newAds 
+    },
+
+    [updateCustomer.fulfilled] : (state, action) => { 
+      state.loginCustomer =  action.payload.data.data
     },
   
       [deleteAd.fulfilled] : (state, action) => {

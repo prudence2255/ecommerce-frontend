@@ -13,6 +13,7 @@ const cookies = new A.Cookies();
      const [town, setTown] = useState();
      const [towns, setTowns] = useState()
     const {loginCustomer, categoryLocations} = A.useSelector(A.customerSelector);
+    const {error} = A.useSelector(A.errorsSelector);
     const {locations} = categoryLocations;
 
     const transFormArray = (array, id, name, check) => {
@@ -33,7 +34,7 @@ const cookies = new A.Cookies();
                   
   
     const router = A.useRouter()
-    const myRef = useRef(null)
+  
     const dispatch = A.useDispatch()
 
     const handleRegion = (value) => {
@@ -68,32 +69,44 @@ const cookies = new A.Cookies();
         }
     }
 
-
-    const { register, handleSubmit, errors } = A.useForm({
-        //resolver: A.yupResolver(schema)
+const schema = yup.object().shape({
+  name: yup.string().required()
+})
+    const { register, reset, handleSubmit, errors } = A.useForm({
+      resolver: A.yupResolver(schema)  
       })
+
       const submit = (data) => {
-        //  dispatch(login(data)).then(A.unwrapResult)
-        //  .then( () => {
-        //      setLoginModal(false);
-        //  })
-        //  .catch(e => e.message)
-      };
+        dispatch(A.updateCustomer({customer: data, url: '/api/update-customer'}))
+        .then(A.unwrapResult)
+        .then(() => {
+            A.Swal.fire({
+                position: 'center',
+                icon: 'success',
+                title: 'Updated successfully',
+                showConfirmButton: false,
+                timer: 1800
+              })  
+        }).catch(e  => e.message)  
+             
+}
 
       useEffect(() => {
-        window.scrollTo(0, myRef.current.offsetTop) 
+        const myRef = document.querySelector(".m-top");
+        window.scrollTo(0, myRef.offsetTop) 
         return () => {          
         }
-    }, [])
+    }, [loginCustomer])
     return(
         <>
+        {error && <A.ShowError />}
           <Layout>
            <div className="container">
            <div className="row">
             <div className="col-md-2 w3-card-2 p-2">
                 <UserNav />
             </div>
-            <div className="col-md-8 ml-md-5 w3-card-2 p-2 m-top" ref={myRef}>
+            <div className="col-md-8 ml-md-5 w3-card-2 p-2 m-top" >
                 <h5 className="text-center w-100">Settings</h5>
                 <hr />
                 <div className="card">
@@ -102,7 +115,7 @@ const cookies = new A.Cookies();
             </div>
                <div className="settings">
                <p className="ml-2"> Email: <span className="text-primary">{loginCustomer.email}</span></p>
-               <form className="w3-container pt-1 " onSubmit={handleSubmit(submit)}>
+               <form className="w3-container pt-1 " >
             <p>
          <label>Name:</label>
          <input className="w3-input w3-border w3-round" type="tex" name="name"
@@ -110,7 +123,7 @@ const cookies = new A.Cookies();
          />
          <span className="error">{errors.name?.message}</span>
         </p>
-        <div className="w3-row">
+        {/* <div className="w3-row">
         <div className="w3-half">
         <div className="select">
         <label>Region:</label><br />
@@ -144,9 +157,9 @@ const cookies = new A.Cookies();
         <span className="error">{errors.town?.message}</span>
         </div>
         </div>
-        </div>
+        </div> */}
         <div className="pb-2 my-3">
-        <button className="w3-btn w3-blue" >Update details</button>
+        <button className="w3-btn w3-blue" onClick={handleSubmit(submit)}>Update details</button>
         </div>
         </form>
        {loginCustomer.provider === null && (

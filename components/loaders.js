@@ -3,7 +3,7 @@ import {BallBeat} from 'react-pure-loaders';
 import {BallGridBeat} from 'react-pure-loaders';
 import {loadersSelector} from 'store/admin/loadersSlice';
 import { ProgressBarProvider } from 'react-redux-progress';
- 
+import Skeleton from 'react-loading-skeleton';
 
 export const LineLoader = () => {
     const {loading} = useSelector(loadersSelector)
@@ -68,5 +68,29 @@ export const ProgressBar = () => {
     <>
      <ProgressBarProvider isActive={progress} color="#db7093" />
     </>
+  )
+}
+
+
+export const AdLoader = () => {
+  return (
+      <>
+  <div className="media mb-2">
+  <div className="align-self-start mr-3">
+  <Skeleton height={70} width={100}/>
+  </div>
+  <div className="media-body">
+  <div>
+  <Skeleton width={200}/>
+  </div>
+  <div>
+  <Skeleton width={220}/>
+  </div>
+  <div>
+  <Skeleton width={70}/>
+  </div>
+   </div>
+  </div>
+      </>
   )
 }

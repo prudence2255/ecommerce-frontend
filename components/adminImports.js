@@ -12,7 +12,7 @@ import {logout, addAd, loadAd,
     loadAds, login, loadCustomer,
     updateAd, deleteAd, categoryLocation,
     signUp, socialLogin, childOptions, 
-    parentOptions,  
+    parentOptions, updateCustomer,  
     } from 'store/customer/customerActions';
 import {wrapper} from 'store/store';
 import Cookies from 'universal-cookie';
@@ -94,6 +94,7 @@ export {
     loadAds, 
     login, 
     loadCustomer,
+    updateCustomer,
     updateAd, 
     deleteAd,
     categoryLocation,

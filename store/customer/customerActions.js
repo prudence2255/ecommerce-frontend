@@ -197,6 +197,30 @@ export const logout = createAsyncThunk(
     }
   )
 
+  export const updateCustomer = createAsyncThunk(
+    'customer/updateCustomer',
+    async (data, thunk) => { 
+      thunk.dispatch(startLoading())
+      const {customer, url} = data 
+      headers['Authorization'] = `Bearer ${cookies.get("customer_token")}`
+      try {
+        const response = await Axios(`${apiUrl}${url}`,{
+          method: 'PUT',
+          data: JSON.stringify(customer),
+          headers: {
+            ...headers
+          }
+        })
+        thunk.dispatch(endLoading())
+        return response
+      } catch (error) {
+        thunk.dispatch(endLoading())
+        thunk.dispatch(setErrors(getError(error, thunk))) 
+        return getError(error, thunk)
+      }
+    }
+  )
+
   export const deleteAd = createAsyncThunk(
     'ad/deleteAd',
     async (data, thunk) => { 

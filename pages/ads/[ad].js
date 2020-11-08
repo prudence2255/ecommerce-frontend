@@ -67,7 +67,7 @@ export default function Ad(){
                     <div className="col">
                     <p>
                         <span>
-                        Posted on {new Date().toDateString(ad.created_at)}, {ad.location}, {ad.main_location}
+                        Posted on {new Date(ad.created_at).toDateString()}, {ad.location}, {ad.main_location}
                         </span>
 
                     </p>

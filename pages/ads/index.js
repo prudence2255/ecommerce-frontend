@@ -1,7 +1,7 @@
 
 import Layout from 'components/home/layout';
 import * as A from 'components/adminImports';
-import Ad, {Loader} from 'components/ad/ad';
+import Ad from 'components/ad/ad';
 import Search from  'components/ad/search';
 import {LocationIcon, CategoryIcon, Caret,  FilterIcon} from 'components/admin/icons';
 import Filters, {MobileFilters} from 'components/ad/filters';
@@ -10,6 +10,7 @@ import Category from 'components/ad/categories';
 import CategoryLocation from 'components/ad/categoryLocations';
 import Paginator from 'components/ad/paginator';
 import {MobileSticky} from 'components/home/header';
+import  {AdLoader} from 'components/loaders';
 const transform = new A.TransForm();
 
 export default function Home() {
@@ -82,7 +83,18 @@ export default function Home() {
       <div className="col-md-6 mt-5"> 
       <div className="row">
       <div className="col">
-      {adsLoading ? <Loader />
+      {adsLoading ? (<div>
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+        <AdLoader />
+      </div>)
       : ads.map(ad => <Ad  ad={ad} key={ad.id}/>)}
       {router.query.search && ads.length === 0 && status === 'succeeded' && (
         <div className="text-center">

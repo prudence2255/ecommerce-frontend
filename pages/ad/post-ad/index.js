@@ -62,6 +62,10 @@ const handleForm = (e) => {
   router.push(`/ad/post-ad/details?category=${e.subcategory.value}&location=${e.town.value}`)
 }
 
+const goToPage = () => {
+  dispatch(A.progressStart());
+}
+
 A.useEffect(() => {
   if(error){
     if(error.includes('Unauthenticated.')){
@@ -190,7 +194,7 @@ A.useEffect(() => {
         </div>
      </div> 
         <div className="pb-2 next col-md-4 mx-auto my-5">
-        <button className="btn ">Next</button>
+        <button className="btn " onClick={goToPage}>Next</button>
         </div>
         </form>
           </div>
