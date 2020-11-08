@@ -17,7 +17,7 @@ export default function AuthRoute(Component) {
                 }
               }      
             if (!cookies.get('token')) router.push('/admin-dashboard/login')
-        }, [])
+        }, [error])
 
         return (<Component {...arguments} />)
     }
