@@ -2,9 +2,9 @@ import Head from 'next/head';
 import React, {useState} from 'react';
 import Header from './header';
 import SideBar from './sidebar';
+import AuthRoute from 'components/admin/auth';
 
-
-export default function Layout({children}){
+ function Layout({children}){
     const [openNav, setOpenNav] = useState(undefined);
 
     return(
@@ -35,3 +35,5 @@ export default function Layout({children}){
         </>
     )
 }
+
+export default AuthRoute(Layout);
