@@ -8,7 +8,7 @@ const schema = {
   type: yup.string().required()
 }
 
-export default function CommercialTypes() {
+ function CommercialTypes() {
   const [addModal, setAddModal] = A.useState(false);
   const [editModal, setEditModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -106,6 +106,8 @@ A.useEffect(() => {
         </>
     )
 }
+
+export default A.AuthRoute(CommercialTypes)
 
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {

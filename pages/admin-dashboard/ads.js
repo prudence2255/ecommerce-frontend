@@ -1,6 +1,8 @@
 import Layout from 'components/admin/layout';
 import Link from 'next/link';
-export default function Ads() {
+import * as A from 'components/adminImports';
+
+ function Ads() {
     return(
         <>
         <Layout>
@@ -107,3 +109,5 @@ export default function Ads() {
         </>
     )
 }
+
+export default A.AuthRoute(Ads)

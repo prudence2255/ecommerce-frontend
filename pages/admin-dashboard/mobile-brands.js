@@ -8,7 +8,7 @@ const schema = {
   brand: yup.string().required()
 }
 
-export default function MobileBrands() {
+function MobileBrands() {
   const [addModal, setAddModal] = A.useState(false);
   const [editModal, setEditModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -107,6 +107,7 @@ A.useEffect(() => {
     )
 }
 
+export default A.AuthRoute(MobileBrands)
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {
     const cookie = new A.Cookies(req.headers.cookie);

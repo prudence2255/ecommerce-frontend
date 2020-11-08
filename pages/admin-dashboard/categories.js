@@ -8,7 +8,7 @@ import EditItemWithOptions from 'components/admin/editItemWithOptions';
 const schema = {
   name: yup.string().required(),
 }
-export default function Categories() {
+function Categories() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
   const [editOptionsModal, setEditOptionsModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -114,6 +114,8 @@ A.useEffect(() => {
         </>
     )
 }
+
+export default A.AuthRoute(Categories)
 
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {

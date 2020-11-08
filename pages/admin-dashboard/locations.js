@@ -10,7 +10,7 @@ const schema = {
   name: yup.string().required()
 }
 
-export default function Locations() {
+ function Locations() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
   const [editOptionsModal, setEditOptionsModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -109,6 +109,7 @@ const handleDelete = (slug) => {
     )
 }
 
+export default A.AuthRoute(Locations)
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {
     const cookie = new A.Cookies(req.headers.cookie);

@@ -1,7 +1,8 @@
 import Layout from 'components/admin/layout';
 import Link from 'next/link';
+import * as A from 'components/adminImports';
 
-export default function Users() {
+ function Users() {
     return(
         <>
         <Layout>
@@ -101,3 +102,5 @@ export default function Users() {
         </>
     )
 }
+
+export default A.AuthRoute(Users)

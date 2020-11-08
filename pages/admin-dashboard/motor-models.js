@@ -11,7 +11,7 @@ const schema = {
 const editSchema = {
   model: yup.string().required(),
 }
-export default function MotorModels() {
+function MotorModels() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
   const [editOptionsModal, setEditOptionsModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -116,7 +116,7 @@ A.useEffect(() => {
         </>
     )
 }
-
+export default A.AuthRoute(MotorModels)
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {
     const cookie = new A.Cookies(req.headers.cookie);

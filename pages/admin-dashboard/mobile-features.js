@@ -9,7 +9,7 @@ const schema = {
 }
 //const cook = new A.Cookies()
 
-export default function MobileFeatures() {
+function MobileFeatures() {
   const [addModal, setAddModal] = A.useState(false);
   const [editModal, setEditModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -109,6 +109,7 @@ A.useEffect(() => {
     )
 }
 
+export default A.AuthRoute(MobileFeatures)
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {
     const cookie = new A.Cookies(req.headers.cookie);

@@ -8,7 +8,7 @@ const schema = {
   brand: yup.string().required()
 }
 
-export default function ComputerBrands() {
+ function ComputerBrands() {
   const [addModal, setAddModal] = A.useState(false);
   const [editModal, setEditModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -106,6 +106,8 @@ A.useEffect(() => {
         </>
     )
 }
+
+export default A.AuthRoute(ComputerBrands)
 
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {

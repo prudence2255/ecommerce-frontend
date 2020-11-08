@@ -11,7 +11,7 @@ const schema = {
 const editSchema = {
   model: yup.string().required(),
 }
-export default function CarModels() {
+ function CarModels() {
   const [addOptionsModal, setAddOptionsModal] = A.useState(false);
   const [editOptionsModal, setEditOptionsModal] = A.useState(false);
   const [selectedItem, setSelectedItem] = A.useState({});
@@ -116,6 +116,8 @@ A.useEffect(() => {
         </>
     )
 }
+
+export default A.AuthRoute(CarModels)
 
 export const getServerSideProps = A.wrapper.getServerSideProps(
   async ({store, req}) => {
