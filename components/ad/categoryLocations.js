@@ -49,7 +49,7 @@ const handleLocation = (location) => {
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
          <div className="link" onClick={() => handleCategory(item.slug)}>
-         <ElectronicsIcon size="20"/>  {item.name} {`(${item.ads_count})`}
+         <ElectronicsIcon size="20"/>  {item.name} <span className="count">{`(${item.ads_count})`}</span>
          </div>
         </div>
           )
@@ -61,7 +61,7 @@ const handleLocation = (location) => {
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
          <div className="link" onClick={() => handleCategory(item.slug)}>
-         <PropertyIcon size="20"/> {item.name} {`(${item.ads_count})`}
+         <PropertyIcon size="20"/> {item.name} <span className="count">{`(${item.ads_count})`}</span>
          </div>
         </div>
           )
@@ -73,7 +73,7 @@ const handleLocation = (location) => {
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
          <div className="link" onClick={() => handleCategory(item.slug)}>
-         <CarIcon size="20"/>  {item.name} {`(${item.ads_count})`}
+         <CarIcon size="20"/>  {item.name} <span className="count">{`(${item.ads_count})`}</span>
          </div>
         </div>
           )
@@ -85,7 +85,7 @@ const handleLocation = (location) => {
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
          <div className="link" onClick={() => handleCategory(item.slug)}>
-         <ServicesIcon size="20"/> {item.name} {`(${item.ads_count})`}
+         <ServicesIcon size="20"/> {item.name} <span className="count">{`(${item.ads_count})`}</span>
          </div>
         </div>
           )
@@ -97,7 +97,7 @@ const handleLocation = (location) => {
           return(
            <div className="col-md-12 mx-2 py-1" key={item.id}>
          <div className="link" onClick={() => handleCategory(item.slug)}>
-         <ClothIcon size="20"/> {item.name} {`(${item.ads_count})`}
+         <ClothIcon size="20"/> {item.name} <span className="count">{`(${item.ads_count})`}</span>
          </div>
         </div>
           )
@@ -110,7 +110,7 @@ const handleLocation = (location) => {
            <div className="col-md-12 mx-2 py-1" key={item.id}>
            
          <div className="link" onClick={() => handleCategory(item.slug)}>
-         <HomeGardenIcon size="20"/>  {item.name} {`(${item.ads_count})`}
+         <HomeGardenIcon size="20"/>  {item.name} <span className="count">{`(${item.ads_count})`}</span>
          </div>
         </div>
           )
@@ -125,7 +125,7 @@ const handleLocation = (location) => {
        {parentLocations?.map(location => (
         <div className="col-md-12 mx-2 py-1" key={location.id}>
          <div className="link" onClick={() => handleLocation(location.slug)}>
-             {location.name} {`(${location.ads_count})`}
+             {location.name} <span className="count">{`(${location.ads_count})`}</span>
          </div>
         </div>
        ))}
@@ -135,7 +135,11 @@ const handleLocation = (location) => {
         {`
         .link{
                     cursor: pointer;
-                    color: blue;
+                    color: #6495ED;
+                }
+
+                .count{
+                  color: #1a1a1a;
                 }
         `}
         </style>

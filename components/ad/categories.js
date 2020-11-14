@@ -1,5 +1,5 @@
 import * as A from 'components/adminImports';
-import {RightIcon, Caret, CloseIcon} from 'components/admin/icons';
+import {RightIcon, CloseIcon} from 'components/admin/icons';
 
 
 const transFormArray = (array, id, check) => {
@@ -123,7 +123,7 @@ const handleChildren = (id) => {
 
                 .link{
                     cursor: pointer;
-                    color: blue;
+                    color: #6495ED;
                 }
                .children{
                    background: lightgrey;

@@ -119,7 +119,7 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
                 }
                 .link{
                     cursor: pointer;
-                    color: blue;
+                    color: #6495ED;
                 }
             .w3-modal-content{
                   max-width: 500px;

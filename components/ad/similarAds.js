@@ -74,7 +74,7 @@ const SimilarAds = () => {
     <div className="similar_ads pb-5 mt-2 row">
     <div className="col">
         <div className="row text-center">
-        <h5 className="mx-auto"> Similar ads</h5>
+        <h5 className="mx-auto title"> Similar ads</h5>
         </div>
        <hr />
         <div className="px-3">
@@ -124,7 +124,7 @@ const SimilarAds = () => {
                 width: 100px;
             }
         }
-            .price, .similar_ads h5{
+            .price, .similar_ads .title{
             color: #22B822;
             }
 
