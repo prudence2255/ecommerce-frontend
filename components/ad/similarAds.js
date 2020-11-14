@@ -90,7 +90,8 @@ const SimilarAds = () => {
         <div className="media-body">
         <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
         <a onClick={goToPage}>
-        <h5 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</b></h5>
+        <h6 className="mt-0 d-block d-lg-none"><b>{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</b></h6>
+        <h5 className="mt-0 d-none d-lg-block"><b>{transform.shortenLength(ad.title, 20) } {ad.condition ? `(${ad.condition})` : null}</b></h5>
         <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
          <div>
          <p className="price w3-left"><b>GHC {transform.formatNum(ad.price) }</b></p>
