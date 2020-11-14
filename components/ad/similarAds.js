@@ -129,7 +129,7 @@ const SimilarAds = () => {
             }
 
             Link, a{
-                color: black!important;
+                color:  #262626!important;
             }
                 `}
             </style>

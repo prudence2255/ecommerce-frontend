@@ -58,7 +58,10 @@ const dispatch = A.useDispatch();
             }
         }
        Link, a{
-          color: #000000!important
+          color:  #262626!important;
+      }
+      h5, h6{
+          color: #262626;
       }
         `}
     </style>
