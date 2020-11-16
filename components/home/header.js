@@ -130,6 +130,7 @@ const sellNow = (e) => {
 }
 
 A.useEffect(() => {
+  console.log(router.pathname)
   if(cookies.get('customer_token')){
     setUser(true)
   }else{
@@ -147,10 +148,14 @@ A.useEffect(() => {
             <div className="headerBg w3-card-2">
             <div className="w3-bar header container d-flex justify-content-between">
            <Link href="/">
-              <a className="w3-bar-item btn" onClick={goToPage}>Logo</a>
+              <a className={`w3-bar-item btn `} onClick={goToPage}>
+              Logo
+              </a>
             </Link>
             <Link href="/ads">
-              <a className="w3-bar-item btn " onClick={goToPage}>All ads</a>
+              <a className={`w3-bar-item btn ${router.pathname == '/ads' ? 'header-active' : ''}`} onClick={goToPage}>
+              All ads
+              </a>
             </Link>
              <div className="d-none d-lg-block">
              <a className="w3-bar-item btn ad-btn " 
@@ -197,6 +202,9 @@ A.useEffect(() => {
       color: #333333!important;
       font-size: 18px;
     }
+    .header-active{
+  background-color: #006400;
+}
        `}
         </style>
         </>

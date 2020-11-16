@@ -7,7 +7,8 @@ import {LocationIcon, CategoryIcon, Caret,  FilterIcon} from 'components/admin/i
 import Filters, {MobileFilters} from 'components/ad/filters';
 import Location from 'components/ad/locations';
 import Category from 'components/ad/categories';
-import CategoryLocation from 'components/ad/categoryLocations';
+import SideBarCategories from 'components/ad/sideBarCategories';
+import SideBarLocations from 'components/ad/sideBarLocations';
 import Paginator from 'components/ad/paginator';
 import {MobileSticky} from 'components/home/header';
 import  {AdLoader} from 'components/loaders';
@@ -77,7 +78,10 @@ export default function Home() {
      <Filters setFilterModal={setFilterModal}/>
      </div>
      <div className="row">
-     <CategoryLocation />
+     <SideBarCategories />
+     </div>
+     <div className="row">
+     <SideBarLocations />
      </div>
       </div>
       <div className="col-md-6 mt-5"> 

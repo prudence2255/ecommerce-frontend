@@ -2,8 +2,13 @@ import Link from 'next/link';
 import { PropertyIcon, ClothIcon,
     ServicesIcon, CarIcon, HomeGardenIcon,
     ElectronicsIcon}  from 'components/admin/icons';
+import * as A from 'components/adminImports';
 
 export const Desktop = ({items}) => {
+  const dispatch = A.useDispatch()
+  const goToPage = () => {
+    dispatch(A.progressStart());
+  }
     return (
         <>
 <div className="row categories">
@@ -12,7 +17,7 @@ export const Desktop = ({items}) => {
           return(
            <div className="col-md-3 col-sm-6 mx-2 text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
-           <a>
+           <a onClick={() => goToPage()}>
          <div>
          <ElectronicsIcon size="100"/>
          </div>
@@ -31,7 +36,7 @@ export const Desktop = ({items}) => {
           return(
            <div className="col-md-3 col-sm-6 mx-2 text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
-           <a>
+           <a onClick={() => goToPage()}>
          <div>
          <PropertyIcon size="100"/>
          </div>
@@ -52,7 +57,7 @@ export const Desktop = ({items}) => {
           return(
            <div className="col-md-3 col-sm-6 mx-2 text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`}  >
-           <a>
+           <a onClick={() => goToPage()}>
          <div>
          <CarIcon size="100"/>
          </div>
@@ -73,7 +78,7 @@ export const Desktop = ({items}) => {
           return(
            <div className="col-md-3 col-sm-6 mx-2 text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
-           <a>
+           <a onClick={() => goToPage()}>
          <div>
          <ServicesIcon size="100"/>
          </div>
@@ -92,7 +97,7 @@ export const Desktop = ({items}) => {
           return(
            <div className="col-md-3 col-sm-6 mx-2 text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
-           <a>
+           <a onClick={() => goToPage()}>
          <div>
          <ClothIcon size="100"/>
          </div>
@@ -113,7 +118,7 @@ export const Desktop = ({items}) => {
           return(
            <div className="col-md-3 col-sm-6 mx-2 text-center" key={item.id}>
            <Link href={`/ads?category=${item.slug}`} >
-           <a>
+           <a onClick={() => goToPage()}>
            
          <div>
          <HomeGardenIcon size="100"/>

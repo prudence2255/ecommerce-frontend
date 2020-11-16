@@ -9,8 +9,12 @@ import Search from  'components/ad/search';
 
 export default function Home() {
 const {items, recentAds} = A.useSelector(A.adsSelector);
-
+const dispatch = A.useDispatch()
 const transform = new A.TransForm()
+
+const goToPage = () => {
+  dispatch(A.progressStart());
+}
   return (
   <>
   <Head>
@@ -40,7 +44,7 @@ const transform = new A.TransForm()
                 {Array.isArray(recentAds) && recentAds.map((ad, i) => (
                   <div key={i}>
                    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
-                   <a>
+                   <a onClick={() => goToPage()}>
                     <img src={ad.images[0].medium} className="img-slide" alt={ad.title}/>
                     <div className="legend">
                     <h5>

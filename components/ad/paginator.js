@@ -13,7 +13,7 @@ const handlePagination = (page) => {
         pathname: currentPath,
         query: currentQuery,
     });
-    window.scrollTo(0, 50) 
+    window.scrollTo(0, 0) 
 }
 A.useEffect(() => {
     return () => {}
