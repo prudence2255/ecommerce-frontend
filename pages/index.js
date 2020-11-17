@@ -19,7 +19,9 @@ const goToPage = () => {
   <>
   <Head>
   <meta name="description" lang="en" content="Digishop is a multi-vendor e-commerce website" /> 
-  <meta name="keywords" content="e-commerce,Ghana, shop online, sell online, buy online " />
+  <meta name="keywords" content="e-commerce,Ghana, shop online, sell online, buy online 
+  electronics, property, vehicles, services, home & garden, clothing & beauty
+  " />
   </Head>
   <MobileSticky />
    <Layout>

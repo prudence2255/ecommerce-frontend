@@ -110,13 +110,12 @@ const schema = yup.object().shape({
          </div>
        )}
     <div className="m-3">
-        {loginCustomer.provider === 'google' ? <LogoutGoogle /> : (
+       
           <button className="btn w3-card w3-yellow"
           onClick={onLogout}
           >
         Logout
         </button>
-        )}
     </div>
                </div>
             </div>
