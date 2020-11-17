@@ -40,9 +40,7 @@ function Account(){
     }
     useEffect(() => {
       //dispatch(A.loadAds({url: '/api/customer-ads'})) 
-        if(window.innerWidth < 768){
-          window.scrollTo(0, myRef.current.offsetTop); 
-        };
+       
         return () => {          
         }
     }, [error]);

@@ -48,9 +48,7 @@ const schema = yup.object().shape({
 
       useEffect(() => {
         const myRef = document.querySelector(".m-top");
-        if(window.innerWidth < 768){
-            window.scrollTo(0, myRef.offsetTop); 
-          };
+        
         return () => {          
         }
     }, [loginCustomer])
