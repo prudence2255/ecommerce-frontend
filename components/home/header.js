@@ -130,7 +130,6 @@ const sellNow = (e) => {
 }
 
 A.useEffect(() => {
-  console.log(router.pathname)
   if(cookies.get('customer_token')){
     setUser(true)
   }else{
