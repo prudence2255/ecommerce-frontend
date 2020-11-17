@@ -1,6 +1,6 @@
 import Layout from 'components/home/layout';
 import UserNav from 'components/home/userNav';
-import { useRef, useEffect, useState } from 'react';
+import {useEffect} from 'react';
 import * as yup from "yup";
 import * as A from 'components/adminImports';
 import AuthRoute from 'components/home/auth';
@@ -48,7 +48,9 @@ const schema = yup.object().shape({
 
       useEffect(() => {
         const myRef = document.querySelector(".m-top");
-        window.scrollTo(0, myRef.offsetTop) 
+        if(window.innerWidth < 768){
+            window.scrollTo(0, myRef.current.offsetTop); 
+          };
         return () => {          
         }
     }, [loginCustomer])

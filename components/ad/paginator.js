@@ -13,7 +13,9 @@ const handlePagination = (page) => {
         pathname: currentPath,
         query: currentQuery,
     });
-    window.scrollTo(0, 0) 
+    setTimeout(() => {
+        window.scrollTo(0, -50)
+    }, 2000) 
 }
 A.useEffect(() => {
     return () => {}
