@@ -27,7 +27,7 @@ const clientId = process.env.CLIENT_ID;
       }
 
       const onFailure = (response) => {
-            console.log('Error logging in')
+            console.log('Error logging in', response)
         }
 
 
