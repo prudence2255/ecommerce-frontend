@@ -122,7 +122,7 @@ export default function Ad(){
                             {showContact && ad.customer.contact.map((contact, i) => (
                                 <p key={i} className="contact">
                                 <PhoneIcon />  <span><b>{contact}</b></span> 
-                                <a href={`tel:${contact}`} className="btn w3-green mx-2">Call</a>
+                                <a href={`tel:${contact}`} className="btn w3-green m">Call</a>
                                 <a href={`sms:${contact}`} className="btn w3-green">message</a>
                                 </p>
                             ))}
@@ -156,8 +156,10 @@ export default function Ad(){
                             {showContact && ad.customer.contact.map((contact, i) => (
                                 <p key={i} className="contact">
                                 <PhoneIcon />  <span><b>{contact}</b></span> 
-                                <a href={`tel:${contact}`} className="btn w3-green mx-2">Call</a>
+                               <p className="mt-2">
+                               <a href={`tel:${contact}`} className="btn w3-green mx-2">Call</a>
                                 <a href={`sms:${contact}`} className="btn w3-green">message</a>
+                               </p>
                                 </p>
                             ))}
                             </div>
