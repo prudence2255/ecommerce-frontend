@@ -120,8 +120,10 @@ export default function Ad(){
                             )}
                             {showContact && <p className="ml-3"><b>Call seller</b></p>}
                             {showContact && ad.customer.contact.map((contact, i) => (
-                                <p key={i}>
+                                <p key={i} className="contact">
                                 <PhoneIcon />  <span><b>{contact}</b></span> 
+                                <a href={`tel:${contact}`} className="btn w3-green">Call</a>
+                                <a href={`sms:${contact}`} className="btn w3-green">message</a>
                                 </p>
                             ))}
                             </div>
@@ -179,6 +181,9 @@ export default function Ad(){
       .price{
             color: #22B822;
         }
+      .contact a{
+          width: 200px;
+      }  
                 `}
             </style>
         </Layout>
