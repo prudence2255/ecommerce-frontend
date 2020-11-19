@@ -151,7 +151,7 @@ A.useEffect(() => {
             <div className="w3-bar header container d-flex justify-content-between">
            <Link href="/">
               <a className={`w3-bar-item btn `} onClick={goToPage}>
-              Logo
+              Yorwo
               </a>
             </Link>
             <Link href="/ads">
