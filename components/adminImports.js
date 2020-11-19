@@ -8,11 +8,11 @@ import Layout from 'components/admin/layout'
 import {loadItems, deleteItem, addItem, updateItem, loadOptions} from 'store/admin/adminActions';
 import {setErrors, formSelector} from 'store/forms/formsSlice';
 import {adsSelector, addFilters} from 'store/ad/adsSlice';
-import {logout, addAd, loadAd,
+import {logout, addAd, loadAd, sendEmail,
     loadAds, login, loadCustomer,
     updateAd, deleteAd, categoryLocation,
     signUp, socialLogin, childOptions, 
-    parentOptions, updateCustomer,  
+    parentOptions, updateCustomer, updatePassword,  
     } from 'store/customer/customerActions';
 import {wrapper} from 'store/store';
 import Cookies from 'universal-cookie';
@@ -47,6 +47,8 @@ import {
 
 
 export {
+    updatePassword,
+    sendEmail,
     removeContact,
     setContacts,
     adsSelector,

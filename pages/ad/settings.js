@@ -4,7 +4,7 @@ import {useEffect} from 'react';
 import * as yup from "yup";
 import * as A from 'components/adminImports';
 import AuthRoute from 'components/home/auth';
-import {LogoutGoogle} from 'components/home/socialLogin'
+import UpdatePassword from 'components/home/updatePassword';
 
 const cookies = new A.Cookies();
 
@@ -87,26 +87,7 @@ const schema = yup.object().shape({
          <div>
          <h5 className="my-3 ml-2">Change password</h5>
         <hr />
-    <form className="w3-container ">
-  <p className="my-3">
-  <input className="w3-input w3-border w3-round " name="cur_password" type="password" 
-      placeholder="Current password"
-  />
-  </p>
-  <p className="my-3">
-  <input className="w3-input w3-border w3-round " name="new_password" type="password"
-      placeholder="New password"
-  />
-  </p>
-  <p className="my-3">
-  <input className="w3-input w3-border w3-round " name="confirm_new_password" type="password"
-      placeholder="Confirm new password"
-  />
-  </p>
-  <p>
-  <button className="w3-btn w3-blue">Update password</button>
-  </p>
-    </form>
+    <UpdatePassword />
          </div>
        )}
     <div className="m-3">

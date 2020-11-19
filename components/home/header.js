@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {useState} from 'react';
 import Login from './login';
+
 import {UserIcon } from 'components/admin/icons';
 import * as A from 'components/adminImports';
 import {ProgressBar} from 'components/loaders'
@@ -10,6 +11,7 @@ const cookies = new A.Cookies();
 
 export const MobileSticky = () => {
   const [loginModal, setLoginModal] = useState(false);
+ 
 const [user, setUser] = A.useState();
 const router = A.useRouter();
 const dispatch = A.useDispatch();
@@ -46,6 +48,7 @@ A.useEffect(() => {
   return (
     <>
     <ProgressBar />
+  
      <Login loginModal={loginModal} setLoginModal={setLoginModal}/>
     <div className="mobile d-block d-lg-none">
     <div className="d-flex justify-content-center">

@@ -3,6 +3,7 @@ import {LoginGoogle} from './socialLogin';
 import Link from 'next/link';
 import * as A from 'components/adminImports';
 import Signup from './signup';
+import ShowEmail from './showEmail';
 
 const cookies = new A.Cookies();
 
@@ -13,6 +14,7 @@ const schema = yup.object().shape({
 
 export default function Login({loginModal, setLoginModal}){
     const [signupModal, setSignupModal] = A.useState(false);
+    const [emailModal, setEmailModal] = A.useState(false);
     const {error} = A.useSelector(A.errorsSelector);
     const dispatch = A.useDispatch();
     const router = A.useRouter()
@@ -26,7 +28,11 @@ export default function Login({loginModal, setLoginModal}){
         setLoginModal(false)
         setSignupModal(true);
       }
-
+const emailForm = (e) => {
+  e.preventDefault()
+  setLoginModal(false)
+  setEmailModal(true);
+}
       const { register, handleSubmit, errors } = A.useForm({
         resolver: A.yupResolver(schema)
       })
@@ -43,7 +49,7 @@ export default function Login({loginModal, setLoginModal}){
 
    return (
         <>
-        
+        <ShowEmail emailModal={emailModal} setEmailModal={setEmailModal}/>
         <Signup signupModal={signupModal} setSignupModal={setSignupModal}/>
         <A.GridLoader />
     <div className={`w3-modal ${loginModal ? 'openModal' : ''}`}>
@@ -74,12 +80,12 @@ export default function Login({loginModal, setLoginModal}){
    <span className="error">{errors.password?.message}</span>
   </p>
   <div className="pb-2">
-  <button className="w3-btn w3-blue" >submit</button>
+  <button className="w3-btn w3-blue" >Login</button>
   <button className="w3-btn w3-yellow ml-5" onClick={closeModal}>Cancel</button>
   <p className="mt-2">
-    <Link href="#">
-        <a>Forgot password?</a>
-    </Link>
+        <button className="btn" onClick={emailForm}>
+        Forgot password?
+      </button>
   </p>
   <p>
       Don't have account yet? - 

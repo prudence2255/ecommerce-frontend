@@ -80,7 +80,7 @@ export default function Signup({signupModal, setSignupModal}) {
   <span className="error">{errors.c_password?.message}</span>
   </p>
   <p>
-  <button className="w3-btn w3-blue">submit</button>
+  <button className="w3-btn w3-blue">Signup</button>
   <button className="w3-btn w3-yellow ml-5" onClick={closeModal}>Cancel</button>
   </p>
     </form>

@@ -352,4 +352,51 @@ export const logout = createAsyncThunk(
     }
   )
 
-  
+  export const updatePassword = createAsyncThunk(
+    'customer/updatePassword',
+    async (data, thunk) => { 
+      thunk.dispatch(startLoading())
+      const {item, url} = data 
+      headers['Authorization'] = `Bearer ${cookies.get("customer_token")}`
+      try {
+        const response = await Axios(`${apiUrl}${url}`,{
+          method: 'PUT',
+          data: JSON.stringify(item),
+          headers: {
+            ...headers
+          }
+        })
+        thunk.dispatch(endLoading())
+        return response
+      } catch (error) {
+        thunk.dispatch(endLoading())
+        thunk.dispatch(setErrors(getError(error, thunk))) 
+        return getError(error, thunk)
+      }
+    }
+  )
+
+
+  export const sendEmail = createAsyncThunk(
+    'customer/sendEmail',
+    async (data, thunk) => { 
+      const {email, url} = data
+      thunk.dispatch(startLoading()) 
+      try {
+        const response = await Axios(`${apiUrl}${url}`,{
+          method: 'POST',
+          data: JSON.stringify(email), 
+          headers: {
+            ...headers
+          }
+        })
+        thunk.dispatch(endLoading())
+        return response
+      } catch (error) {
+        console.log(error.response)
+        thunk.dispatch(endLoading())
+        thunk.dispatch(setErrors(getError(error, thunk))) 
+        return getError(error, thunk)
+      }
+    }
+  )
