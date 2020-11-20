@@ -22,7 +22,7 @@ const Images = ({ad}) => {
 
     .image-gallery-slide img {
     width: 100%;
-    height: auto;
+    height: 400px;
     max-height: 80vh;
     object-fit: cover;
     overflow: hidden;
@@ -30,6 +30,7 @@ const Images = ({ad}) => {
 }
 
     .fullscreen .image-gallery-slide img {
+        height: 400px;
      max-height: 100vh;
 }
         `}
