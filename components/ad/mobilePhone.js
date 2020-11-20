@@ -17,9 +17,9 @@ const MobilePhone = ({ad}) => {
         <b>Features</b>
       </div>
       <div className="row">
-      <div className="col d-flex">
+      <div className="col d-flex flex-wrap">
         {ad.features.map((feature, i) => (
-          <p key={i}>{feature}</p>
+          <p key={i} className="mx-2">{feature}</p>
         ))}
       </div>
     </div>
