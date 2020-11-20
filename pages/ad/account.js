@@ -39,6 +39,7 @@ function Account(){
       })
     }
     useEffect(() => {
+      console.log(ads)
       //dispatch(A.loadAds({url: '/api/customer-ads'})) 
         return () => {          
         }
