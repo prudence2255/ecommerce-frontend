@@ -31,11 +31,11 @@ const Images = ({ad}) => {
 
         <style jsx>
             {`
-            .image-slide{
+            .img-slide{
                 height: 400px;
             }
         @media(max-width: 768px){
-            .image-slide{
+            .img-slide{
                 height: 250px;
             }
         }
