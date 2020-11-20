@@ -1,4 +1,5 @@
 import ImageGallery from 'react-image-gallery';
+import { Carousel } from 'react-responsive-carousel';
 
 
 const Images = ({ad}) => {
@@ -10,14 +11,34 @@ const Images = ({ad}) => {
        )
     return (
         <>
-        <ImageGallery items={images}
+        <Carousel 
+        showIndicators={true}
+        showThumbs={true}
+        infiniteLoop={true}
+        autoPlay={false}
+        >
+                {ad.images?.map((image, i) => (
+                  <div key={i}>
+                    <img src={image.medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
+                    <img src={image.small} className="img-slide d-block d-lg-none" alt={ad.title}/>
+                </div>
+                ))}
+            </Carousel>
+        {/* <ImageGallery items={images}
             originalAlt={ad.title}
-        />
+        /> */}
+
+
         <style jsx>
             {`
-            .image-gallery-slide img {
-            height: 400px;
+            .image-slide{
+                height: 400px;
             }
+        @media(max-width: 768px){
+            .image-slide{
+                height: 250px;
+            }
+        }
             `}
         </style>
        

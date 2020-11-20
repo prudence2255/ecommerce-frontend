@@ -47,7 +47,8 @@ const goToPage = () => {
                   <div key={i}>
                    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
                    <a onClick={() => goToPage()}>
-                    <img src={ad.images[0].medium} className="img-slide" alt={ad.title}/>
+                    <img src={ad.images[0].medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
+                    <img src={ad.images[0].small} className="img-slide d-block d-lg-none" alt={ad.title}/>
                     <div className="legend">
                     <h5>
                     {ad.category}
@@ -102,7 +103,13 @@ const goToPage = () => {
 }
    
      .img-slide{
-       max-height: 350px;
+       height: 400px;
+     }
+
+     @media(max-width: 768px){
+      .img-slide{
+       height: 250px;
+     }
      }
      .price{
        color: #22B822;
