@@ -19,8 +19,8 @@ const Images = ({ad}) => {
         >
                 {ad.images?.map((image, i) => (
                   <div key={i}>
-                    <img src={image.medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
-                    <img src={image.small} className="img-slide d-block d-lg-none" alt={ad.title}/>
+                    <img src={image?.medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
+                    <img src={image?.small} className="img-slide d-block d-lg-none" alt={ad.title}/>
                 </div>
                 ))}
             </Carousel>
