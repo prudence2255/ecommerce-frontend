@@ -103,12 +103,12 @@ const goToPage = () => {
 }
    
      .img-slide{
-       height: 400px;
+       max-height: 380px;
      }
 
      @media(max-width: 768px){
       .img-slide{
-       height: 250px;
+       max-height: 220px;
      }
      }
      .price{
