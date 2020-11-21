@@ -4,7 +4,7 @@ import * as A from 'components/adminImports';
 
 
 
-const Input = forwardRef(({title, name , type, placeholder, errors, defaultValue, required}, ref) => {
+const Input = forwardRef(({title, name , step, type, placeholder, errors, defaultValue, required}, ref) => {
     return(
         <>
         <div>
@@ -13,6 +13,7 @@ const Input = forwardRef(({title, name , type, placeholder, errors, defaultValue
             className="w3-input w3-border w3-round"
             id={name}
             name={name}
+            step={step}
             defaultValue={defaultValue}
             type={type} 
             placeholder={placeholder}
