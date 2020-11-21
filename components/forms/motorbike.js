@@ -33,11 +33,11 @@ const transFormArray = (array, id, name, check) => {
     A.useEffect(() => {
       setTimeout(() => {
         dispatch(A.setErrors({
-          motor_brand_id: yup.string().required(),
-          motor_model_id: yup.string().required(),
-          model_year: yup.string().required(),
-          mileage: yup.string().required(),
-          engine_capacity: yup.string().required()  
+          motor_brand_id: yup.number().required(),
+          motor_model_id: yup.number().required(),
+          model_year: yup.number().required(),
+          mileage: yup.number().required(),
+          engine_capacity: yup.number().required()  
         }))
       }, 2000)
         
