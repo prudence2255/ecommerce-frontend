@@ -9,8 +9,8 @@ const ImageUpload = ({error, ad}) => {
 
 const handlePhoto = async(e) => { 
     let extensions = ["jpg", "jpeg", "png"];
-    let imageExt = e.target.files[0].type;
-    const isExt = extensions.includes(imageExt.substr(imageExt.lastIndexOf("/") + 1));
+    let imageExt = e.target.files[0].name;
+    const isExt = extensions.includes(imageExt.substr(imageExt.lastIndexOf(".") + 1));
     if(!isExt){
         setPhotoErr('The photo must be a file of type: jpeg, jpg, png.')
         return

@@ -44,3 +44,30 @@ a:hover {
 input:focus, select:focus, textarea:focus{
   outline-color: rgb(49, 159, 233);
 }
+
+.image-gallery-slide img{
+  max-height: 350px;
+  } 
+  
+
+
+  .image-gallery-thumbnail-image{
+    height: 60px;
+  }
+  .image-gallery-image{
+    height: 380px;
+  }
+  @media(max-width: 768px){
+    .image-gallery-thumbnail-image{
+      height: 50px;
+    }
+    .image-gallery-slide img{
+      max-height: 200px;
+      } 
+
+      .image-gallery-image{
+        height: 280px;
+      }
+  }
+  
+  

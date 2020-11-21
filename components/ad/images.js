@@ -1,47 +1,35 @@
 import ImageGallery from 'react-image-gallery';
-import { Carousel } from 'react-responsive-carousel';
 
 
 const Images = ({ad}) => {
 
-       const images = ad.images.map(image => ({
-            original: image?.small,
+       const largeImages = ad.images.map(image => ({
+            original: image?.medium,
             thumbnail: image?.xsmall,
        })
        )
+
+       const smallImages = ad.images.map(image => ({
+        original: image?.small,
+        thumbnail: image?.xsmall,
+   })
+   )
     return (
         <>
-        <Carousel 
-        showIndicators={true}
-        showThumbs={true}
-        infiniteLoop={true}
-        autoPlay={false}
-        >
-                {ad.images?.map((image, i) => (
-                  <div key={i}>
-                    <img src={image?.medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
-                    <img src={image?.small} className="img-slide d-block d-lg-none" alt={ad.title}/>
-                </div>
-                ))}
-            </Carousel>
-        {/* <ImageGallery items={images}
+        <div className="d-none d-lg-block">
+        <ImageGallery items={largeImages}
             originalAlt={ad.title}
-        /> */}
+        />
+    
+        </div>
+        <div className="d-block d-lg-none">
+        <ImageGallery items={smallImages}
+            originalAlt={ad.title}
+        />
+    
+        </div>
+    
 
-
-        <style jsx>
-            {`
-            .img-slide{
-                max-height: 380px;
-            }
-        @media(max-width: 768px){
-            .img-slide{
-                max-height: 220px;
-            }
-        }
-            `}
-        </style>
-       
         </>
     )
 }

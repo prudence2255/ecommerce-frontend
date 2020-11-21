@@ -12,6 +12,7 @@ function PostAd(){
 const {ad} = A.useSelector(A.customerSelector);
 const {error} = A.useSelector(A.errorsSelector)
 const isAd = Object.keys(ad).length > 0;
+const dispatch = A.useDispatch();
 const upper = new TransForm();
 const [subLocations, setSubLocations] = useState(null);
 const [subCategories, setSubCategories] = useState(null);                      
