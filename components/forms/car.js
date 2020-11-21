@@ -152,6 +152,7 @@ const transFormArray = (array, id, name, check) => {
                 name="engine_capacity"
                 defaultValue={ad.engine_capacity ?? ''}
                 ref={ref}
+                step="0.1"
                 type="number"
                 title="Engine Capacity (Liter)"
                 placeholder="Engine Capacity"
