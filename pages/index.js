@@ -31,7 +31,7 @@ const goToPage = () => {
       </div>
       <div className="row">
         <div className="col-md-8 mx-auto welcome">
-          <h4>Welcome to <span className="digishop">digishop</span> where you can buy and sell for free!</h4>
+          <h4>Welcome to <span className="digishop">yorwo.com</span> where you can buy and sell for free!</h4>
         </div>
 
       </div>
