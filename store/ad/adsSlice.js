@@ -46,7 +46,7 @@ import { fetchAd, fetchItems, fetchCategoryLocation,
       if(action.payload.data.ad.item){
         state.ad =  {
           ...state.ad, ...action.payload.data.ad.ad,
-           ...action.payload.data.ad.item[0]  
+           ...action.payload.data.ad.item 
           }
       }else{
         state.ad =  {

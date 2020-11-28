@@ -1,4 +1,3 @@
-import * as A from 'components/adminImports';
 
 
 const MobilePhone = ({ad}) => {

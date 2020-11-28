@@ -5,6 +5,8 @@ const SideBarLocations = () => {
     const {locations} = categoryLocations;
 
     const router = A.useRouter();
+    const dispatch = A.useDispatch();
+    
     const transFormArray = (array, id, check) => {
         const newArray = array?.filter(item => item[id] === check)
          return newArray;
@@ -12,6 +14,9 @@ const SideBarLocations = () => {
 
      const parentLocations = transFormArray(locations, 'parent_id', null);
 
+     const goToPage = () => {
+        dispatch(A.progressStart());
+      }
      const handleLocation = (location) => {
         router.push({
             pathname: '/ads',
@@ -20,6 +25,7 @@ const SideBarLocations = () => {
                 location: location
             }
         })
+        goToPage()
       }
 
     return (

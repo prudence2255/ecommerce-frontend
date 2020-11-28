@@ -9,6 +9,7 @@ const SideBarCategories = () => {
     const {categoryLocations} = A.useSelector(A.adsSelector);
     const {categories} = categoryLocations;
   const router = A.useRouter();
+  const dispatch = A.useDispatch()
     const transFormArray = (array, id, check) => {
         const newArray = array?.filter(item => item[id] === check)
          return newArray;
@@ -16,6 +17,9 @@ const SideBarCategories = () => {
 
 const parentCategories = transFormArray(categories, 'parent_id', null);
 
+const goToPage = () => {
+  dispatch(A.progressStart());
+}
 
 const handleCategory = (category) => {
   router.push({
@@ -25,6 +29,7 @@ const handleCategory = (category) => {
           category: category
       }
   })
+  goToPage()
 }
 const handleChildren = (id) => {
   setChildren(transFormArray(categories, 'parent_id', id))

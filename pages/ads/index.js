@@ -4,7 +4,7 @@ import * as A from 'components/adminImports';
 import Ad from 'components/ad/ad';
 import Search from  'components/ad/search';
 import {LocationIcon, CategoryIcon, Caret,  FilterIcon} from 'components/admin/icons';
-import Filters, {MobileFilters} from 'components/ad/filters';
+import Filters, {MobileFilters} from 'components/filters/filters';
 import Location from 'components/ad/locations';
 import Category from 'components/ad/categories';
 import SideBarCategories from 'components/ad/sideBarCategories';

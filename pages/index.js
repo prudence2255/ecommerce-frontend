@@ -18,7 +18,7 @@ const goToPage = () => {
   return (
   <>
   <Head>
-  <meta name="description" lang="en" content="Digishop is a multi-vendor e-commerce website" /> 
+  <meta name="description" lang="en" content="Yorwo.com is a multi-vendor e-commerce website" /> 
   <meta name="keywords" content="e-commerce,Ghana, shop online, sell online, buy online 
   electronics, property, vehicles, services, home & garden, clothing & beauty
   " />

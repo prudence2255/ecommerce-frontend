@@ -80,7 +80,7 @@ const cookies = new Cookies();
       if(action.payload.data.item){
         state.ad =  {
           ...state.ad, ...action.payload.data.ad,
-           ...action.payload.data.item[0]  
+           ...action.payload.data.item  
           }
       }else{
         state.ad =  {

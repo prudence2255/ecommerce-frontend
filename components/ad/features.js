@@ -1,11 +1,9 @@
 import * as A from 'components/adminImports';
-import * as Forms from './forms';
+import * as AdFeatures from './adFeatures';
 
 function Features(){
  const {ad} = A.useSelector(A.adsSelector); 
- const isAd = Object.keys(ad).length > 0;
- const router = A.useRouter();
-const dispatch = A.useDispatch();
+
 
 A.useEffect(() => {
     return () => {}
@@ -15,78 +13,78 @@ A.useEffect(() => {
     return(
         <>
             <div className="">
-            {ad.category === "Mobile Phones" && <Forms.MobilePhone 
+            {ad.category === "Mobile Phones" && <AdFeatures.MobilePhone 
                                                     ad={ad}
                                                     />}
-            {ad.category === "Computers & Tablets" && <Forms.Computer 
+            {ad.category === "Computers & Tablets" && <AdFeatures.Computer 
                                                     ad={ad}
                                                     />}  
-             {ad.category === "Computer Accessories" && <Forms.ComputerAccessory
+             {ad.category === "Computer Accessories" && <AdFeatures.ComputerAccessory
                                                     ad={ad}
                                                     />}    
-             {ad.category === "Tvs" && <Forms.Tv
+             {ad.category === "Tvs" && <AdFeatures.Tv
                                                     ad={ad}
                                                     />}  
-            {ad.category === "Tv & Video Accessories" && <Forms.TvAccessory
+            {ad.category === "Tv & Video Accessories" && <AdFeatures.TvAccessory
                                                     ad={ad}
                                                     />} 
-              {ad.category === "Cameras & Camcorders" && <Forms.Camera
+              {ad.category === "Cameras & Camcorders" && <AdFeatures.Camera
                                                     ad={ad}
                                                     />}    
-              {ad.category === "Audio & Mp3" && <Forms.Audio
+              {ad.category === "Audio & Mp3" && <AdFeatures.Audio
                                                     ad={ad}
                                                     />} 
                                                     
-               {ad.category === "Cars" && <Forms.Car
+               {ad.category === "Cars" && <AdFeatures.Car
                                                     ad={ad}
                                                     />}    
-               {ad.category === "Motorbikes & Scooters" && <Forms.Motorbike
+               {ad.category === "Motorbikes & Scooters" && <AdFeatures.Motorbike
                                                     ad={ad}
                                                     />}  
 
-                {ad.category === "Auto Parts & Accessories" && <Forms.AutoPart
+                {ad.category === "Auto Parts & Accessories" && <AdFeatures.AutoPart
                                                     ad={ad}
                                                     />} 
-                 {ad.category === "Beauty Products" && <Forms.BeautyProduct
+                 {ad.category === "Beauty Products" && <AdFeatures.BeautyProduct
                                                     ad={ad}
                                                     />}  
-                {ad.category === "Clothing & Fashion" && <Forms.Clothing
+                {ad.category === "Clothing & Fashion" && <AdFeatures.Clothing
                                                     ad={ad}
                                                     />} 
-                {ad.category === "Shoes & Footwear" && <Forms.FootWear
+                {ad.category === "Shoes & Footwear" && <AdFeatures.FootWear
                                                     ad={ad}
                                                     />}  
-               {ad.category === "Commercial Property" && <Forms.Property
+               {ad.category === "Commercial Property" && <AdFeatures.Property
                                                     ad={ad}
                                                     />} 
-             {ad.category === "Houses" && <Forms.House
+             {ad.category === "Houses" && <AdFeatures.House
                                                     ad={ad}
                                                     />} 
-             {ad.category === "Apartments" && <Forms.House
+             {ad.category === "Apartments" && <AdFeatures.House
                                                     ad={ad}
                                                     />} 
-           {ad.category === "Land" && <Forms.Land
+           {ad.category === "Land" && <AdFeatures.Land
                                                     ad={ad}
                                                     />}     
-             {ad.category === "Electricity, AC & Bathroom" && <Forms.Electricity
+             {ad.category === "Electricity, AC & Bathroom" && <AdFeatures.Electricity
                                                     ad={ad}
                                                     />}     
-              {ad.category === "Furniture" && <Forms.Furniture
+              {ad.category === "Furniture" && <AdFeatures.Furniture
                                                     ad={ad}
                                                     />}     
-           {ad.category === "Home Appliances" && <Forms.HomeAp
+           {ad.category === "Home Appliances" && <AdFeatures.HomeAp
                                                     ad={ad}
                                                     />}     
-            {ad.category === "Domestic & Personal Services" && <Forms.Domestic
+            {ad.category === "Domestic & Personal Services" && <AdFeatures.Domestic
                                                     ad={ad}
                                                     />}     
-             {ad.category === "Events & Hospitality" && <Forms.Hospitality
+             {ad.category === "Events & Hospitality" && <AdFeatures.Hospitality
                                                     ad={ad}
                                                     />}     
-            {ad.category === "Trade Services" && <Forms.Trade
+            {ad.category === "Trade Services" && <AdFeatures.Trade
                                                     ad={ad}
                                                     />}     
-            {ad.category === "Health & Lifestyle" && <Forms.Health
+            {ad.category === "Health & Lifestyle" && <AdFeatures.Health
                                                     ad={ad}
                                                     />}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
             </div>

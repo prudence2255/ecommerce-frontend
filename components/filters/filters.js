@@ -6,6 +6,8 @@ const Filters = ({setFilterModal}) => {
     const {categoryLocations} = A.useSelector(A.adsSelector);
     const {categories} = categoryLocations;
     const router = A.useRouter();
+    const dispatch = A.useDispatch();
+
     const onHandleFilter = (e) => {
         setFilterModal(false)
         router.push({
@@ -15,7 +17,13 @@ const Filters = ({setFilterModal}) => {
                 [e.target.name]: e.target.value
             }
         }) 
+        goToPage()
     }
+
+    const goToPage = () => {
+        dispatch(A.progressStart());
+      }
+
     const cats = [
         "Mobile Phones", "Computers & Tablets", "Tvs", "Mobile Phone Accessories",
         "Computer Accessories", "Cameras & Camcorders", "Tv & Video Accessories", 
@@ -31,7 +39,7 @@ const schema = yup.object().shape({
     max_price: yup.number().min(1).required(),
   });
 
-const {register, reset, handleSubmit, errors } = A.useForm({
+const {register, handleSubmit } = A.useForm({
     resolver: A.yupResolver(schema),   
     })
 const submit = (data) => {
@@ -44,6 +52,7 @@ const submit = (data) => {
     }) 
     
     setFilterModal(false)
+    goToPage()
 }
     A.useEffect(() => {
         return () => {}
@@ -128,6 +137,7 @@ const submit = (data) => {
         </>
     )
 }
+
 
 export const MobileFilters = ({filterModal, setFilterModal}) => {
     const closeModal = () => {
