@@ -6,7 +6,7 @@ body {
   line-height: 1.6;
   font-size: 16px;
   background-color: #eaeafb!important;
-  color: #262626;
+  color:  #212529;
   scroll-behavior: smooth;
 }
 
@@ -57,6 +57,18 @@ input:focus, select:focus, textarea:focus{
   .image-gallery-image{
     height: 380px;
   }
+
+  .new{
+    padding: 5px 10px;
+    background-color: green;
+    color: rgb(231, 227, 227)
+  }
+
+  .used{
+    padding: 5px 10px;
+    background-color:rgb(214, 214, 16);
+  }
+
   @media(max-width: 768px){
     .image-gallery-thumbnail-image{
       height: 50px;

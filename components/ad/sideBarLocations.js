@@ -14,9 +14,7 @@ const SideBarLocations = () => {
 
      const parentLocations = transFormArray(locations, 'parent_id', null);
 
-     const goToPage = () => {
-        dispatch(A.progressStart());
-      }
+   
      const handleLocation = (location) => {
         router.push({
             pathname: '/ads',
@@ -25,7 +23,7 @@ const SideBarLocations = () => {
                 location: location
             }
         })
-        goToPage()
+      
       }
 
     return (

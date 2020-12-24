@@ -8,9 +8,6 @@ export default function UserNav(){
 
  const dispatch = A.useDispatch()
 
-const goToPage = () => {
-  dispatch(A.progressStart());
-}
     return(
         <>
             <div className="w3-bar-block">
@@ -18,7 +15,7 @@ const goToPage = () => {
             <hr />
             <div>
             <Link href="/ad/account" >
-                <a className="w3-bar-item" onClick={goToPage}>My account <span className="w3-right"> 
+                <a className="w3-bar-item" >My account <span className="w3-right"> 
                 <NavIcon /></span>
                 </a>           
              </Link>
@@ -26,7 +23,7 @@ const goToPage = () => {
             <hr />
             <div>
             <Link href="/ad/settings" >
-                <a className="w3-bar-item" onClick={goToPage}>
+                <a className="w3-bar-item" >
                 Settings 
                 <span className="w3-right"> <NavIcon />
                 </span>

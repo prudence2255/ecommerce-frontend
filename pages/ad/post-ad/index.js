@@ -1,4 +1,4 @@
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import Layout from 'components/home/layout';
 import Select from 'react-select';
 import AuthRoute from 'components/home/auth';
@@ -6,7 +6,6 @@ import * as A from 'components/adminImports';
 import {TransForm} from 'components/classes';
 import * as yup from "yup";
 
-const cookies = new A.Cookies();
 
 function PostAd(){
 const {ad} = A.useSelector(A.customerSelector);
@@ -61,10 +60,6 @@ const schema = yup.object().shape({
 const {control, errors, handleSubmit} = A.useForm({resolver: A.yupResolver(schema),})  
 const handleForm = (e) => { 
   router.push(`/ad/post-ad/details?category=${e.subcategory.value}&location=${e.town.value}`)
-}
-
-const goToPage = () => {
-  dispatch(A.progressStart());
 }
 
 A.useEffect(() => {
@@ -189,7 +184,7 @@ A.useEffect(() => {
         </div>
      </div> 
         <div className="pb-2 next col-md-4 mx-auto my-5">
-        <button className="btn " onClick={goToPage}>Next</button>
+        <button className="btn " >Next</button>
         </div>
         </form>
           </div>

@@ -17,9 +17,6 @@ const SideBarCategories = () => {
 
 const parentCategories = transFormArray(categories, 'parent_id', null);
 
-const goToPage = () => {
-  dispatch(A.progressStart());
-}
 
 const handleCategory = (category) => {
   router.push({
@@ -29,7 +26,7 @@ const handleCategory = (category) => {
           category: category
       }
   })
-  goToPage()
+ 
 }
 const handleChildren = (id) => {
   setChildren(transFormArray(categories, 'parent_id', id))

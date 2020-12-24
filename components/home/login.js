@@ -1,6 +1,5 @@
 import * as yup from "yup";
 import {LoginGoogle} from './socialLogin';
-import Link from 'next/link';
 import * as A from 'components/adminImports';
 import Signup from './signup';
 import ShowEmail from './showEmail';

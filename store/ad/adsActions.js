@@ -2,7 +2,6 @@
 
 import { createAsyncThunk} from '@reduxjs/toolkit';
 import Axios from 'axios';
-import Cookies from 'universal-cookie';
 import  {
    progressEnd, statusSucceeded,
 } from '../admin/loadersSlice';

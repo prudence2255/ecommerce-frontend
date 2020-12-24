@@ -8,9 +8,7 @@ const transform = new A.TransForm();
 const SimilarAds = () => {
     const {similarAds} = A.useSelector(A.adsSelector);
     const dispatch = A.useDispatch();
-    const goToPage = () => {
-      dispatch(A.progressStart());
-    }
+  
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
         return (
@@ -83,14 +81,18 @@ const SimilarAds = () => {
             <div  key={i}>
             <div className="media">
             <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
-        <a onClick={goToPage}>
+        <a >
         <img className="align-self-start mr-3 ad-img-small img" src={ad?.images[0].xsmall } alt="img" />
          </a>
         </Link>
         <div className="media-body">
         <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
-        <a onClick={goToPage}>
-        <h6 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } <small>{ad.condition ? `(${ad.condition})` : null}</small></b></h6>
+        <a >
+        <h6 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } 
+        {ad.condition && (
+     <small className="w3-right">{ad.condition === 'New' ? <span className="new">{ad.condition}</span> : <span className="used">{ad.condition}</span>}</small>
+     )}
+        </b></h6>
         <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
          <div>
          <p className="price w3-left"><b>GHC {transform.formatNum(ad.price) }</b></p>
@@ -135,6 +137,12 @@ const SimilarAds = () => {
           font-size: 18px!important;
       }
       
+      .media:hover{
+        padding-left: 10px;
+          border-left: 3px solid green;
+          box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      }
+
       @media(max-width: 768px){
           h6{
               font-size: 16px!important;

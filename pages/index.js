@@ -12,9 +12,7 @@ const {items, recentAds} = A.useSelector(A.adsSelector);
 const dispatch = A.useDispatch()
 const transform = new A.TransForm()
 
-const goToPage = () => {
-  dispatch(A.progressStart());
-}
+
   return (
   <>
   <Head>
@@ -46,7 +44,7 @@ const goToPage = () => {
                 {Array.isArray(recentAds) && recentAds.map((ad, i) => (
                   <div key={i}>
                    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
-                   <a onClick={() => goToPage()}>
+                   <a>
                     <img src={ad.images[0].medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
                     <img src={ad.images[0].small} className="img-slide d-block d-lg-none" alt={ad.title}/>
                     <div className="legend">
