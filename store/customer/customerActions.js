@@ -29,6 +29,7 @@ const getError = (error, thunk) => {
     return thunk.rejectWithValue({error: error.response.data})
   }
   if(error.request){
+    console.log(error.request)
     return thunk.rejectWithValue({ error: {errors : {error: ['Connection error']}}})
   }
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
@@ -71,6 +72,7 @@ export const logout = createAsyncThunk(
         thunk.dispatch(endLoading())
         return response
       } catch (error) {
+        console.log(error.response)
         thunk.dispatch(endLoading())
         thunk.dispatch(setErrors(getError(error, thunk)))
         return getError(error, thunk)
