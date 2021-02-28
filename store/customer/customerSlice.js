@@ -7,9 +7,13 @@ import {logout, addAd, loadAd, updateCustomer,
       } from './customerActions';
 import Cookies from 'universal-cookie';
 
+
 const cookies = new Cookies();
 
 
+/**
+ * creates customers slice
+ */
  const customersSlice = createSlice({
   name: 'customers',
   initialState: {
@@ -131,6 +135,9 @@ export const {
 } = customersSlice.actions
 
 
+/**
+ * creates a selector for customers
+ */
 export const customerSelector = createSelector(
    (state) => ({
         loginCustomer: state.customers.loginCustomer,

@@ -1,8 +1,9 @@
 
 import { createSlice, createSelector} from '@reduxjs/toolkit'
 
-
-  
+/**
+ * form slice for errors
+ */  
  const formsSlice = createSlice({
   name: 'forms',
   initialState: {

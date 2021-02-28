@@ -16,6 +16,12 @@ let headers = {
   'Content-Type': 'application/json',
 }
 
+/**
+ * 
+ * @param {object} error 
+ * @param {object} thunk 
+ */
+
 const getError = (error, thunk) => {
   if(error.response){
     if(error.response.status === 401){
@@ -32,6 +38,9 @@ const getError = (error, thunk) => {
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
 
+/**
+ * logs an admin out
+ */
 export const logout = createAsyncThunk(
     'admin/logout',
     async (_, thunk) => { 
@@ -54,6 +63,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * logs an admin in
+   */
   export const login = createAsyncThunk(
     'admin/login',
     async (admin, thunk) => {  
@@ -76,6 +88,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * loads admin data
+   */
   export const loadUser = createAsyncThunk(
     'admin/loadUser',
     async (_, thunk) => {  
@@ -97,6 +112,10 @@ export const logout = createAsyncThunk(
       }
     }
   )
+
+  /**
+   * stores an item 
+   */
   export const addItem = createAsyncThunk(
     'item/addItem',
     async (data, thunk) => { 
@@ -122,7 +141,9 @@ export const logout = createAsyncThunk(
     }
   )
 
-  
+/**
+ * displays list of items
+ */
   export const loadItems = createAsyncThunk(
     'item/loadItems',
     async (data, thunk) => {
@@ -147,6 +168,9 @@ export const logout = createAsyncThunk(
   )
 
   
+  /**
+   * updates a specific item
+   */
 
   export const updateItem = createAsyncThunk(
     'item/updateItem',
@@ -172,6 +196,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * removes a specific item from db
+   */
   export const deleteItem = createAsyncThunk(
     'item/deleteItem',
     async (data, thunk) => { 
@@ -195,6 +222,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * displays options // categories, locations
+   */
   export const loadOptions = createAsyncThunk(
     'item/loadOptions',
     async (data, thunk) => {

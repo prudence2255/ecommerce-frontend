@@ -12,11 +12,20 @@ import * as A from 'components/adminImports';
 
  
 const cookies = new Cookies();
+/**
+ * get the backend api url from dot env
+ */
 const apiUrl = process.env.API_URL;
 let headers = {
   'Accept': 'application/json',
   'Content-Type': 'application/json',
 }
+
+/**
+ * 
+ * @param {object} error errors from api calls
+ * @param {object} thunk thunk from createAsyncThunk
+ */
 
 const getError = (error, thunk) => {
   if(error.response){
@@ -35,6 +44,10 @@ const getError = (error, thunk) => {
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
 
+/**
+ * logout 
+ * @param thunk
+ */
 export const logout = createAsyncThunk(
     'customer/logout',
     async (_, thunk) => { 
@@ -57,6 +70,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * @param {object} customer the customer login details
+   */
   export const login = createAsyncThunk(
     'customer/login',
     async (customer, thunk) => {  
@@ -80,6 +96,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * @param {string} cookie authorization cookie
+   */
   export const loadCustomer = createAsyncThunk(
     'customer/loadCustomer',
     async (cookie, thunk) => {  
@@ -100,6 +119,10 @@ export const logout = createAsyncThunk(
       }
     }
   )
+
+  /**
+   * @param {object} data contains the ad info and url to be added
+   */
   export const addAd = createAsyncThunk(
     'customer/addAd',
     async (data, thunk) => { 
@@ -124,7 +147,10 @@ export const logout = createAsyncThunk(
     }
   )
 
-  
+/**
+ * @param {object} data contains the url and cookie to load ads for the sepecific 
+ * customer
+ */
   export const loadAds = createAsyncThunk(
     'ad/loadAds',
     async (data, thunk) => {
@@ -150,6 +176,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * load a single ad
+   */
   export const loadAd = createAsyncThunk(
     'ad/loadAd',
     async (data, thunk) => {
@@ -175,6 +204,10 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * @param {object} data contains the ad to be updated 
+   * url and slug 
+   */
   export const updateAd = createAsyncThunk(
     'ad/updateAd',
     async (data, thunk) => { 
@@ -199,6 +232,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * update customer details
+   */
   export const updateCustomer = createAsyncThunk(
     'customer/updateCustomer',
     async (data, thunk) => { 
@@ -223,6 +259,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * delete a ad from db
+   */
   export const deleteAd = createAsyncThunk(
     'ad/deleteAd',
     async (data, thunk) => { 
@@ -246,6 +285,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * displays a lists of categories and locations
+   */
   export const categoryLocation = createAsyncThunk(
     'customer/categoryLocation',
     async (data, thunk) => {
@@ -266,6 +308,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * displays locations and categories that have children 
+   */
   export const parentOptions = createAsyncThunk(
     'customer/parentOptions',
     async (data, thunk) => {
@@ -286,6 +331,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * displays locations and categories that have parents
+   */
   export const childOptions = createAsyncThunk(
     'customer/childOptions',
     async (data, thunk) => {
@@ -306,7 +354,9 @@ export const logout = createAsyncThunk(
     }
   )
 
-
+/**
+ * registers a customer
+ */
   export const signUp = createAsyncThunk(
     'customer/signUp',
     async (data, thunk) => { 
@@ -330,6 +380,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * social login
+   */
   export const socialLogin = createAsyncThunk(
     'customer/socialLogin',
     async (data, thunk) => { 
@@ -354,6 +407,9 @@ export const logout = createAsyncThunk(
     }
   )
 
+  /**
+   * updates a customer password
+   */
   export const updatePassword = createAsyncThunk(
     'customer/updatePassword',
     async (data, thunk) => { 
@@ -379,6 +435,9 @@ export const logout = createAsyncThunk(
   )
 
 
+  /**
+   * send password reset instructions to customer
+   */
   export const sendEmail = createAsyncThunk(
     'customer/sendEmail',
     async (data, thunk) => { 

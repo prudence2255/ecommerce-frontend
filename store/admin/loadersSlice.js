@@ -2,7 +2,9 @@
 import { createSlice, createSelector} from '@reduxjs/toolkit';
 
 
-
+/**
+ * loaders slice
+ */
 const loadersSlice = createSlice({
     name: 'loaders',
     initialState: {

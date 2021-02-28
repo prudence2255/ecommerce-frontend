@@ -8,7 +8,9 @@ import Cookies from 'universal-cookie';
  
 const cookies = new Cookies();
 
-
+/**
+ * admin slice// state
+ */
   
  const adminsSlice = createSlice({
   name: 'admins',

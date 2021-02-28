@@ -9,6 +9,9 @@ import adsReducer from './ad/adsSlice';
 import { HYDRATE, createWrapper } from 'next-redux-wrapper';
 
 
+/**
+ * the combine reducer
+ */
 
 const rootReducer = combineReducers({ 
                    loaders: loadersReducer,
@@ -19,6 +22,11 @@ const rootReducer = combineReducers({
                    ads: adsReducer
                   });
 
+                  /**
+                   * returns the hydrated state from the server
+                   * @param {object} state 
+                   * @param {object} action 
+                   */
   const hydrateReducer = (state = {}, action) => {
   if(action.type === HYDRATE){
     return {
@@ -30,6 +38,9 @@ const rootReducer = combineReducers({
 }
 
 
+/**
+ * the store
+ */
 const makeStore = () => {
   const store = configureStore({
           reducer: hydrateReducer,
@@ -42,6 +53,9 @@ const makeStore = () => {
    return store     
 }
 
+/**
+ * create a redux wrapper
+ */
 export const wrapper = createWrapper(makeStore, {debug: true});
 
 

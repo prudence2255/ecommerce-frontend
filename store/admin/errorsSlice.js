@@ -1,6 +1,10 @@
 import { createSlice, createSelector} from '@reduxjs/toolkit';
 
 
+/**
+ * errors slice //catches errors from api calls from
+ * all other slices
+ */
 const errorsSlice = createSlice({
     name: 'errors',
     initialState: {

@@ -4,6 +4,9 @@ import { fetchAd, fetchItems, fetchCategoryLocation,
       fetchAds, fetchRecentAds, fetchChildOptions,
       } from './adsActions';
 
+      /**
+       * ads slice
+       */
  const adsSlice = createSlice({
   name: 'ads',
   initialState: {

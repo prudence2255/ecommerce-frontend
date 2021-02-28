@@ -17,6 +17,11 @@ let headers = {
   'Content-Type': 'application/json',
 }
 
+/**
+ * 
+ * @param {object} error 
+ * @param {object} thunk 
+ */
 const getError = (error, thunk) => {
   if(error.response){
     if(error.response.status === 401){
@@ -33,7 +38,9 @@ const getError = (error, thunk) => {
   return thunk.rejectWithValue({ error: {errors : {error: [error.message]}}})
 }
 
-
+/**
+ * displays a list of ads for frontend
+ */
   export const fetchAds = createAsyncThunk(
     'ads/fetchAds',
     async (data, thunk) => {
@@ -59,6 +66,9 @@ const getError = (error, thunk) => {
     }
   )
 
+  /**
+   * displays a list of items// ex ads for a specif category
+   */
   export const fetchItems = createAsyncThunk(
     'ads/fetchItems',
     async (data, thunk) => {
@@ -80,6 +90,9 @@ const getError = (error, thunk) => {
     }
   )
 
+  /**
+   * displays a single ad
+   */
   export const fetchAd = createAsyncThunk(
     'ads/fetchAd',
     async (data, thunk) => {
@@ -106,7 +119,9 @@ const getError = (error, thunk) => {
 
   
 
-  
+  /**
+   * displays categories and locations for frontend
+   */
 
   export const fetchCategoryLocation = createAsyncThunk(
     'ads/categoryLocation',
@@ -127,6 +142,9 @@ const getError = (error, thunk) => {
     }
   )
 
+  /**
+   * displays recent ads
+   */
   export const fetchRecentAds = createAsyncThunk(
     'ads/fetchRecentAds',
     async (data, thunk) => {
@@ -146,6 +164,9 @@ const getError = (error, thunk) => {
     }
   )
 
+  /**
+   * displays child locations and categories
+   */
   export const fetchChildOptions = createAsyncThunk(
     'ads/childOptions',
     async (data, thunk) => {
