@@ -43,7 +43,8 @@ export default function Home() {
   setLocation(transform.slugToUpper(isLocation))
    return () => {
    }
- }, [ads])
+ }, [ads]);
+ 
   return (
    <Layout>
    <MobileSticky />
@@ -87,18 +88,7 @@ export default function Home() {
       <div className="col-md-6 mt-5"> 
       <div className="row">
       <div className="col">
-      {adsLoading ? (<div>
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-        <AdLoader />
-      </div>)
+      {adsLoading ? Array(10).fill(1).map((item, i) => <div key={i}><AdLoader /> </div>)
       : ads.map(ad => <Ad  ad={ad} key={ad.id}/>)}
       {router.query.search && ads.length === 0 && status === 'succeeded' && (
         <div className="text-center">

@@ -14,7 +14,7 @@ const Category = ({categoryModal, setCategoryModal}) => {
     const [parentCategory, setParent] = A.useState({});
     const [children, setChildren] = A.useState([]);
     const router = A.useRouter();
-
+    const dispatch = A.useDispatch();
     const {categoryLocations} = A.useSelector(A.adsSelector);
     const {categories} = categoryLocations;
     const parentCategories = transFormArray(categories, 'parent_id', null);
@@ -27,13 +27,18 @@ const handleChildren = (id) => {
     setParent(parentCategory);
 }
     const handleCategory = (category) => {
-        router.push({
-            pathname: '/ads',
-            query: {
-                ...router.query,
-                category: category
-            }
-        })
+        const query =  {
+            ...router.query,
+            category: category
+        }
+        dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
+        // router.push({
+        //     pathname: '/ads',
+        //     query: {
+        //         ...router.query,
+        //         category: category
+        //     }
+        // })
         setCategoryModal(false)
     }
     return(

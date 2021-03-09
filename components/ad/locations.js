@@ -12,6 +12,7 @@ const Location = ({locationModal, setLocationModal}) => {
 const [parentLocation, setParent] = A.useState({});
 const [children, setChildren] = A.useState([]);
     const router = A.useRouter();
+    const dispatch = A.useDispatch();
     const {categoryLocations} = A.useSelector(A.adsSelector);
 const {locations} = categoryLocations;
 const parentLocations = transFormArray(locations, 'parent_id', null);
@@ -28,13 +29,18 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
       
     
     const handleLocation = (location) => {
-        router.push({
-            pathname: '/ads',
-            query: {
-                ...router.query,
-                location: location
-            }
-        })
+        const query =  {
+            ...router.query,
+            location: location
+        }
+        dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
+        // router.push({
+        //     pathname: '/ads',
+        //     query: {
+        //         ...router.query,
+        //         location: location
+        //     }
+        // })
         setLocationModal(false);
     }
     return (

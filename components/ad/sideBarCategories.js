@@ -19,13 +19,18 @@ const parentCategories = transFormArray(categories, 'parent_id', null);
 
 
 const handleCategory = (category) => {
-  router.push({
-      pathname: '/ads',
-      query: {
-          ...router.query,
-          category: category
-      }
-  })
+  const query =  {
+    ...router.query,
+    category: category
+}
+dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
+  // router.push({
+  //     pathname: '/ads',
+  //     query: {
+  //         ...router.query,
+  //         category: category
+  //     }
+  // })
  
 }
 const handleChildren = (id) => {

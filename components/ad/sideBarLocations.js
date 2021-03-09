@@ -16,13 +16,18 @@ const SideBarLocations = () => {
 
    
      const handleLocation = (location) => {
-        router.push({
-            pathname: '/ads',
-            query: {
-                ...router.query,
-                location: location
-            }
-        })
+        const query =  {
+            ...router.query,
+            location: location
+        }
+        dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
+        // router.push({
+        //     pathname: '/ads',
+        //     query: {
+        //         ...router.query,
+        //         location: location
+        //     }
+        // })
       
       }
 

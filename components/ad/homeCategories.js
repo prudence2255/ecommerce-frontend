@@ -147,10 +147,17 @@ export const Desktop = ({items}) => {
        margin-top: 50px;
        border-radius: 10px;
        border: 2px solid green;
+       transition: all 0.5s;
+     }
+
+     .categories .col-md-3:hover{
+      transform: scale(1.2);
+      background-color: light-gray;
      }
      Link, a{
        color: black!important;
      }
+    
      `}
    </style>
         </>
@@ -299,11 +306,17 @@ export const Mobile = ({items}) => {
        border-radius: 10px;
        border: 2px solid green;
        width: 48%;
+       transition: all 0.5s;
+     }
+     .categories .item:hover{
+      transform: scale(1.2);
       
      }
      Link, a{
        color: black!important;
      }
+
+    
      `}
    </style>
         </>

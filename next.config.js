@@ -10,8 +10,7 @@ module.exports = {
     env: {
         APP_URL: process.env.NODE_ENV === 'development' ? 
                                         'http://localhost:3000' : 'https://ecommerce-frontend-tau.vercel.app',
-        API_URL: process.env.NODE_ENV === 'development' ? 
-                                        'http://localhost:8000' : 'http://digishop.opportunitytent.com',
+        API_URL: 'http://digishop.opportunitytent.com',
         APP_ID: '614109506161618',
         CLIENT_ID: '515282459574-q49pt0cr2kmkcf5p3rjupjhebhm46r0g.apps.googleusercontent.com'
     },

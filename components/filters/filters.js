@@ -9,14 +9,22 @@ const Filters = ({setFilterModal}) => {
     const dispatch = A.useDispatch();
 
     const onHandleFilter = (e) => {
-        setFilterModal(false)
-        router.push({
-            pathname: '/ads',
-            query: {
-                ...router.query,
-                [e.target.name]: e.target.value
-            }
-        }) 
+       const query =  {
+            ...router.query,
+            [e.target.name]: e.target.value
+        }
+        // const data = {
+        //     ...query,
+        //   }
+        setFilterModal(false);
+        dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
+        // router.push({
+        //     pathname: '/ads',
+        //     query: {
+        //         ...router.query,
+        //         [e.target.name]: e.target.value
+        //     }
+        // }) 
         goToPage()
     }
 
@@ -43,13 +51,19 @@ const {register, handleSubmit } = A.useForm({
     resolver: A.yupResolver(schema),   
     })
 const submit = (data) => {
-    router.push({
-        pathname: '/ads',
-        query: {
-            ...router.query,
-            ...data,
-        }
-    }) 
+
+    const query =  {
+        ...router.query,
+        ...data
+    }
+    dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
+    // router.push({
+    //     pathname: '/ads',
+    //     query: {
+    //         ...router.query,
+    //         ...data,
+    //     }
+    // }) 
     
     setFilterModal(false)
     goToPage()

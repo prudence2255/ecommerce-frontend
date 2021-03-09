@@ -77,7 +77,7 @@ export const AdLoader = () => {
       <>
   <div className="media mb-2">
   <div className="align-self-start mr-3">
-  <Skeleton height={70} width={100}/>
+  <Skeleton height={70} width={150}/>
   </div>
   <div className="media-body">
   <div>
