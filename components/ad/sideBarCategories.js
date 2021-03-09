@@ -23,6 +23,7 @@ const handleCategory = (category) => {
     ...router.query,
     category: category
 }
+router.query.category = category;
 dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
   // router.push({
   //     pathname: '/ads',

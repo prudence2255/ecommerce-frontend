@@ -24,7 +24,7 @@ export default function Home() {
   const [isCategory, setCategory] = A .useState('Category')
   const [isLocation, setLocation] = A .useState('Location')
   const router = A.useRouter();
- 
+  const query = router.query;
  const openCategoryModal = () => {
     setCategoryModal(true)
  }
@@ -45,6 +45,10 @@ export default function Home() {
    }
  }, [ads]);
  
+A.useEffect(() => {
+console.log(query)
+}, [query]);
+
   return (
    <Layout>
    <MobileSticky />

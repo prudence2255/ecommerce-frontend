@@ -33,6 +33,7 @@ const parentLocations = transFormArray(locations, 'parent_id', null);
             ...router.query,
             location: location
         }
+        router.query.location = location;
         dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
         // router.push({
         //     pathname: '/ads',
