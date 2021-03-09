@@ -13,6 +13,8 @@ const Filters = ({setFilterModal}) => {
             ...router.query,
             [e.target.name]: e.target.value
         }
+
+        router.query[e.target.name] = e.target.value
         // const data = {
         //     ...query,
         //   }
@@ -56,6 +58,8 @@ const submit = (data) => {
         ...router.query,
         ...data
     }
+    router.query.min_price = data.min_price;
+    router.query.max_price = data.max_price;
     dispatch(A.fetchAds({url: `/api/all-ads?page=${query.page}`, item: query}));
     // router.push({
     //     pathname: '/ads',
