@@ -14,7 +14,7 @@ export default function Ad(){
   const {ad} = A.useSelector(A.adsSelector);
     const [showContact, setShowContact] = A.useState();
     const {images} = ad;
-    const {first} = images;
+    const [first] = images;
 
     const cats = [
         "Mobile Phones", "Computers & Tablets", "Tvs", "Mobile Phone Accessories",
