@@ -8,30 +8,34 @@ const transform = new A.TransForm();
 
 
 const Ad = ({ad}) => {
+
+const {slug, images, title, condition, price, category, location, updated_at} = ad;
+const [first] = images
+
     return (
-        <>
+     <>
      <div className="media">
-    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
+    <Link href={`/ads/[ad]`} as={`/ads/${slug}`} >
         <a >
-        <img className="align-self-start mr-3 img" src={ad?.images[0].xsmall } alt="img" />
+        <img className="align-self-start mr-3 img" src={first?.xsmall} alt="img" />
         </a>
     </Link>
     <div className="media-body">
-    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
+    <Link href={`/ads/[ad]`} as={`/ads/${slug}`}>
     <a >
     <h6 className="mt-0 ">
-    <b>{transform.shortenLength(ad.title, 20) }
-     {ad.condition && (
-     <small className="w3-right">{ad.condition === 'New' ? <span className="new">{ad.condition}</span> : <span className="used">{ad.condition}</span>}</small>
+    <b>{transform.shortenLength(title, 20) }
+     {condition && (
+     <small className="w3-right">{condition === 'New' ? <span className="new">{condition}</span> : <span className="used">{condition}</span>}</small>
      )}
 
      </b>
     </h6>
-   <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
+   <p>{location ?? ''}, {transform.shortenLength(category, 20) }</p>
    <div>
-   <p className="price w3-left"><b>GHC {transform.formatNum(ad.price) }</b></p>
+   <p className="price w3-left"><b>GHC {transform.formatNum(price) }</b></p>
        <div className="w3-right mr-2">
-       <Moment fromNow ago>{ad.updated_at}</Moment>
+       <Moment fromNow ago>{updated_at}</Moment>
        </div>
    </div>
    </a>

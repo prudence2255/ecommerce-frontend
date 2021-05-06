@@ -13,6 +13,9 @@ const APP_URL = process.env.APP_URL;
 export default function Ad(){
   const {ad} = A.useSelector(A.adsSelector);
     const [showContact, setShowContact] = A.useState();
+    const {images} = ad;
+    const {first} = images;
+
     const cats = [
         "Mobile Phones", "Computers & Tablets", "Tvs", "Mobile Phone Accessories",
         "Computer Accessories", "Cameras & Camcorders", "Tv & Video Accessories", 
@@ -39,8 +42,8 @@ export default function Ad(){
                    {ad.title}
                 </title>
                 <meta property="og:title" content={ad.title} />
-                 <meta name="twitter:image" content={ad.images[0].large} />
-                <meta property="og:image" content={ad.images[0].large} />                             
+                 <meta name="twitter:image" content={first?.large} />
+                <meta property="og:image" content={first?.large} />                             
                  <meta property="og:image:width" content="1200" />
                  <meta property="og:image:height" content="630" />                                 
                  <meta name="description" lang="en" content={ad.description} />
