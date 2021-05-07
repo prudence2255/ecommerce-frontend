@@ -41,7 +41,7 @@ const transform = new A.TransForm()
         autoPlay={true}
         >
              {Array.isArray(recentAds) && recentAds.map((ad, i) => {
-                  const image = ad?.images?.filter(image => image !== null);
+                  const images = ad?.images?.filter(image => image !== null);
                   return(
                   <div key={i}>
                    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
