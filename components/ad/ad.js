@@ -10,14 +10,15 @@ const transform = new A.TransForm();
 const Ad = ({ad}) => {
 
 const {slug, images, title, condition, price, category, location, updated_at} = ad;
-const [first] = images
+const definedImages = images?.filter(img => img !== null);
+
 
     return (
      <>
      <div className="media">
     <Link href={`/ads/[ad]`} as={`/ads/${slug}`} >
         <a >
-        <img className="align-self-start mr-3 img" src={first?.xsmall} alt="img" />
+        <img className="align-self-start mr-3 img" src={definedImages?.length > 0 ? definedImages[0].xsmall : title} alt="img" />
         </a>
     </Link>
     <div className="media-body">

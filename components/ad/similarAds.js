@@ -1,13 +1,11 @@
 import Slider from "react-slick";
 import * as A from 'components/adminImports';
-import Moment from 'react-moment';
-import Link from 'next/link';
-
-const transform = new A.TransForm();
+import Ad from 'components/ad/ad';
 
 const SimilarAds = () => {
     const {similarAds} = A.useSelector(A.adsSelector);
     const dispatch = A.useDispatch();
+  
   
     function SampleNextArrow(props) {
         const { className, style, onClick } = props;
@@ -77,35 +75,7 @@ const SimilarAds = () => {
        <hr />
         <div className="px-3">
         <Slider {...settings}>
-         {similarAds.length > 0 && similarAds.map((ad, i) => (
-            <div  key={i}>
-            <div className="media">
-            <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
-        <a >
-        <img className="align-self-start mr-3 ad-img-small img" src={ad?.images[0].xsmall } alt="img" />
-         </a>
-        </Link>
-        <div className="media-body">
-        <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`} >
-        <a >
-        <h6 className="mt-0"><b>{transform.shortenLength(ad.title, 20) } 
-        {ad.condition && (
-     <small className="w3-right">{ad.condition === 'New' ? <span className="new">{ad.condition}</span> : <span className="used">{ad.condition}</span>}</small>
-     )}
-        </b></h6>
-        <p>{ad.location ?? ''}, {transform.shortenLength(ad.category, 20) }</p>
-         <div>
-         <p className="price w3-left"><b>GHC {transform.formatNum(ad.price) }</b></p>
-       <div className="w3-right mr-2">
-       <Moment fromNow ago>{ad.updated_at}</Moment>
-       </div>
-        </div>
-        </a>
-        </Link>
-         </div>
-        </div> 
-            </div>
-          ))}
+         {similarAds.length > 0 && similarAds.map((ad, i) => (<Ad  ad={ad} key={i}/>))}
         </Slider>
         </div>
         </div>
