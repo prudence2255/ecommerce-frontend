@@ -45,7 +45,7 @@ if(e.target.files[0]){
         <div className="row">
         {Object.keys(ad).length > 0 && ad.images.map((img, i) => (
                 <div className="col-md-4" key={i}>
-                <img src={img.xsmall} alt="ad" className="ad-image-2"/>
+                <img src={img?.xsmall} alt="ad" className="ad-image-2"/>
                 </div>
             ))}
         </div>

@@ -9,7 +9,6 @@ import Search from  'components/ad/search';
 
 export default function Home() {
 const {items, recentAds} = A.useSelector(A.adsSelector);
-const dispatch = A.useDispatch()
 const transform = new A.TransForm()
 
 
@@ -41,12 +40,14 @@ const transform = new A.TransForm()
         infiniteLoop={true}
         autoPlay={true}
         >
-                {Array.isArray(recentAds) && recentAds.map((ad, i) => (
+             {Array.isArray(recentAds) && recentAds.map((ad, i) => {
+                  const images = ad?.images?.filter(image => image !== null);
+                  return(
                   <div key={i}>
                    <Link href={`/ads/[ad]`} as={`/ads/${ad.slug}`}>
                    <a>
-                    <img src={ad.images[0].medium} className="img-slide d-none d-lg-block" alt={ad.title}/>
-                    <img src={ad.images[0].small} className="img-slide d-block d-lg-none" alt={ad.title}/>
+                    <img src={images?.length > 0 ? images[0].small : ad.title} className="img-slide d-none d-lg-block" alt={ad.title}/>
+                    <img src={images?.length > 0 ? images[0].small : ad.title} className="img-slide d-block d-lg-none" alt={ad.title}/>
                     <div className="legend">
                     <h5>
                     {ad.category}
@@ -57,7 +58,7 @@ const transform = new A.TransForm()
                     </a>
                    </Link>
                 </div>
-                ))}
+            )})}
             </Carousel>
         </div>
       </div>

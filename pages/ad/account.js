@@ -71,12 +71,14 @@ function Account(){
        </div>
       </div>
     )}
-      {ads.map(ad => (
+     {ads.map(ad => {
+        const images = ad?.images?.filter(image => image !== null);
+       return(
         <div className="ad" key={ad.id}>
         <div className="row" >
         <div className="col-md-12">
         <div className="media">
-  <img className="align-self-start mr-3" src={ad?.images[0].xsmall} alt="img" 
+  <img className="align-self-start mr-3" src={images?.length > 0 ? images[0].small : ad.title} alt="img" 
   style={{width: '100px', height: '80px'}}/>
   <div className="media-body">
     <h6 className="mt-0"><b>{title.shortenLength(ad.title, 20)} {ad.condition ? `(${ad.condition})` : null}</b></h6>
@@ -94,7 +96,7 @@ function Account(){
 </div>
  <hr />
   </div>
-      ))}
+      )})}
       <div className="row">
     <div className="col ml-2">
    <Paginator pages={meta}/>
